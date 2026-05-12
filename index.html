@@ -1,0 +1,822 @@
+<!DOCTYPE html><html lang="en"><head>
+
+
+<meta charset="UTF-8">
+<title>Group 4 — What should we be more worried about?</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Cover-specific overrides */
+  .cover .wordmark { font-size: 168px; }
+  .cover .wordmark .q-mark { color: var(--news-red); font-style: normal; font-weight: 700; }
+  .cover .wordmark em { color: var(--ink); }
+
+  .cover-meta-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 80px;
+    align-items: end;
+  }
+
+  .group-roster {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.45;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    max-width: 1000px;
+  }
+  .group-roster ul { list-style: none; margin: 0; padding: 0; }
+  .group-roster li { display: inline; }
+  .group-roster li:not(:last-child)::after {
+    content: '  ·  ';
+    color: var(--ink-mute);
+    font-weight: 400;
+  }
+
+  .cover-stat-block {
+    text-align: right;
+  }
+
+  .cover .slide-foot {
+    border-top: none;
+    padding-top: 0;
+  }
+  .slide:not(.section-opener) .slide-foot .wm { display: none; }
+  .cover-stat-block .stat-line {
+    font-family: var(--mono);
+    font-size: 24px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin: 0;
+  }
+  .cover-stat-block .stat-line strong {
+    display: block;
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--ink);
+  }
+
+  /* Editorial red accent on the italic word in paper-slide titles */
+  .slide-title em {
+    color: var(--news-red);
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  /* Soft crossfade between slides. The shadow-DOM rule on deck-stage
+     toggles opacity 0↔1 via [data-deck-active]; we add the transition
+     here in light DOM. Visibility delays its hidden-state by the fade
+     duration so the outgoing slide stays paintable while it fades. */
+  .slide {
+    transition: opacity 240ms ease, visibility 0s linear 240ms;
+  }
+  .slide[data-deck-active] {
+    transition: opacity 240ms ease, visibility 0s linear 0s;
+  }
+
+  /* ===== Full-bleed slide image ===== */
+  .slide-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* ===== Section-opener italic word lands a beat later ===== */
+  .section-opener h1 em { opacity: 0; }
+  [data-deck-active].section-opener h1 em {
+    animation: emReveal 700ms ease 550ms both;
+  }
+  @keyframes emReveal {
+    to { opacity: 1; }
+  }
+
+  /* ===== Threat slides (AI intermediation) ===== */
+  .slide--threat .slide-title { font-size: 64px; margin-bottom: 22px; max-width: none; }
+  .slide--threat .slide-subtitle { font-size: 28px; margin-bottom: 36px; max-width: 64ch; }
+  .slide--threat .slide-body {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .threat-grid {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 40px;
+    flex: 1;
+    min-height: 0;
+  }
+  .slide--threat .failure-grid { flex: 1; min-height: 0; }
+  .slide--threat .failure-card .failure-body { flex: 1; }
+
+  .stat-card {
+    background: var(--guardian-blue);
+    color: var(--paper);
+    padding: 32px 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    height: 100%;
+  }
+  .stat-card .stat-label {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--guardian-yellow);
+    margin: 0;
+  }
+  .stat-card .stat-figure {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 160px;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--paper);
+    margin: 6px 0 4px;
+  }
+  .stat-card .stat-body {
+    font-family: var(--body);
+    font-size: 22px;
+    line-height: 1.4;
+    color: rgba(244,239,230,0.85);
+    margin: 0;
+  }
+
+  .threat-main {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    min-width: 0;
+    justify-content: space-between;
+  }
+
+  .flow-row {
+    display: grid;
+    grid-template-columns: 1fr 32px 1fr 32px 1fr;
+    align-items: center;
+  }
+  .flow-node {
+    background: var(--paper-deep);
+    padding: 36px 24px 32px;
+    text-align: center;
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--ink);
+    line-height: 1.12;
+    border-radius: 2px;
+  }
+  .flow-node small {
+    display: block;
+    font-family: var(--mono);
+    font-weight: 400;
+    font-size: 17px;
+    letter-spacing: 0.06em;
+    color: var(--ink-mute);
+    margin-top: 12px;
+    text-transform: lowercase;
+  }
+  .flow-node--accent {
+    background: var(--paper-deep);
+    color: var(--guardian-blue);
+    border-top: 6px solid var(--guardian-blue);
+    padding-top: 30px;
+  }
+  .flow-node--accent small { color: var(--ink-mute); }
+  .flow-line {
+    height: 2px;
+    background: var(--ink);
+    align-self: center;
+  }
+
+  .threat-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .threat-list li {
+    display: grid;
+    grid-template-columns: 14px 1.1fr 1.4fr;
+    gap: 22px;
+    padding: 14px 0;
+    border-top: 1px solid var(--paper-rule);
+    align-items: baseline;
+  }
+  .threat-list li:first-child { border-top: 2px solid var(--ink); padding-top: 18px; }
+  .threat-list .threat-mark {
+    width: 14px;
+    height: 14px;
+    background: var(--news-red);
+    align-self: start;
+    margin-top: 8px;
+  }
+  .threat-list strong {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+  }
+  .threat-list span {
+    font-family: var(--body);
+    font-size: 21px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  .conclusion-bar {
+    background: transparent;
+    color: var(--ink);
+    padding: 22px 60px 6px;
+    font-family: var(--display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: 36px;
+    line-height: 1.18;
+    margin: auto 0 0;
+    text-align: center;
+    border-top: 2px solid var(--guardian-blue);
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  .conclusion-bar em { color: var(--guardian-blue); font-style: italic; }
+  [data-deck-active] .conclusion-bar {
+    animation: cardIn 520ms cubic-bezier(.2,.8,.2,1) 480ms both;
+  }
+
+  /* Slide 9 — Threat 02 failure grid */
+  .failure-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .failure-card {
+    display: flex;
+    flex-direction: column;
+  }
+  .failure-card .failure-stage {
+    background: var(--paper-deep);
+    color: var(--guardian-blue);
+    border-top: 6px solid var(--guardian-blue);
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.06em;
+    text-align: center;
+    padding: 18px 14px 14px;
+    margin: 0;
+  }
+  .failure-card .failure-body {
+    background: var(--paper-deep);
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.28;
+    color: var(--ink);
+    padding: 24px 24px 22px;
+    margin: 0;
+    flex: 1;
+  }
+  .failure-card .failure-num {
+    font-family: var(--mono);
+    font-size: 17px;
+    letter-spacing: 0.06em;
+    color: var(--news-red);
+    padding: 14px 0 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  .response-card {
+    background: var(--guardian-blue);
+    padding: 28px 36px;
+    margin-top: 24px;
+  }
+  .response-card .response-eyebrow {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--guardian-yellow);
+    margin: 0 0 10px;
+  }
+  .response-card .response-body {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.28;
+    color: var(--paper);
+    margin: 0;
+  }
+
+  /* ===== Card stagger (slides 5 + 8 + 9) ===== */
+  .quad-card, .aim, .failure-card {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  [data-deck-active] .quad-card,
+  [data-deck-active] .aim,
+  [data-deck-active] .failure-card {
+    animation: cardIn 420ms cubic-bezier(.2,.8,.2,1) both;
+  }
+  [data-deck-active] .quad-card:nth-child(1),
+  [data-deck-active] .aim:nth-child(1),
+  [data-deck-active] .failure-card:nth-child(1) { animation-delay: 120ms; }
+  [data-deck-active] .quad-card:nth-child(2),
+  [data-deck-active] .aim:nth-child(2),
+  [data-deck-active] .failure-card:nth-child(2) { animation-delay: 200ms; }
+  [data-deck-active] .quad-card:nth-child(3),
+  [data-deck-active] .aim:nth-child(3),
+  [data-deck-active] .failure-card:nth-child(3) { animation-delay: 280ms; }
+  [data-deck-active] .quad-card:nth-child(4),
+  [data-deck-active] .failure-card:nth-child(4) { animation-delay: 360ms; }
+  @keyframes cardIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== Chat reveal (Claude-style staggered user messages) ===== */
+  .chat-stream {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-end;
+    max-width: 1280px;
+    margin: 40px 0 0 auto;
+  }
+  .chat-bubble {
+    background: var(--paper-deep);
+    border-radius: 28px;
+    padding: 28px 40px;
+    font-family: var(--body);
+    font-size: 36px;
+    line-height: 1.32;
+    color: var(--ink);
+    max-width: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  [data-deck-active] .chat-bubble {
+    animation: chatIn 600ms cubic-bezier(.2,.8,.2,1) both;
+  }
+  [data-deck-active] .chat-bubble:nth-child(1) { animation-delay: 250ms; }
+  [data-deck-active] .chat-bubble:nth-child(2) { animation-delay: 1450ms; }
+  [data-deck-active] .chat-bubble:nth-child(3) { animation-delay: 2650ms; }
+  [data-deck-active] .chat-bubble:nth-child(4) { animation-delay: 3850ms; }
+  @keyframes chatIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .cover .kicker .group-tag {
+    display: inline-block;
+    background: var(--news-red);
+    color: var(--paper);
+    padding: 4px 12px 6px;
+    margin-right: 14px;
+    letter-spacing: 0.16em;
+  }
+
+  /* ===== Quadrant grid (2x2 cards) ===== */
+  .quad-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 36px;
+    height: 100%;
+  }
+  .quad-card {
+    background: var(--paper-deep);
+    border-top: 6px solid var(--guardian-blue);
+    padding: 36px 40px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .quad-card:nth-child(2) { border-top-color: var(--news-red); }
+  .quad-card:nth-child(3) { border-top-color: var(--eco-green); }
+  .quad-card:nth-child(4) { border-top-color: var(--guardian-yellow); }
+  .quad-card .quad-num {
+    font-family: var(--mono);
+    font-size: 24px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .quad-card h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    color: var(--guardian-blue);
+    margin: 0;
+  }
+  .quad-card p {
+    font-family: var(--body);
+    font-size: 26px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+</style>
+</head>
+<body style="">
+
+<deck-stage width="1920" height="1080">
+
+  <!-- ============================================================
+       SLIDE 1 — COVER
+       ============================================================ -->
+  <section class="slide cover" data-label="Cover">
+    <div class="rule-band"></div>
+
+    <div>
+      <p class="kicker"><span class="group-tag">Group 04</span>Editorial Leadership · Away Days 2026</p>
+      <h1 class="wordmark">What should<br>we be <em>more<br>worried about<span class="q-mark">?</span></em></h1>
+    </div>
+
+    <div class="cover-meta-row">
+      <div class="group-roster">
+        <ul>
+          <li>Archie Bland</li>
+          <li>Chris Moran</li>
+          <li>Dana Canedy</li>
+          <li>Jo Tovey</li>
+          <li>Lydia McMullan</li>
+          <li>Malik Meer</li>
+          <li>Martin Rose</li>
+          <li>Nicole Jackson</li>
+          <li>Nick Hopkins</li>
+          <li>Paul Lewis</li>
+          <li>Pippa Prior</li>
+          <li>Randeep Ramesh</li>
+          <li>Sheila Pulham</li>
+          <li>Toby Moses</li>
+          <li>Zoe Norden</li>
+        </ul>
+      </div>
+
+      <div class="cover-stat-block">
+        <p class="stat-line"><strong>18–19 May 2026</strong></p>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Group 4 · Away Days 2026</span>
+      <span class="num">01 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 2 — SECTION OPENER · Safety & Expression
+       ============================================================ -->
+  <section class="slide ink section-opener" data-label="Safety &amp; Expression">
+    <div class="rule-band"></div>
+
+    <div class="chapter-num">Part 01 — of 03</div>
+    <p class="section-kicker">What we should be more worried about</p>
+    <h1>Safety &amp; <em>expression.</em></h1>
+    <p class="section-dek">Authoritarianism, legal threats and journalist safety — and how all three look different depending on which border you're working across.</p>
+
+    <div class="slide-foot">
+      <span class="wm">Group 4 · Part 01</span>
+      <span class="num">02 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 3 — Triangle: three terms
+       ============================================================ -->
+  <section class="slide" data-label="Three terms">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Part 01 · Safety &amp; expression</p>
+
+    <div class="slide-body">
+      <img class="slide-image" src="images/Newtriangle.png" alt="Triangle diagram: Authoritarianism, Legal threats, Journalist safety">
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Part 01 · Safety &amp; expression</span>
+      <span class="num">03 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 4 — Blank content slide (Safety & expression)
+       ============================================================ -->
+  <section class="slide" data-screen-label="04 Safety & expression — placeholder" data-label="Safety placeholder">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Part 01 &middot; Safety &amp; expression</p>
+
+    <div class="slide-body">
+      <img class="slide-image" src="images/Newcollage.png" alt="Collage of political figures">
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Part 01 &middot; Safety &amp; expression</span>
+      <span class="num">04 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 5 — The legal threat landscape (2x2 quadrant)
+       ============================================================ -->
+  <section class="slide" data-screen-label="05 Legal threat landscape" data-label="Legal threat landscape">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Part 01 · Safety &amp; expression</p>
+    <h2 class="slide-title">The <em>legal</em> threat landscape.</h2>
+
+    <div class="slide-body">
+      <div class="quad-grid">
+        <div class="quad-card">
+          <span class="quad-num">01</span>
+          <h3>Political landscape and risk</h3>
+          <p>The political climate is inextricably intertwined with legal risk. Regulation is increasingly used to stifle media via visas, access blocks, and commercial licensing pressure.</p>
+        </div>
+        <div class="quad-card">
+          <span class="quad-num">02</span>
+          <h3>Global weakness</h3>
+          <p>In a borderless digital world, you are only as strong as the weakest jurisdiction. Analyzing risks across Foreign Agent Laws and cross-border defamation is now critical.</p>
+        </div>
+        <div class="quad-card">
+          <span class="quad-num">03</span>
+          <h3>Chilling effect</h3>
+          <p>The process becomes the pain. Excessive litigation costs and time burdens drive newsrooms toward self-censorship, effectively silencing public interest reporting.</p>
+        </div>
+        <div class="quad-card">
+          <span class="quad-num">04</span>
+          <h3>The power of policy and media</h3>
+          <p>Legislative pushback is gaining ground. New bills in Chile and Zimbabwe, combined with UK "Open Justice" initiatives, are strengthening journalist safety and digital protection.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Part 01 · Safety &amp; expression</span>
+      <span class="num">05 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 6 — Venn diagram: risk assessment
+       ============================================================ -->
+  <section class="slide" data-screen-label="06 Risk assessment" data-label="Risk assessment">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Part 01 · Safety &amp; expression</p>
+
+    <div class="slide-body">
+      <img class="slide-image" src="images/Venn.png" alt="Venn diagram of Physical, Digital and Psychological risk, with Risk Assessment loop callout">
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Part 01 · Safety &amp; expression</span>
+      <span class="num">06 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 5 — SECTION OPENER · Artificial Intelligence
+       ============================================================ -->
+  <section class="slide ink section-opener" data-label="Artificial Intelligence">
+    <div class="rule-band"></div>
+
+    <div class="chapter-num">Part 02 — of 03</div>
+    <p class="section-kicker">What we should be more worried about</p>
+    <h1>Artificial <em>intelligence.</em></h1>
+    <p class="section-dek">The dangers, the open questions, the limitations — and the possibilities we're not yet making enough of.</p>
+
+    <div class="slide-foot">
+      <span class="wm">Group 4 · Part 02</span>
+      <span class="num">07 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 8 — Threat 01 — AI between us and readers
+       ============================================================ -->
+  <section class="slide slide--threat" data-label="Threat 01: AI &amp; readers">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Part 02 · Artificial intelligence</p>
+    <h2 class="slide-title">Threat 01: AI is moving between us and <em>readers</em>.</h2>
+    <p class="slide-subtitle">The audience will increasingly encounter Guardian journalism through the lens of someone else's AI.</p>
+
+    <div class="slide-body">
+      <div class="threat-grid">
+        <aside class="stat-card">
+          <p class="stat-label">The exposure</p>
+          <p class="stat-figure">25%</p>
+          <p class="stat-body">of reader revenue is tied to direct email relationships via newsletters and marketing messages.</p>
+        </aside>
+
+        <div class="threat-main">
+          <div class="flow-row">
+            <span class="flow-node">Guardian journalism</span>
+            <span class="flow-line"></span>
+            <span class="flow-node flow-node--accent">AI layer<small>search · chat · device</small></span>
+            <span class="flow-line"></span>
+            <span class="flow-node">Audience</span>
+          </div>
+
+          <ul class="threat-list">
+            <li><span class="threat-mark"></span><strong>Search becomes the article</strong><span>AI summaries answer without clicks.</span></li>
+            <li><span class="threat-mark"></span><strong>Chatbots detach the source</strong><span>Attribution and referral weaken.</span></li>
+            <li><span class="threat-mark"></span><strong>AI devices filter habits</strong><span>AI inboxes detach newsletters and comms from source.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="conclusion-bar">Readers experience a version of Guardian journalism — without exposure to the Guardian.</p>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Part 02 · Artificial intelligence</span>
+      <span class="num">08 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 9 — Threat 02 — AI between us and the facts
+       ============================================================ -->
+  <section class="slide slide--threat" data-label="Threat 02: AI &amp; the facts">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Part 02 · Artificial intelligence</p>
+    <h2 class="slide-title">Threat 02: AI is moving between us and the <em>facts</em>.</h2>
+    <p class="slide-subtitle">As synthetic content floods the information ecosystem, risks move upstream into newsgathering and editing.</p>
+
+    <div class="slide-body">
+      <div class="failure-grid">
+        <div class="failure-card">
+          <p class="failure-stage">Primary sources</p>
+          <p class="failure-body">AI hoaxes: fake images, documents, quotes.</p>
+          <p class="failure-num">failure point 01</p>
+        </div>
+        <div class="failure-card">
+          <p class="failure-stage">Verification</p>
+          <p class="failure-body">Synthetic consensus: repeated AI errors look corroborated.</p>
+          <p class="failure-num">failure point 02</p>
+        </div>
+        <div class="failure-card">
+          <p class="failure-stage">Drafting / editing</p>
+          <p class="failure-body">Tool errors: hallucinated facts, bad summaries.</p>
+          <p class="failure-num">failure point 03</p>
+        </div>
+        <div class="failure-card">
+          <p class="failure-stage">Publishing</p>
+          <p class="failure-body">Visible mistakes damage trust in the brand.</p>
+          <p class="failure-num">failure point 04</p>
+        </div>
+      </div>
+
+      <div class="response-card">
+        <p class="response-eyebrow">The response</p>
+        <p class="response-body">Verified reporting, transparent sourcing, accountable editors, human-focused stories, direct audience relationships — both online and in person.</p>
+      </div>
+
+      <p class="conclusion-bar">The choice: be quoted by platforms — or chosen directly by readers.</p>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Part 02 · Artificial intelligence</span>
+      <span class="num">09 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 10 — Beyond chat (the new AI stack)
+       ============================================================ -->
+  <section class="slide" data-screen-label="10 Artificial intelligence — beyond chat" data-label="Beyond chat">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Part 02 · Artificial intelligence</p>
+    <h2 class="slide-title">Beyond chat: the <em>new</em> AI stack.</h2>
+
+    <div class="slide-body">
+      <div class="aims">
+        <div class="aim">
+          <span class="aim-num">01</span>
+          <h3>The reasoning brain</h3>
+          <p>Modern models have moved beyond word prediction. They plan approaches before generating a response. Recent models have blown through existing evaluations.</p>
+        </div>
+        <div class="aim">
+          <span class="aim-num">02</span>
+          <h3>The harness (hands)</h3>
+          <p>The "Harness" is the execution environment. By giving models access to tools (terminal, CMS, browser, applications), we move from AI that talks about work to AI that actually does it.</p>
+        </div>
+        <div class="aim">
+          <span class="aim-num">03</span>
+          <h3>The agentic loop</h3>
+          <p>The synergy of <strong>Brain + Harness</strong> creates an "Agent." It doesn't wait for your next prompt; it creates a plan, uses tools, and works in a loop until the goal is achieved.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Part 02 · Artificial intelligence</span>
+      <span class="num">08 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 9 — What does that unlock? (chat reveal)
+       ============================================================ -->
+  <section class="slide" data-screen-label="09 Artificial intelligence — what does that unlock" data-label="What does that unlock">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Part 02 · Artificial intelligence</p>
+    <h2 class="slide-title">What does that <em>unlock?</em></h2>
+
+    <div class="slide-body">
+      <div class="chat-stream">
+        <div class="chat-bubble">Could you build me an equivalent of Google Trends for the Guardian?</div>
+        <div class="chat-bubble">What are the data sources in Hansard, and what could I build with them for journalists?</div>
+        <div class="chat-bubble">Can we build something to collect sources for a defence correspondent to interrogate?</div>
+        <div class="chat-bubble">How can I keep track of fuel prices in the UK?</div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Part 02 · Artificial intelligence</span>
+      <span class="num">09 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 10 — SECTION OPENER · External shifts
+       ============================================================ -->
+  <section class="slide ink section-opener" data-label="External shifts">
+    <div class="rule-band"></div>
+
+    <div class="chapter-num">Part 03 — of 03</div>
+    <p class="section-kicker">What we should be more worried about</p>
+    <h1>External <em>shifts.</em></h1>
+    <p class="section-dek">Changes and risks in the wider landscape — and how we might respond to them while there's still time to choose.</p>
+
+    <div class="slide-foot">
+      <span class="wm">Group 4 · Part 03</span>
+      <span class="num">10 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 9 — Blank content slide (External shifts)
+       ============================================================ -->
+  <section class="slide" data-screen-label="11 External shifts — placeholder" data-label="External placeholder">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Part 03 · External shifts</p>
+    <h2 class="slide-title">Title</h2>
+
+    <div class="slide-body"></div>
+
+    <div class="slide-foot">
+      <span class="wm">Part 03 · External shifts</span>
+      <span class="num">11 / NN</span>
+    </div>
+  </section>
+
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+
+<script>
+  // Auto-number slide footers: writes "NN / TT" into each slide's .num.
+  (() => {
+    const slides = document.querySelectorAll('deck-stage > section');
+    const total = String(slides.length).padStart(2, '0');
+    slides.forEach((slide, i) => {
+      const num = slide.querySelector('.slide-foot .num');
+      if (num) num.textContent = `${String(i + 1).padStart(2, '0')} / ${total}`;
+    });
+  })();
+
+  // Restart staged animations whenever a slide becomes active.
+  document.querySelector('deck-stage').addEventListener('slidechange', (e) => {
+    const slide = e.detail.slide;
+    if (!slide) return;
+    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .conclusion-bar, .section-opener h1 em');
+    els.forEach((b) => {
+      b.style.animation = 'none';
+      void b.offsetWidth;
+      b.style.animation = '';
+    });
+  });
+</script>
+
+
+</body></html>
