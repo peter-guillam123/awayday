@@ -452,6 +452,103 @@
     white-space: nowrap;
   }
 
+  /* ===== Internal communication (slide 18) ===== */
+  .slide--comms .slide-title { font-size: 52px; margin-bottom: 14px; }
+  .slide--comms .slide-subtitle { font-size: 24px; margin-bottom: 28px; max-width: 80ch; }
+  .slide--comms .slide-body {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .comms-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .comms-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 2px solid var(--ink);
+    padding-top: 14px;
+  }
+  .comms-num {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 0.14em;
+    color: var(--news-red);
+  }
+  .comms-card h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    color: var(--guardian-blue);
+    margin: 0;
+  }
+  .comms-card p {
+    font-family: var(--body);
+    font-size: 19px;
+    line-height: 1.42;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .comms-pivot {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.25;
+    text-align: center;
+    color: var(--ink);
+    margin: 0 auto;
+    max-width: 60ch;
+  }
+  .comms-pivot em {
+    color: var(--news-red);
+    font-style: italic;
+  }
+
+  .cost-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .cost-card {
+    background: var(--paper-deep);
+    padding: 20px 26px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 22px;
+    align-items: center;
+    border-left: 4px solid var(--guardian-blue);
+  }
+  .cost-card:nth-child(2) {
+    border-left-color: var(--news-red);
+  }
+  .cost-figure {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--guardian-blue);
+    margin: 0;
+    white-space: nowrap;
+  }
+  .cost-card:nth-child(2) .cost-figure { color: var(--news-red); }
+  .cost-body {
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
   /* ===== Hurdles grid (slide 15) ===== */
   .hurdles-grid {
     display: grid;
@@ -1165,17 +1262,45 @@
   <!-- ============================================================
        SLIDE 17 — Internal change (placeholder)
        ============================================================ -->
-  <section class="slide" data-label="Internal change">
+  <section class="slide slide--comms" data-label="Internal communication">
     <div class="rule-band"></div>
 
     <p class="kicker">Part 03 · External shifts</p>
-    <h2 class="slide-title">Internal <em>change</em>.</h2>
+    <h2 class="slide-title">Internal communication is <em>essential</em>.</h2>
+    <p class="slide-subtitle">Particularly now — as we head into a period of huge change we need to sharpen up on&hellip;</p>
 
-    <div class="slide-body"></div>
+    <div class="slide-body">
+      <div class="comms-grid">
+        <article class="comms-card">
+          <span class="comms-num">01</span>
+          <h3>What we say — and what we think we have said.</h3>
+          <p>Studies by Dr Boaz Keysar, expert and author in language, show that when you think you have been clear, and you are 85% sure that your message has been understood, about half of the people you were talking to completely missed the message.</p>
+          <p>There is a gap between what you think you said, and what they heard. Or we don't say anything at all and rely on information osmosis when we assume people know what we are thinking.</p>
+        </article>
+        <article class="comms-card">
+          <span class="comms-num">02</span>
+          <h3>What we hear — and what we choose not to listen to.</h3>
+          <p>We have a responsibility as listeners. Keysar says hearing what we want to hear can be a way to avoid having to take responsibility for things ourselves. When we are told a change is coming the response is often "Yes, but not to me".</p>
+        </article>
+      </div>
+
+      <p class="comms-pivot">Ambiguity causes all kinds of problems — and it can be <em>costly</em>.</p>
+
+      <div class="cost-grid">
+        <article class="cost-card">
+          <p class="cost-figure">$1T+</p>
+          <p class="cost-body">Businesses in the United States lose more than one trillion dollars a year to miscommunication, according to research by Grammarly and the Harris Poll.</p>
+        </article>
+        <article class="cost-card">
+          <p class="cost-figure">$1.7B</p>
+          <p class="cost-body">Medical errors resulting from communication failures between caregivers cost $1.7 billion in malpractice claims and 2,000 preventable deaths in one study alone.</p>
+        </article>
+      </div>
+    </div>
 
     <div class="slide-foot">
       <span class="wm">Part 03 · External shifts</span>
-      <span class="num">17 / NN</span>
+      <span class="num">18 / NN</span>
     </div>
   </section>
 
