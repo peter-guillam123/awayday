@@ -453,46 +453,47 @@
   }
 
   /* ===== Internal communication (slide 18) ===== */
-  .slide--comms .slide-title { font-size: 52px; margin-bottom: 14px; }
-  .slide--comms .slide-subtitle { font-size: 24px; margin-bottom: 28px; max-width: 80ch; }
+  .slide--comms .slide-title { font-size: 64px; margin-bottom: 18px; }
+  .slide--comms .slide-subtitle { font-size: 28px; margin-bottom: 40px; max-width: 80ch; }
   .slide--comms .slide-body {
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    justify-content: space-between;
+    gap: 36px;
   }
 
   .comms-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 56px;
   }
   .comms-card {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 14px;
     border-top: 2px solid var(--ink);
-    padding-top: 14px;
+    padding-top: 18px;
   }
   .comms-num {
     font-family: var(--mono);
     font-weight: 700;
-    font-size: 20px;
+    font-size: 22px;
     letter-spacing: 0.14em;
     color: var(--news-red);
   }
   .comms-card h3 {
     font-family: var(--display);
     font-weight: 500;
-    font-size: 26px;
-    line-height: 1.18;
+    font-size: 32px;
+    line-height: 1.15;
     letter-spacing: -0.01em;
     color: var(--guardian-blue);
     margin: 0;
   }
   .comms-card p {
     font-family: var(--body);
-    font-size: 19px;
-    line-height: 1.42;
+    font-size: 22px;
+    line-height: 1.45;
     color: var(--ink-soft);
     margin: 0;
   }
@@ -501,8 +502,8 @@
     font-family: var(--display);
     font-style: italic;
     font-weight: 500;
-    font-size: 26px;
-    line-height: 1.25;
+    font-size: 34px;
+    line-height: 1.22;
     text-align: center;
     color: var(--ink);
     margin: 0 auto;
@@ -516,14 +517,14 @@
   .cost-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 28px;
+    gap: 36px;
   }
   .cost-card {
     background: var(--paper-deep);
-    padding: 20px 26px;
+    padding: 30px 36px;
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 22px;
+    gap: 28px;
     align-items: center;
     border-left: 4px solid var(--guardian-blue);
   }
@@ -533,7 +534,7 @@
   .cost-figure {
     font-family: var(--display);
     font-weight: 700;
-    font-size: 56px;
+    font-size: 80px;
     line-height: 1;
     letter-spacing: -0.02em;
     color: var(--guardian-blue);
@@ -543,7 +544,7 @@
   .cost-card:nth-child(2) .cost-figure { color: var(--news-red); }
   .cost-body {
     font-family: var(--body);
-    font-size: 17px;
+    font-size: 21px;
     line-height: 1.4;
     color: var(--ink-soft);
     margin: 0;
