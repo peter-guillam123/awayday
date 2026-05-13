@@ -472,16 +472,24 @@
   }
   .choice-card {
     background: var(--paper-deep);
-    padding: 32px 34px;
+    padding: 36px 36px;
     border-top: 6px solid var(--guardian-blue);
+    border-bottom: 6px solid var(--guardian-blue);
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    justify-content: center;
+    gap: 16px;
     position: relative;
     min-width: 0;
   }
-  .choice-card:nth-child(2) { border-top-color: var(--news-red); }
-  .choice-card:nth-child(3) { border-top-color: var(--eco-green); }
+  .choice-card:nth-child(2) {
+    border-top-color: var(--news-red);
+    border-bottom-color: var(--news-red);
+  }
+  .choice-card:nth-child(3) {
+    border-top-color: var(--eco-green);
+    border-bottom-color: var(--eco-green);
+  }
   .choice-card:not(:last-child)::after {
     content: '→';
     position: absolute;
@@ -490,30 +498,34 @@
     transform: translateY(-50%);
     font-family: var(--display);
     font-weight: 700;
-    font-size: 44px;
+    font-size: 48px;
     color: var(--ink-mute);
     line-height: 1;
   }
   .choice-num {
-    font-family: var(--mono);
+    font-family: var(--display);
     font-weight: 700;
-    font-size: 22px;
-    letter-spacing: 0.14em;
-    color: var(--news-red);
+    font-size: 88px;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: var(--guardian-blue);
+    margin-bottom: 4px;
   }
+  .choice-card:nth-child(2) .choice-num { color: var(--news-red); }
+  .choice-card:nth-child(3) .choice-num { color: var(--eco-green); }
   .choice-card h3 {
     font-family: var(--display);
     font-weight: 500;
-    font-size: 30px;
-    line-height: 1.15;
+    font-size: 36px;
+    line-height: 1.1;
     letter-spacing: -0.01em;
-    color: var(--guardian-blue);
+    color: var(--ink);
     margin: 0;
   }
   .choice-card p {
     font-family: var(--body);
-    font-size: 20px;
-    line-height: 1.42;
+    font-size: 22px;
+    line-height: 1.45;
     color: var(--ink-soft);
     margin: 0;
   }
@@ -1199,7 +1211,7 @@
     <div class="rule-band"></div>
 
     <p class="kicker">Part 02 · Artificial intelligence</p>
-    <h2 class="slide-title">AI isn't just something that happens to <em>us</em>.</h2>
+    <h2 class="slide-title">AI isn't just something that <em>happens to us</em>.</h2>
     <p class="slide-subtitle">We are professionals with clear codes and practices that govern behaviour. And we can make judicious decisions about how we use AI in that frame.</p>
 
     <div class="slide-body">
