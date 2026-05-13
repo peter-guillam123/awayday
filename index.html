@@ -410,6 +410,7 @@
   }
 
   /* ===== Figures row (online voices) ===== */
+  .slide--figures .slide-title { font-size: 48px; margin-bottom: 24px; max-width: none; }
   .figures-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -421,16 +422,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 14px;
     min-height: 0;
   }
   .figure-card img {
     display: block;
     width: 100%;
-    flex: 1;
-    min-height: 0;
+    max-height: 600px;
+    height: auto;
     object-fit: contain;
-    object-position: center top;
   }
   .figure-tags {
     display: flex;
@@ -1105,7 +1106,7 @@
         </div>
         <div class="aim">
           <span class="aim-num">02</span>
-          <h3>The harness (hands)</h3>
+          <h3>The harness</h3>
           <p>The "Harness" is the execution environment. By giving models access to tools (terminal, CMS, browser, applications), we move from AI that talks about work to AI that actually does it.</p>
         </div>
         <div class="aim">
@@ -1206,10 +1207,11 @@
   <!-- ============================================================
        SLIDE 16 — Online voices (figures row)
        ============================================================ -->
-  <section class="slide" data-label="Online voices">
+  <section class="slide slide--figures" data-label="Online voices">
     <div class="rule-band"></div>
 
     <p class="kicker">Part 03 · External shifts</p>
+    <h2 class="slide-title">The influence of <em>influencers</em>.</h2>
 
     <div class="slide-body">
       <div class="figures-row">
