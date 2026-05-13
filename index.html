@@ -453,6 +453,63 @@
     white-space: nowrap;
   }
 
+  /* ===== AI choice chevrons (slide 14) ===== */
+  .slide--choice .slide-title { font-size: 56px; margin-bottom: 18px; max-width: none; }
+  .slide--choice .slide-subtitle { font-size: 26px; margin-bottom: 36px; max-width: 80ch; }
+  .slide--choice .slide-body {
+    display: flex;
+    flex-direction: column;
+  }
+  .ai-chevrons {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    align-items: stretch;
+  }
+  .chevron {
+    flex: 1;
+    background: var(--paper-deep);
+    clip-path: polygon(0 0, calc(100% - 36px) 0, 100% 50%, calc(100% - 36px) 100%, 0 100%, 36px 50%);
+    padding: 30px 60px;
+    margin-right: -36px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+  }
+  .chevron--first {
+    clip-path: polygon(0 0, calc(100% - 36px) 0, 100% 50%, calc(100% - 36px) 100%, 0 100%);
+    padding-left: 36px;
+  }
+  .chevron--last {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 36px 50%);
+    padding-right: 36px;
+    margin-right: 0;
+  }
+  .chevron-num {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.14em;
+    color: var(--news-red);
+  }
+  .chevron h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--guardian-blue);
+    margin: 0;
+  }
+  .chevron p {
+    font-family: var(--body);
+    font-size: 19px;
+    line-height: 1.42;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
   /* ===== Internal communication (slide 18) ===== */
   .slide--comms .slide-title { font-size: 64px; margin-bottom: 18px; }
   .slide--comms .slide-subtitle { font-size: 28px; margin-bottom: 40px; max-width: 80ch; }
@@ -621,7 +678,7 @@
   }
 
   /* ===== Card stagger (slides 5 + 8 + 9) ===== */
-  .quad-card, .aim, .failure-card, .hurdle-card, .figure-card {
+  .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .chevron {
     opacity: 0;
     transform: translateY(14px);
   }
@@ -629,27 +686,31 @@
   [data-deck-active] .aim,
   [data-deck-active] .failure-card,
   [data-deck-active] .hurdle-card,
-  [data-deck-active] .figure-card {
+  [data-deck-active] .figure-card,
+  [data-deck-active] .chevron {
     animation: cardIn 420ms cubic-bezier(.2,.8,.2,1) both;
   }
   [data-deck-active] .quad-card:nth-child(1),
   [data-deck-active] .aim:nth-child(1),
   [data-deck-active] .failure-card:nth-child(1),
   [data-deck-active] .hurdle-card:nth-child(1),
-  [data-deck-active] .figure-card:nth-child(1) { animation-delay: 120ms; }
+  [data-deck-active] .figure-card:nth-child(1),
+  [data-deck-active] .chevron:nth-child(1) { animation-delay: 120ms; }
   [data-deck-active] .quad-card:nth-child(2),
   [data-deck-active] .aim:nth-child(2),
   [data-deck-active] .failure-card:nth-child(2),
   [data-deck-active] .hurdle-card:nth-child(2),
-  [data-deck-active] .figure-card:nth-child(2) { animation-delay: 200ms; }
+  [data-deck-active] .figure-card:nth-child(2),
+  [data-deck-active] .chevron:nth-child(2) { animation-delay: 240ms; }
   [data-deck-active] .quad-card:nth-child(3),
   [data-deck-active] .aim:nth-child(3),
   [data-deck-active] .failure-card:nth-child(3),
   [data-deck-active] .hurdle-card:nth-child(3),
-  [data-deck-active] .figure-card:nth-child(3) { animation-delay: 280ms; }
+  [data-deck-active] .figure-card:nth-child(3),
+  [data-deck-active] .chevron:nth-child(3) { animation-delay: 360ms; }
   [data-deck-active] .quad-card:nth-child(4),
   [data-deck-active] .failure-card:nth-child(4),
-  [data-deck-active] .hurdle-card:nth-child(4) { animation-delay: 360ms; }
+  [data-deck-active] .hurdle-card:nth-child(4) { animation-delay: 480ms; }
   @keyframes cardIn {
     to { opacity: 1; transform: translateY(0); }
   }
@@ -1148,7 +1209,43 @@
   </section>
 
   <!-- ============================================================
-       SLIDE 10 — SECTION OPENER · External shifts
+       SLIDE 14 — AI is something we can make choices about
+       ============================================================ -->
+  <section class="slide slide--choice" data-label="AI isn't just something that happens to us">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Part 02 · Artificial intelligence</p>
+    <h2 class="slide-title">AI isn't just something that happens to <em>us</em>.</h2>
+    <p class="slide-subtitle">We are professionals with clear codes and practices that govern behaviour. And we can make judicious decisions about how we use AI in that frame.</p>
+
+    <div class="slide-body">
+      <div class="ai-chevrons">
+        <article class="chevron chevron--first">
+          <span class="chevron-num">01</span>
+          <h3>Should I use AI?</h3>
+          <p>This is entirely in your hands. But too often it's presented as the only element of control, and one that should be imposed on everyone.</p>
+        </article>
+        <article class="chevron">
+          <span class="chevron-num">02</span>
+          <h3>Where should I use AI?</h3>
+          <p>Your job is very likely an amalgam of a lot of jobs. Some of those are appropriate for AI and some absolutely depend on your personal control and expertise.</p>
+        </article>
+        <article class="chevron chevron--last">
+          <span class="chevron-num">03</span>
+          <h3>How should I use AI?</h3>
+          <p>AI shouldn't - and doesn't have to - be used to execute a whole task. Instead of asking it to create something you can use it to give feedback and suggestions.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Part 02 · Artificial intelligence</span>
+      <span class="num">14 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 15 — SECTION OPENER · External shifts
        ============================================================ -->
   <section class="slide ink section-opener" data-label="External shifts">
     <div class="rule-band"></div>
@@ -1343,7 +1440,7 @@
   document.querySelector('deck-stage').addEventListener('slidechange', (e) => {
     const slide = e.detail.slide;
     if (!slide) return;
-    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em');
+    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .chevron, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em');
     els.forEach((b) => {
       b.style.animation = 'none';
       void b.offsetWidth;
