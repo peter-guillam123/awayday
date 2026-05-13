@@ -472,18 +472,9 @@
     display: block;
     transition: background 200ms ease, color 200ms ease;
   }
-  a.chat-bubble::after {
-    content: '  ↗';
-    color: var(--guardian-blue);
-    font-weight: 700;
-    font-family: var(--display);
-  }
   a.chat-bubble:hover {
     background: var(--guardian-blue);
     color: var(--paper);
-  }
-  a.chat-bubble:hover::after {
-    color: var(--guardian-yellow);
   }
   [data-deck-active] .chat-bubble {
     animation: chatIn 600ms cubic-bezier(.2,.8,.2,1) both;
