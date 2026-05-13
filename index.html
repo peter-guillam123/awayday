@@ -409,6 +409,48 @@
     text-align: center;
   }
 
+  /* ===== Figures row (online voices) ===== */
+  .figures-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    height: 100%;
+    align-items: stretch;
+  }
+  .figure-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    min-height: 0;
+  }
+  .figure-card img {
+    display: block;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    object-fit: contain;
+  }
+  .figure-tags {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+  .attr-tag {
+    background: rgba(34, 135, 77, 0.12);
+    color: var(--eco-green);
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
   /* ===== Hurdles grid (slide 15) ===== */
   .hurdles-grid {
     display: grid;
@@ -479,28 +521,32 @@
   }
 
   /* ===== Card stagger (slides 5 + 8 + 9) ===== */
-  .quad-card, .aim, .failure-card, .hurdle-card {
+  .quad-card, .aim, .failure-card, .hurdle-card, .figure-card {
     opacity: 0;
     transform: translateY(14px);
   }
   [data-deck-active] .quad-card,
   [data-deck-active] .aim,
   [data-deck-active] .failure-card,
-  [data-deck-active] .hurdle-card {
+  [data-deck-active] .hurdle-card,
+  [data-deck-active] .figure-card {
     animation: cardIn 420ms cubic-bezier(.2,.8,.2,1) both;
   }
   [data-deck-active] .quad-card:nth-child(1),
   [data-deck-active] .aim:nth-child(1),
   [data-deck-active] .failure-card:nth-child(1),
-  [data-deck-active] .hurdle-card:nth-child(1) { animation-delay: 120ms; }
+  [data-deck-active] .hurdle-card:nth-child(1),
+  [data-deck-active] .figure-card:nth-child(1) { animation-delay: 120ms; }
   [data-deck-active] .quad-card:nth-child(2),
   [data-deck-active] .aim:nth-child(2),
   [data-deck-active] .failure-card:nth-child(2),
-  [data-deck-active] .hurdle-card:nth-child(2) { animation-delay: 200ms; }
+  [data-deck-active] .hurdle-card:nth-child(2),
+  [data-deck-active] .figure-card:nth-child(2) { animation-delay: 200ms; }
   [data-deck-active] .quad-card:nth-child(3),
   [data-deck-active] .aim:nth-child(3),
   [data-deck-active] .failure-card:nth-child(3),
-  [data-deck-active] .hurdle-card:nth-child(3) { animation-delay: 280ms; }
+  [data-deck-active] .hurdle-card:nth-child(3),
+  [data-deck-active] .figure-card:nth-child(3) { animation-delay: 280ms; }
   [data-deck-active] .quad-card:nth-child(4),
   [data-deck-active] .failure-card:nth-child(4),
   [data-deck-active] .hurdle-card:nth-child(4) { animation-delay: 360ms; }
@@ -1059,7 +1105,47 @@
   </section>
 
   <!-- ============================================================
-       SLIDE 16 — Thinking about risk (placeholder)
+       SLIDE 16 — Online voices (figures row)
+       ============================================================ -->
+  <section class="slide" data-label="Online voices">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Part 03 · External shifts</p>
+
+    <div class="slide-body">
+      <div class="figures-row">
+        <div class="figure-card">
+          <img src="images/Newsdaddy.png" alt="Dylan Page (NewsDaddy)">
+          <div class="figure-tags">
+            <span class="attr-tag">Authenticity</span>
+            <span class="attr-tag">Entertainment</span>
+          </div>
+        </div>
+        <div class="figure-card">
+          <img src="images/Matilda.png" alt="Matilda">
+          <div class="figure-tags">
+            <span class="attr-tag">Authenticity</span>
+            <span class="attr-tag">Authority</span>
+          </div>
+        </div>
+        <div class="figure-card">
+          <img src="images/Clive.png" alt="Clive">
+          <div class="figure-tags">
+            <span class="attr-tag">Authority</span>
+            <span class="attr-tag">Depth</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Part 03 · External shifts</span>
+      <span class="num">16 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 17 — Thinking about risk (placeholder)
        ============================================================ -->
   <section class="slide" data-label="Thinking about risk">
     <div class="rule-band"></div>
@@ -1127,7 +1213,7 @@
   document.querySelector('deck-stage').addEventListener('slidechange', (e) => {
     const slide = e.detail.slide;
     if (!slide) return;
-    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .hurdle-card, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em');
+    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em');
     els.forEach((b) => {
       b.style.animation = 'none';
       void b.offsetWidth;
