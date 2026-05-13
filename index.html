@@ -468,6 +468,22 @@
     max-width: 100%;
     opacity: 0;
     transform: translateY(20px);
+    text-decoration: none;
+    display: block;
+    transition: background 200ms ease, color 200ms ease;
+  }
+  a.chat-bubble::after {
+    content: '  ↗';
+    color: var(--guardian-blue);
+    font-weight: 700;
+    font-family: var(--display);
+  }
+  a.chat-bubble:hover {
+    background: var(--guardian-blue);
+    color: var(--paper);
+  }
+  a.chat-bubble:hover::after {
+    color: var(--guardian-yellow);
   }
   [data-deck-active] .chat-bubble {
     animation: chatIn 600ms cubic-bezier(.2,.8,.2,1) both;
@@ -790,7 +806,7 @@
     <div class="rule-band"></div>
 
     <p class="kicker">Part 02 · Artificial intelligence</p>
-    <h2 class="slide-title">Threat 01: AI is moving between us and <em>readers</em>.</h2>
+    <h2 class="slide-title">AI is moving between us and <em>readers</em>.</h2>
     <p class="slide-subtitle">The audience will increasingly encounter Guardian journalism through the lens of someone else's AI.</p>
 
     <div class="slide-body">
@@ -834,7 +850,7 @@
     <div class="rule-band"></div>
 
     <p class="kicker">Part 02 · Artificial intelligence</p>
-    <h2 class="slide-title">Threat 02: AI is moving between us and the <em>facts</em>.</h2>
+    <h2 class="slide-title">AI is moving between us and the <em>facts</em>.</h2>
     <p class="slide-subtitle">As synthetic content floods the information ecosystem, risks move upstream into newsgathering and editing.</p>
 
     <div class="slide-body">
@@ -921,9 +937,9 @@
 
     <div class="slide-body">
       <div class="chat-stream">
-        <div class="chat-bubble">Could you build me an equivalent of Google Trends for the Guardian?</div>
-        <div class="chat-bubble">What are the data sources in Hansard, and what could I build with them for journalists?</div>
-        <div class="chat-bubble">Can we build something to collect sources for a defence correspondent to interrogate?</div>
+        <a class="chat-bubble" href="https://guardian-angles.com/" target="_blank" rel="noopener noreferrer">Could you build me an equivalent of Google Trends for the Guardian?</a>
+        <a class="chat-bubble" href="https://peter-guillam123.github.io/House/" target="_blank" rel="noopener noreferrer">What are the data sources in Hansard, and what could I build with them for journalists?</a>
+        <a class="chat-bubble" href="https://peter-guillam123.github.io/iran-watcher/" target="_blank" rel="noopener noreferrer">Can we build something to collect sources for a defence correspondent to interrogate?</a>
         <div class="chat-bubble">How can I keep track of fuel prices in the UK?</div>
       </div>
     </div>
