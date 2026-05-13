@@ -409,6 +409,52 @@
     text-align: center;
   }
 
+  /* ===== Hurdles grid (slide 15) ===== */
+  .hurdles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    height: 100%;
+  }
+  .hurdle-card {
+    background: var(--paper-deep);
+    border-top: 6px solid var(--guardian-blue);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .hurdle-card:nth-child(2) { border-top-color: var(--news-red); }
+  .hurdle-card:nth-child(3) { border-top-color: var(--eco-green); }
+  .hurdle-card:nth-child(4) { border-top-color: var(--guardian-yellow); }
+  .hurdle-card .hurdle-num {
+    font-family: var(--mono);
+    font-size: 24px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .hurdle-card h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--guardian-blue);
+    margin: 0;
+  }
+  /* Container for future image — pushes itself to the bottom of the card. */
+  .hurdle-image {
+    margin-top: auto;
+    display: block;
+  }
+  .hurdle-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
   .response-card {
     background: var(--guardian-blue);
     padding: 28px 36px;
@@ -433,26 +479,31 @@
   }
 
   /* ===== Card stagger (slides 5 + 8 + 9) ===== */
-  .quad-card, .aim, .failure-card {
+  .quad-card, .aim, .failure-card, .hurdle-card {
     opacity: 0;
     transform: translateY(14px);
   }
   [data-deck-active] .quad-card,
   [data-deck-active] .aim,
-  [data-deck-active] .failure-card {
+  [data-deck-active] .failure-card,
+  [data-deck-active] .hurdle-card {
     animation: cardIn 420ms cubic-bezier(.2,.8,.2,1) both;
   }
   [data-deck-active] .quad-card:nth-child(1),
   [data-deck-active] .aim:nth-child(1),
-  [data-deck-active] .failure-card:nth-child(1) { animation-delay: 120ms; }
+  [data-deck-active] .failure-card:nth-child(1),
+  [data-deck-active] .hurdle-card:nth-child(1) { animation-delay: 120ms; }
   [data-deck-active] .quad-card:nth-child(2),
   [data-deck-active] .aim:nth-child(2),
-  [data-deck-active] .failure-card:nth-child(2) { animation-delay: 200ms; }
+  [data-deck-active] .failure-card:nth-child(2),
+  [data-deck-active] .hurdle-card:nth-child(2) { animation-delay: 200ms; }
   [data-deck-active] .quad-card:nth-child(3),
   [data-deck-active] .aim:nth-child(3),
-  [data-deck-active] .failure-card:nth-child(3) { animation-delay: 280ms; }
+  [data-deck-active] .failure-card:nth-child(3),
+  [data-deck-active] .hurdle-card:nth-child(3) { animation-delay: 280ms; }
   [data-deck-active] .quad-card:nth-child(4),
-  [data-deck-active] .failure-card:nth-child(4) { animation-delay: 360ms; }
+  [data-deck-active] .failure-card:nth-child(4),
+  [data-deck-active] .hurdle-card:nth-child(4) { animation-delay: 360ms; }
   @keyframes cardIn {
     to { opacity: 1; transform: translateY(0); }
   }
@@ -970,17 +1021,40 @@
   <!-- ============================================================
        SLIDE 9 — Blank content slide (External shifts)
        ============================================================ -->
-  <section class="slide" data-screen-label="11 External shifts — placeholder" data-label="External placeholder">
+  <section class="slide" data-label="Hurdles facing the next generation">
     <div class="rule-band"></div>
 
     <p class="kicker">Part 03 · External shifts</p>
-    <h2 class="slide-title">Title</h2>
+    <h2 class="slide-title">Hurdles facing the next generation of <em>journalists</em>.</h2>
 
-    <div class="slide-body"></div>
+    <div class="slide-body">
+      <div class="hurdles-grid">
+        <article class="hurdle-card">
+          <span class="hurdle-num">01</span>
+          <h3>Pay and job security</h3>
+          <div class="hurdle-image"></div>
+        </article>
+        <article class="hurdle-card">
+          <span class="hurdle-num">02</span>
+          <h3>Lack of representation</h3>
+          <div class="hurdle-image"></div>
+        </article>
+        <article class="hurdle-card">
+          <span class="hurdle-num">03</span>
+          <h3>Distrust of the media</h3>
+          <div class="hurdle-image"></div>
+        </article>
+        <article class="hurdle-card">
+          <span class="hurdle-num">04</span>
+          <h3>Some glimmers of hope</h3>
+          <div class="hurdle-image"></div>
+        </article>
+      </div>
+    </div>
 
     <div class="slide-foot">
       <span class="wm">Part 03 · External shifts</span>
-      <span class="num">11 / NN</span>
+      <span class="num">15 / NN</span>
     </div>
   </section>
 
@@ -1053,7 +1127,7 @@
   document.querySelector('deck-stage').addEventListener('slidechange', (e) => {
     const slide = e.detail.slide;
     if (!slide) return;
-    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em');
+    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .hurdle-card, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em');
     els.forEach((b) => {
       b.style.animation = 'none';
       void b.offsetWidth;
