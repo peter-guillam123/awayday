@@ -97,6 +97,110 @@
     to { opacity: 1; }
   }
 
+  /* ===== Principles slides (AI editorial responsibility) ===== */
+  .slide--principles .slide-title { font-size: 60px; margin-bottom: 36px; max-width: 26ch; }
+  .slide--principles .slide-title--quote {
+    font-style: italic;
+    font-weight: 500;
+  }
+  .slide--principles .slide-title--quote em {
+    color: var(--guardian-blue);
+    font-style: italic;
+  }
+  .slide--principles .slide-body {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .principles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .principles li {
+    display: grid;
+    grid-template-columns: 76px 1fr;
+    column-gap: 30px;
+    padding: 22px 0;
+    border-top: 1px solid var(--paper-rule);
+    align-items: baseline;
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  .principles li:first-child {
+    border-top: 2px solid var(--ink);
+    padding-top: 24px;
+  }
+  .principles .principle-num {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: 0.02em;
+    color: var(--news-red);
+    line-height: 1;
+  }
+  .principles .principle-body {
+    font-family: var(--body);
+    font-size: 26px;
+    line-height: 1.42;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .principles .principle-lead {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 30px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-right: 4px;
+  }
+  .principles .principle-lead::after {
+    content: '  —  ';
+    color: var(--ink-mute);
+    font-weight: 400;
+  }
+  [data-deck-active] .principles li {
+    animation: cardIn 420ms cubic-bezier(.2,.8,.2,1) both;
+  }
+  [data-deck-active] .principles li:nth-child(1) { animation-delay: 140ms; }
+  [data-deck-active] .principles li:nth-child(2) { animation-delay: 260ms; }
+  [data-deck-active] .principles li:nth-child(3) { animation-delay: 380ms; }
+
+  .context-callout {
+    background: var(--paper-deep);
+    border-left: 4px solid var(--news-red);
+    padding: 26px 32px;
+    margin-top: auto;
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  .context-callout .context-eyebrow {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--news-red);
+    margin: 0 0 10px;
+  }
+  .context-callout .context-body {
+    font-family: var(--display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1.3;
+    color: var(--ink);
+    margin: 0;
+  }
+  .context-callout .context-body em {
+    font-style: italic;
+    color: var(--guardian-blue);
+  }
+  [data-deck-active] .context-callout {
+    animation: cardIn 520ms cubic-bezier(.2,.8,.2,1) 620ms both;
+  }
+
   /* ===== Threat slides (AI intermediation) ===== */
   .slide--threat .slide-title { font-size: 64px; margin-bottom: 22px; max-width: none; }
   .slide--threat .slide-subtitle { font-size: 28px; margin-bottom: 36px; max-width: 64ch; }
@@ -606,7 +710,81 @@
   </section>
 
   <!-- ============================================================
-       SLIDE 8 — Threat 01 — AI between us and readers
+       SLIDE 8 — Editorial responsibility (principles + OFCOM)
+       ============================================================ -->
+  <section class="slide slide--principles" data-label="Editorial responsibility">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Part 02 · Artificial intelligence</p>
+    <h2 class="slide-title slide-title--quote">"What does 'editorial responsibility' mean when the <em>editor</em> is a model?"</h2>
+
+    <div class="slide-body">
+      <ol class="principles">
+        <li>
+          <span class="principle-num">01</span>
+          <p class="principle-body"><span class="principle-lead">Synthetic authority</span>LLMs collapse nuance, rarely show sources clearly, surface most common not most true</p>
+        </li>
+        <li>
+          <span class="principle-num">02</span>
+          <p class="principle-body"><span class="principle-lead">Reality loops</span>Models are persuasive because they feel reasonable</p>
+        </li>
+        <li>
+          <span class="principle-num">03</span>
+          <p class="principle-body"><span class="principle-lead">Invisible editorial power</span>Chatbots don't tell you what they omit and how they rank information</p>
+        </li>
+      </ol>
+
+      <aside class="context-callout">
+        <p class="context-eyebrow">Ofcom</p>
+        <p class="context-body">Regulation has not caught up because it still treats platforms as distributors, not as producers of knowledge.</p>
+      </aside>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Part 02 · Artificial intelligence</span>
+      <span class="num">08 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 9 — AI safety, regulation and responsibility
+       ============================================================ -->
+  <section class="slide slide--principles" data-label="AI safety, regulation, responsibility">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Part 02 · Artificial intelligence</p>
+    <h2 class="slide-title">AI Safety, regulation and <em>responsibility</em>.</h2>
+
+    <div class="slide-body">
+      <ol class="principles">
+        <li>
+          <span class="principle-num">01</span>
+          <p class="principle-body">The Guardian is not just a source of facts, but it is a model of thinking in public.</p>
+        </li>
+        <li>
+          <span class="principle-num">02</span>
+          <p class="principle-body">Journalism ought to show: what we know; what we don't; what's contested; how was this claim was verified; label AI-assisted content; publish internal standards; "show your working".</p>
+        </li>
+        <li>
+          <span class="principle-num">03</span>
+          <p class="principle-body">Visibly restrain and say why — don't just silently adopt LLMs.</p>
+        </li>
+      </ol>
+
+      <aside class="context-callout">
+        <p class="context-eyebrow">Epistemic harms</p>
+        <p class="context-body">The Online Safety Act places a new duty of care on online service providers to protect their users from <em>harm</em> and to place safety by design at the heart of their platforms.</p>
+      </aside>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Part 02 · Artificial intelligence</span>
+      <span class="num">09 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 10 — Threat 01 — AI between us and readers
        ============================================================ -->
   <section class="slide slide--threat" data-label="Threat 01: AI &amp; readers">
     <div class="rule-band"></div>
@@ -809,7 +987,7 @@
   document.querySelector('deck-stage').addEventListener('slidechange', (e) => {
     const slide = e.detail.slide;
     if (!slide) return;
-    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .conclusion-bar, .section-opener h1 em');
+    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .principles li, .context-callout, .conclusion-bar, .section-opener h1 em');
     els.forEach((b) => {
       b.style.animation = 'none';
       void b.offsetWidth;
