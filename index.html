@@ -652,6 +652,152 @@
     margin: 0;
   }
 
+  /* ===== WEF risks chart (slide 20) ===== */
+  .slide--wef .slide-title { font-size: 56px; margin-bottom: 8px; max-width: none; }
+  .slide--wef .slide-subtitle { font-size: 22px; margin-bottom: 20px; max-width: 90ch; color: var(--ink-mute); }
+  .slide--wef .slide-body {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .wef-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    align-items: center;
+    margin-bottom: 2px;
+  }
+  .wef-legend-label {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .wef-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--ui);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .wef-tag::before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+  .wef-tag.wef-econ::before { background: var(--guardian-blue); }
+  .wef-tag.wef-env::before  { background: var(--eco-green); }
+  .wef-tag.wef-geo::before  { background: #d97706; }
+  .wef-tag.wef-soc::before  { background: var(--news-red); }
+  .wef-tag.wef-tech::before { background: #7c3aed; }
+
+  .wef-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .wef-column h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0 0 8px;
+  }
+  .wef-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .wef-list li {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    align-items: center;
+    gap: 10px;
+  }
+  .wef-rank {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink-mute);
+    text-align: right;
+    letter-spacing: 0.02em;
+  }
+  .wef-bar {
+    padding: 7px 12px;
+    font-family: var(--ui);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--paper);
+    line-height: 1.2;
+  }
+  .wef-bar.wef-econ  { background: var(--guardian-blue); }
+  .wef-bar.wef-env   { background: var(--eco-green); }
+  .wef-bar.wef-geo   { background: #d97706; }
+  .wef-bar.wef-soc   { background: var(--news-red); }
+  .wef-bar.wef-tech  { background: #7c3aed; }
+
+  .wef-questions {
+    background: var(--paper-deep);
+    border-left: 4px solid var(--guardian-blue);
+    padding: 18px 28px 20px;
+    margin-top: 8px;
+  }
+  .wef-questions-eyebrow {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--guardian-blue);
+    margin: 0 0 10px;
+  }
+  .wef-questions ol {
+    list-style: none;
+    counter-reset: q;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px 32px;
+  }
+  .wef-questions li {
+    counter-increment: q;
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 10px;
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.35;
+    color: var(--ink-soft);
+  }
+  .wef-questions li::before {
+    content: counter(q, decimal-leading-zero);
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--news-red);
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
+
+  .wef-source {
+    font-family: var(--ui);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--ink-mute);
+    font-style: italic;
+    margin: 4px 0 0;
+  }
+
   /* ===== Risk slide (slide 18) ===== */
   .slide--risk .slide-title { font-size: 60px; margin-bottom: 0; max-width: none; }
   .risk-quote {
@@ -1575,7 +1721,78 @@
   </section>
 
   <!-- ============================================================
-       SLIDE 18 — Group activity (section-opener style)
+       SLIDE 20 — WEF global risks (spur for the group activity)
+       ============================================================ -->
+  <section class="slide slide--wef" data-label="Global risks: take your pick">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Part 03 · External shifts</p>
+    <h2 class="slide-title">Take your <em>pick</em>.</h2>
+    <p class="slide-subtitle">The World Economic Forum's ranking of global risks by likely severity over a 2-year and 10-year period.</p>
+
+    <div class="slide-body">
+      <div class="wef-legend">
+        <span class="wef-legend-label">Risk categories</span>
+        <span class="wef-tag wef-econ">Economic</span>
+        <span class="wef-tag wef-env">Environmental</span>
+        <span class="wef-tag wef-geo">Geopolitical</span>
+        <span class="wef-tag wef-soc">Societal</span>
+        <span class="wef-tag wef-tech">Technological</span>
+      </div>
+
+      <div class="wef-columns">
+        <div class="wef-column">
+          <h3>2 years</h3>
+          <ol class="wef-list">
+            <li><span class="wef-rank">1st</span><span class="wef-bar wef-tech">Misinformation and disinformation</span></li>
+            <li><span class="wef-rank">2nd</span><span class="wef-bar wef-env">Extreme weather events</span></li>
+            <li><span class="wef-rank">3rd</span><span class="wef-bar wef-geo">State-based armed conflict</span></li>
+            <li><span class="wef-rank">4th</span><span class="wef-bar wef-soc">Societal polarization</span></li>
+            <li><span class="wef-rank">5th</span><span class="wef-bar wef-tech">Cyber espionage and warfare</span></li>
+            <li><span class="wef-rank">6th</span><span class="wef-bar wef-env">Pollution</span></li>
+            <li><span class="wef-rank">7th</span><span class="wef-bar wef-soc">Inequality</span></li>
+            <li><span class="wef-rank">8th</span><span class="wef-bar wef-soc">Involuntary migration or displacement</span></li>
+            <li><span class="wef-rank">9th</span><span class="wef-bar wef-geo">Geoeconomic confrontation</span></li>
+            <li><span class="wef-rank">10th</span><span class="wef-bar wef-soc">Erosion of human rights and/or civic freedoms</span></li>
+          </ol>
+        </div>
+        <div class="wef-column">
+          <h3>10 years</h3>
+          <ol class="wef-list">
+            <li><span class="wef-rank">1st</span><span class="wef-bar wef-env">Extreme weather events</span></li>
+            <li><span class="wef-rank">2nd</span><span class="wef-bar wef-env">Biodiversity loss and ecosystem collapse</span></li>
+            <li><span class="wef-rank">3rd</span><span class="wef-bar wef-env">Critical change to Earth systems</span></li>
+            <li><span class="wef-rank">4th</span><span class="wef-bar wef-env">Natural resource shortages</span></li>
+            <li><span class="wef-rank">5th</span><span class="wef-bar wef-tech">Misinformation and disinformation</span></li>
+            <li><span class="wef-rank">6th</span><span class="wef-bar wef-tech">Adverse outcomes of AI technologies</span></li>
+            <li><span class="wef-rank">7th</span><span class="wef-bar wef-soc">Inequality</span></li>
+            <li><span class="wef-rank">8th</span><span class="wef-bar wef-soc">Societal polarization</span></li>
+            <li><span class="wef-rank">9th</span><span class="wef-bar wef-tech">Cyber espionage and warfare</span></li>
+            <li><span class="wef-rank">10th</span><span class="wef-bar wef-env">Pollution</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <aside class="wef-questions">
+        <p class="wef-questions-eyebrow">For your group</p>
+        <ol>
+          <li>What would this threat mean for us?</li>
+          <li>How would it affect our continuity or sustainability as an organisation?</li>
+          <li>How would it affect the way that we need to do our business? How might we change to deal with it?</li>
+        </ol>
+      </aside>
+
+      <p class="wef-source">Source: World Economic Forum, Global Risks Report 2025 (Figure C, page 8)</p>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Part 03 · External shifts</span>
+      <span class="num">20 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 21 — Group activity (section-opener style)
        ============================================================ -->
   <section class="slide ink section-opener" data-label="Group activity">
     <div class="rule-band"></div>
