@@ -465,8 +465,39 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 64px;
-    flex: 1;
-    min-height: 0;
+  }
+  .ai-meta {
+    background: var(--guardian-blue);
+    padding: 26px 40px 28px;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  [data-deck-active] .ai-meta {
+    animation: cardIn 520ms cubic-bezier(.2,.8,.2,1) 520ms both;
+  }
+  .ai-meta-eyebrow {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--guardian-yellow);
+    margin: 0;
+  }
+  .ai-meta-body {
+    font-family: var(--body);
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--paper);
+    margin: 0;
+  }
+  .ai-meta-body em {
+    color: var(--guardian-yellow);
+    font-style: italic;
   }
   .choice-card {
     background: var(--paper-deep);
@@ -1230,6 +1261,11 @@
           <p>AI shouldn't - and doesn't have to - be used to execute a whole task. Instead of asking it to create something you can use it to give feedback and suggestions.</p>
         </article>
       </div>
+
+      <aside class="ai-meta">
+        <p class="ai-meta-eyebrow">Practice what we preach</p>
+        <p class="ai-meta-body">The project management for this group was run explicitly with an AI at every stage, from thinking through timelines to writing key emails to generating <em>every slide in this presentation</em>. All of that integration has made the process quicker and the output better. None of that has removed or obscured the human expertise behind it.</p>
+      </aside>
     </div>
 
     <div class="slide-foot">
@@ -1458,7 +1494,7 @@
   document.querySelector('deck-stage').addEventListener('slidechange', (e) => {
     const slide = e.detail.slide;
     if (!slide) return;
-    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .choice-card, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em');
+    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .choice-card, .ai-meta, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em');
     els.forEach((b) => {
       b.style.animation = 'none';
       void b.offsetWidth;
