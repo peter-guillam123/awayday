@@ -728,39 +728,43 @@
     margin: 0;
   }
   .trumpbump-portrait {
-    align-self: stretch;
-    min-height: 260px;
     display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
   }
-  .trumpbump-portrait .image-slot {
-    flex: 1;
+  .trumpbump-portrait img {
+    display: block;
+    max-width: 100%;
+    max-height: 300px;
+    width: auto;
+    height: auto;
   }
   .trumpbump-chart {
     flex: 1;
     min-height: 0;
+    display: flex;
   }
   .trumpbump-chart svg {
     display: block;
     width: 100%;
     height: 100%;
-    max-height: 360px;
   }
   .tb-axis {
     font-family: var(--mono);
-    font-size: 14px;
+    font-size: 18px;
     fill: var(--ink-mute);
   }
   .tb-axis-y { text-anchor: end; }
   .tb-legend-label {
     font-family: var(--ui);
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 700;
     fill: var(--ink);
   }
   .tb-grid { stroke: var(--paper-rule); stroke-width: 1; }
   .tb-axis-base { stroke: var(--ink-mute); stroke-width: 1.5; }
-  .tb-line-biden { stroke: var(--guardian-blue); stroke-width: 2.5; fill: none; stroke-linejoin: round; stroke-linecap: round; }
-  .tb-line-trump { stroke: var(--news-red); stroke-width: 2.5; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+  .tb-line-biden { stroke: var(--guardian-blue); stroke-width: 3; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+  .tb-line-trump { stroke: var(--news-red); stroke-width: 3; fill: none; stroke-linejoin: round; stroke-linecap: round; }
 
   /* ===== WEF risks chart (slide 20) ===== */
   .slide--wef .slide-title { font-size: 60px; margin-bottom: 10px; max-width: none; }
@@ -1683,10 +1687,7 @@
         </div>
 
         <div class="trumpbump-portrait">
-          <div class="image-slot">
-            <span class="slot-label">Biden / Trump</span>
-            <span class="slot-sub">Illustration to come</span>
-          </div>
+          <img src="images/TrumpBiden.png" alt="Joe Biden and Donald Trump portraits">
         </div>
       </div>
 
