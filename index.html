@@ -763,8 +763,17 @@
   }
   .tb-grid { stroke: var(--paper-rule); stroke-width: 1; }
   .tb-axis-base { stroke: var(--ink-mute); stroke-width: 1.5; }
-  .tb-line-biden { stroke: var(--guardian-blue); stroke-width: 3; fill: none; stroke-linejoin: round; stroke-linecap: round; }
-  .tb-line-trump { stroke: var(--news-red); stroke-width: 3; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+  .tb-line-biden,
+  .tb-line-trump {
+    fill: none;
+    stroke-width: 3;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    /* JS sets stroke-dasharray and dashoffset on slidechange so the lines
+       draw in from left to right rather than appearing all at once. */
+  }
+  .tb-line-biden { stroke: var(--guardian-blue); }
+  .tb-line-trump { stroke: var(--news-red); }
 
   /* ===== WEF risks chart (slide 20) ===== */
   .slide--wef .slide-title { font-size: 60px; margin-bottom: 10px; max-width: none; }
@@ -2064,6 +2073,22 @@
       void b.offsetWidth;
       b.style.animation = '';
     });
+
+    // Trump bump chart — draw the polylines from left to right.
+    if (slide.classList.contains('slide--trumpbump')) {
+      const lines = slide.querySelectorAll('.tb-line-biden, .tb-line-trump');
+      requestAnimationFrame(() => {
+        lines.forEach((line, i) => {
+          const len = line.getTotalLength();
+          line.style.transition = 'none';
+          line.style.strokeDasharray = len;
+          line.style.strokeDashoffset = len;
+          line.getBoundingClientRect();  // force reflow
+          line.style.transition = `stroke-dashoffset 2400ms cubic-bezier(.45,.05,.25,1) ${320 + i * 140}ms`;
+          line.style.strokeDashoffset = '0';
+        });
+      });
+    }
   });
 </script>
 
