@@ -467,12 +467,13 @@
     gap: 64px;
   }
   .ai-meta {
-    background: var(--guardian-blue);
-    padding: 26px 40px 28px;
+    background: var(--paper-deep);
+    border-left: 4px solid var(--guardian-blue);
+    padding: 24px 36px 26px;
     margin-top: auto;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     opacity: 0;
     transform: translateY(14px);
   }
@@ -482,28 +483,27 @@
   .ai-meta-eyebrow {
     font-family: var(--ui);
     font-weight: 700;
-    font-size: 22px;
-    letter-spacing: 0.16em;
+    font-size: 20px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--guardian-yellow);
+    color: var(--guardian-blue);
     margin: 0;
   }
   .ai-meta-body {
     font-family: var(--body);
-    font-size: 22px;
+    font-size: 21px;
     line-height: 1.45;
-    color: var(--paper);
+    color: var(--ink-soft);
     margin: 0;
   }
   .ai-meta-body em {
-    color: var(--guardian-yellow);
+    color: var(--news-red);
     font-style: italic;
   }
   .choice-card {
     background: var(--paper-deep);
-    padding: 36px 36px;
+    padding: 32px 36px 36px;
     border-top: 6px solid var(--guardian-blue);
-    border-bottom: 6px solid var(--guardian-blue);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -511,14 +511,8 @@
     position: relative;
     min-width: 0;
   }
-  .choice-card:nth-child(2) {
-    border-top-color: var(--news-red);
-    border-bottom-color: var(--news-red);
-  }
-  .choice-card:nth-child(3) {
-    border-top-color: var(--eco-green);
-    border-bottom-color: var(--eco-green);
-  }
+  .choice-card:nth-child(2) { border-top-color: var(--news-red); }
+  .choice-card:nth-child(3) { border-top-color: var(--eco-green); }
   .choice-card:not(:last-child)::after {
     content: '→';
     position: absolute;
@@ -1240,7 +1234,7 @@
     <div class="rule-band"></div>
 
     <p class="kicker">Part 02 · Artificial intelligence</p>
-    <h2 class="slide-title">AI isn't just something that <em>happens to us</em>.</h2>
+    <h2 class="slide-title">Three questions worth <em>asking</em>.</h2>
     <p class="slide-subtitle">We are professionals with clear codes and practices that govern behaviour. And we can make judicious decisions about how we use AI in that frame.</p>
 
     <div class="slide-body">
