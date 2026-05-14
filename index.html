@@ -653,12 +653,12 @@
   }
 
   /* ===== Risk slide (slide 18) ===== */
-  .slide--risk .slide-title { font-size: 48px; margin-bottom: 22px; max-width: none; }
+  .slide--risk .slide-title { font-size: 60px; margin-bottom: 0; max-width: none; }
   .risk-quote {
     background: var(--paper-deep);
     border-left: 6px solid var(--news-red);
     padding: 38px 56px 32px;
-    margin: 0 0 32px;
+    margin: 0;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -691,12 +691,12 @@
   .slide--risk .slide-body {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
   }
   .risk-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 32px 56px;
-    margin-top: auto;
   }
   .risk-card {
     display: flex;
@@ -1496,12 +1496,13 @@
 
     <p class="kicker">Part 03 · External shifts</p>
     <h2 class="slide-title">Thinking about <em>risk</em>.</h2>
-    <div class="risk-quote">
-      <p class="risk-quote-body">"A risk is a possibility of something bad happening. By definition they're <em>not easy to think about</em>."</p>
-      <p class="risk-quote-attr"><strong>James Wallis</strong>, AI researcher and former Director of Strategy, Anthesis Group</p>
-    </div>
 
     <div class="slide-body">
+      <div class="risk-quote">
+        <p class="risk-quote-body">"A risk is a possibility of something bad happening. By definition they're <em>not easy to think about</em>."</p>
+        <p class="risk-quote-attr"><strong>James Wallis</strong>, AI researcher and former Director of Strategy, Anthesis Group</p>
+      </div>
+
       <div class="risk-grid">
         <article class="risk-card">
           <h3>Perceptions <em>matter</em></h3>
