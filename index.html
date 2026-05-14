@@ -655,21 +655,40 @@
   /* ===== Risk slide (slide 18) ===== */
   .slide--risk .slide-title { font-size: 48px; margin-bottom: 22px; max-width: none; }
   .risk-quote {
+    background: var(--paper-deep);
+    border-left: 6px solid var(--news-red);
+    padding: 30px 44px 24px;
+    margin: 0 0 36px;
+    max-width: 80ch;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .risk-quote-body {
     font-family: var(--display);
     font-style: italic;
     font-weight: 500;
-    font-size: 38px;
-    line-height: 1.2;
+    font-size: 44px;
+    line-height: 1.18;
     color: var(--ink);
-    margin: 0 0 36px;
-    padding-left: 32px;
-    border-left: 4px solid var(--news-red);
-    max-width: 56ch;
+    margin: 0;
   }
-  .risk-quote em {
+  .risk-quote-body em {
     color: var(--news-red);
     font-style: italic;
   }
+  .risk-quote-attr {
+    font-family: var(--body);
+    font-size: 19px;
+    line-height: 1.35;
+    color: var(--ink-mute);
+    margin: 0;
+  }
+  .risk-quote-attr strong {
+    font-weight: 700;
+    color: var(--ink);
+  }
+
   .slide--risk .slide-body {
     display: flex;
     flex-direction: column;
@@ -677,16 +696,14 @@
   .risk-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 32px 56px;
-    flex: 1;
-    min-height: 0;
+    gap: 28px 56px;
   }
   .risk-card {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     border-top: 6px solid var(--guardian-blue);
-    padding-top: 18px;
+    padding-top: 16px;
   }
   .risk-card:nth-child(2) { border-top-color: var(--news-red); }
   .risk-card:nth-child(3) { border-top-color: var(--eco-green); }
@@ -694,7 +711,7 @@
   .risk-card h3 {
     font-family: var(--display);
     font-weight: 500;
-    font-size: 28px;
+    font-size: 30px;
     line-height: 1.1;
     letter-spacing: -0.01em;
     color: var(--guardian-blue);
@@ -706,8 +723,8 @@
   }
   .risk-card p {
     font-family: var(--body);
-    font-size: 19px;
-    line-height: 1.42;
+    font-size: 22px;
+    line-height: 1.4;
     color: var(--ink-soft);
     margin: 0;
   }
@@ -1479,21 +1496,24 @@
 
     <p class="kicker">Part 03 · External shifts</p>
     <h2 class="slide-title">Thinking about <em>risk</em>.</h2>
-    <p class="risk-quote">"A risk is a possibility of something bad happening. By definition they're <em>not easy to think about</em>."</p>
+    <div class="risk-quote">
+      <p class="risk-quote-body">"A risk is a possibility of something bad happening. By definition they're <em>not easy to think about</em>."</p>
+      <p class="risk-quote-attr"><strong>James Wallis</strong>, AI researcher and former Director of Strategy, Anthesis Group</p>
+    </div>
 
     <div class="slide-body">
       <div class="risk-grid">
         <article class="risk-card">
           <h3>Perceptions <em>matter</em></h3>
-          <p>A unique challenge for a news organisation is that we view risks of threats to us through the filter of… "the news".</p>
+          <p>A unique challenge for a news organisation is that we view risks of threats to us through the filter of "the news".</p>
         </article>
         <article class="risk-card">
           <h3>Time <em>matters</em></h3>
-          <p>The Guardian's around 1,300 employees versus Nestlé's 271,000 — hard to make space to think about risk.</p>
+          <p>The Guardian has around 1,300 employees versus Nestlé's 271,000. It is hard to make space to think about risk.</p>
         </article>
         <article class="risk-card">
           <h3>Culture <em>matters</em></h3>
-          <p>We need to get across the obvious AND the hidden things in our company culture that drive or block change.</p>
+          <p>We need to understand both the obvious and the hidden things in our company culture that drive or block change.</p>
         </article>
         <article class="risk-card">
           <h3>Feeling <em>matters</em></h3>
