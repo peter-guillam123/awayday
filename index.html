@@ -653,43 +653,43 @@
   }
 
   /* ===== WEF risks chart (slide 20) ===== */
-  .slide--wef .slide-title { font-size: 56px; margin-bottom: 8px; max-width: none; }
-  .slide--wef .slide-subtitle { font-size: 22px; margin-bottom: 20px; max-width: 90ch; color: var(--ink-mute); }
+  .slide--wef .slide-title { font-size: 60px; margin-bottom: 10px; max-width: none; }
+  .slide--wef .slide-subtitle { font-size: 26px; margin-bottom: 26px; max-width: 90ch; color: var(--ink-mute); }
   .slide--wef .slide-body {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 22px;
   }
 
   .wef-legend {
     display: flex;
     flex-wrap: wrap;
-    gap: 18px;
+    gap: 24px;
     align-items: center;
     margin-bottom: 2px;
   }
   .wef-legend-label {
     font-family: var(--ui);
     font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 0.12em;
+    font-size: 16px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--ink-mute);
   }
   .wef-tag {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     font-family: var(--ui);
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 700;
     color: var(--ink);
   }
   .wef-tag::before {
     content: '';
     display: block;
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
   }
   .wef-tag.wef-econ::before { background: var(--guardian-blue); }
   .wef-tag.wef-env::before  { background: var(--eco-green); }
@@ -700,15 +700,15 @@
   .wef-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 28px;
+    gap: 36px;
   }
   .wef-column h3 {
     font-family: var(--display);
     font-weight: 700;
-    font-size: 22px;
+    font-size: 28px;
     letter-spacing: -0.01em;
     color: var(--ink);
-    margin: 0 0 8px;
+    margin: 0 0 12px;
   }
   .wef-list {
     list-style: none;
@@ -716,25 +716,25 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
   }
   .wef-list li {
     display: grid;
-    grid-template-columns: 28px 1fr;
+    grid-template-columns: 40px 1fr;
     align-items: center;
-    gap: 10px;
+    gap: 14px;
   }
   .wef-rank {
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: 16px;
     color: var(--ink-mute);
     text-align: right;
     letter-spacing: 0.02em;
   }
   .wef-bar {
-    padding: 7px 12px;
+    padding: 10px 16px;
     font-family: var(--ui);
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 700;
     color: var(--paper);
     line-height: 1.2;
@@ -748,17 +748,17 @@
   .wef-questions {
     background: var(--paper-deep);
     border-left: 4px solid var(--guardian-blue);
-    padding: 18px 28px 20px;
+    padding: 22px 32px 24px;
     margin-top: 8px;
   }
   .wef-questions-eyebrow {
     font-family: var(--ui);
     font-weight: 700;
-    font-size: 16px;
+    font-size: 18px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--guardian-blue);
-    margin: 0 0 10px;
+    margin: 0 0 14px;
   }
   .wef-questions ol {
     list-style: none;
@@ -767,23 +767,23 @@
     padding: 0;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 18px 32px;
+    gap: 18px 40px;
   }
   .wef-questions li {
     counter-increment: q;
     display: grid;
-    grid-template-columns: 28px 1fr;
-    gap: 10px;
+    grid-template-columns: 36px 1fr;
+    gap: 12px;
     font-family: var(--body);
-    font-size: 16px;
-    line-height: 1.35;
+    font-size: 20px;
+    line-height: 1.4;
     color: var(--ink-soft);
   }
   .wef-questions li::before {
     content: counter(q, decimal-leading-zero);
     font-family: var(--mono);
     font-weight: 700;
-    font-size: 14px;
+    font-size: 18px;
     color: var(--news-red);
     letter-spacing: 0.04em;
     line-height: 1.4;
@@ -791,11 +791,11 @@
 
   .wef-source {
     font-family: var(--ui);
-    font-size: 12px;
+    font-size: 14px;
     letter-spacing: 0.04em;
     color: var(--ink-mute);
     font-style: italic;
-    margin: 4px 0 0;
+    margin: 6px 0 0;
   }
 
   /* ===== Risk slide (slide 18) ===== */
