@@ -652,6 +652,66 @@
     margin: 0;
   }
 
+  /* ===== Risk slide (slide 18) ===== */
+  .slide--risk .slide-title { font-size: 48px; margin-bottom: 22px; max-width: none; }
+  .risk-quote {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0 0 36px;
+    padding-left: 32px;
+    border-left: 4px solid var(--news-red);
+    max-width: 56ch;
+  }
+  .risk-quote em {
+    color: var(--news-red);
+    font-style: italic;
+  }
+  .slide--risk .slide-body {
+    display: flex;
+    flex-direction: column;
+  }
+  .risk-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 56px;
+    flex: 1;
+    min-height: 0;
+  }
+  .risk-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 6px solid var(--guardian-blue);
+    padding-top: 18px;
+  }
+  .risk-card:nth-child(2) { border-top-color: var(--news-red); }
+  .risk-card:nth-child(3) { border-top-color: var(--eco-green); }
+  .risk-card:nth-child(4) { border-top-color: var(--guardian-yellow); }
+  .risk-card h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--guardian-blue);
+    margin: 0;
+  }
+  .risk-card h3 em {
+    color: var(--news-red);
+    font-style: italic;
+  }
+  .risk-card p {
+    font-family: var(--body);
+    font-size: 19px;
+    line-height: 1.42;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
   /* ===== Aim card image (slide 12 — Beyond chat) ===== */
   .aim-image {
     margin-top: auto;
@@ -734,7 +794,7 @@
   }
 
   /* ===== Card stagger (slides 5 + 8 + 9) ===== */
-  .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .choice-card {
+  .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .choice-card, .risk-card {
     opacity: 0;
     transform: translateY(14px);
   }
@@ -743,7 +803,8 @@
   [data-deck-active] .failure-card,
   [data-deck-active] .hurdle-card,
   [data-deck-active] .figure-card,
-  [data-deck-active] .choice-card {
+  [data-deck-active] .choice-card,
+  [data-deck-active] .risk-card {
     animation: cardIn 420ms cubic-bezier(.2,.8,.2,1) both;
   }
   [data-deck-active] .quad-card:nth-child(1),
@@ -751,22 +812,26 @@
   [data-deck-active] .failure-card:nth-child(1),
   [data-deck-active] .hurdle-card:nth-child(1),
   [data-deck-active] .figure-card:nth-child(1),
-  [data-deck-active] .choice-card:nth-child(1) { animation-delay: 120ms; }
+  [data-deck-active] .choice-card:nth-child(1),
+  [data-deck-active] .risk-card:nth-child(1) { animation-delay: 120ms; }
   [data-deck-active] .quad-card:nth-child(2),
   [data-deck-active] .aim:nth-child(2),
   [data-deck-active] .failure-card:nth-child(2),
   [data-deck-active] .hurdle-card:nth-child(2),
   [data-deck-active] .figure-card:nth-child(2),
-  [data-deck-active] .choice-card:nth-child(2) { animation-delay: 240ms; }
+  [data-deck-active] .choice-card:nth-child(2),
+  [data-deck-active] .risk-card:nth-child(2) { animation-delay: 240ms; }
   [data-deck-active] .quad-card:nth-child(3),
   [data-deck-active] .aim:nth-child(3),
   [data-deck-active] .failure-card:nth-child(3),
   [data-deck-active] .hurdle-card:nth-child(3),
   [data-deck-active] .figure-card:nth-child(3),
-  [data-deck-active] .choice-card:nth-child(3) { animation-delay: 360ms; }
+  [data-deck-active] .choice-card:nth-child(3),
+  [data-deck-active] .risk-card:nth-child(3) { animation-delay: 360ms; }
   [data-deck-active] .quad-card:nth-child(4),
   [data-deck-active] .failure-card:nth-child(4),
-  [data-deck-active] .hurdle-card:nth-child(4) { animation-delay: 480ms; }
+  [data-deck-active] .hurdle-card:nth-child(4),
+  [data-deck-active] .risk-card:nth-child(4) { animation-delay: 480ms; }
   @keyframes cardIn {
     to { opacity: 1; transform: translateY(0); }
   }
@@ -1409,17 +1474,37 @@
   <!-- ============================================================
        SLIDE 17 — Thinking about risk (placeholder)
        ============================================================ -->
-  <section class="slide" data-label="Thinking about risk">
+  <section class="slide slide--risk" data-label="Thinking about risk">
     <div class="rule-band"></div>
 
     <p class="kicker">Part 03 · External shifts</p>
     <h2 class="slide-title">Thinking about <em>risk</em>.</h2>
+    <p class="risk-quote">"A risk is a possibility of something bad happening. By definition they're <em>not easy to think about</em>."</p>
 
-    <div class="slide-body"></div>
+    <div class="slide-body">
+      <div class="risk-grid">
+        <article class="risk-card">
+          <h3>Perceptions <em>matter</em></h3>
+          <p>A unique challenge for a news organisation is that we view risks of threats to us through the filter of… "the news".</p>
+        </article>
+        <article class="risk-card">
+          <h3>Time <em>matters</em></h3>
+          <p>The Guardian's around 1,300 employees versus Nestlé's 271,000 — hard to make space to think about risk.</p>
+        </article>
+        <article class="risk-card">
+          <h3>Culture <em>matters</em></h3>
+          <p>We need to get across the obvious AND the hidden things in our company culture that drive or block change.</p>
+        </article>
+        <article class="risk-card">
+          <h3>Feeling <em>matters</em></h3>
+          <p>AI, climate destruction, authoritarianism… The feeling that they're all coming for us is disempowering. Allowing space for imagination and speculation creates agency.</p>
+        </article>
+      </div>
+    </div>
 
     <div class="slide-foot">
       <span class="wm">Part 03 · External shifts</span>
-      <span class="num">16 / NN</span>
+      <span class="num">18 / NN</span>
     </div>
   </section>
 
@@ -1504,7 +1589,7 @@
   document.querySelector('deck-stage').addEventListener('slidechange', (e) => {
     const slide = e.detail.slide;
     if (!slide) return;
-    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .choice-card, .ai-meta, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em');
+    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .choice-card, .risk-card, .ai-meta, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em');
     els.forEach((b) => {
       b.style.animation = 'none';
       void b.offsetWidth;
