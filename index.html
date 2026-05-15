@@ -1131,7 +1131,22 @@
     grid-template-columns: 48px 1fr;
     align-items: center;
     gap: 16px;
+    opacity: 0;
+    transform: translateY(8px);
   }
+  [data-deck-active] .wef-list li {
+    animation: cardIn 320ms cubic-bezier(.2,.8,.2,1) both;
+  }
+  [data-deck-active] .wef-list li:nth-child(10) { animation-delay: 120ms; }
+  [data-deck-active] .wef-list li:nth-child(9)  { animation-delay: 200ms; }
+  [data-deck-active] .wef-list li:nth-child(8)  { animation-delay: 280ms; }
+  [data-deck-active] .wef-list li:nth-child(7)  { animation-delay: 360ms; }
+  [data-deck-active] .wef-list li:nth-child(6)  { animation-delay: 440ms; }
+  [data-deck-active] .wef-list li:nth-child(5)  { animation-delay: 520ms; }
+  [data-deck-active] .wef-list li:nth-child(4)  { animation-delay: 600ms; }
+  [data-deck-active] .wef-list li:nth-child(3)  { animation-delay: 680ms; }
+  [data-deck-active] .wef-list li:nth-child(2)  { animation-delay: 760ms; }
+  [data-deck-active] .wef-list li:nth-child(1)  { animation-delay: 840ms; }
   .wef-rank {
     font-family: var(--mono);
     font-size: 18px;
@@ -3732,7 +3747,7 @@
   document.querySelector('deck-stage').addEventListener('slidechange', (e) => {
     const slide = e.detail.slide;
     if (!slide) return;
-    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .choice-card, .risk-card, .ai-meta, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em, .flow-node, .flow-line, .comms-card, .comms-pivot, .cost-card');
+    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .choice-card, .risk-card, .ai-meta, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em, .flow-node, .flow-line, .comms-card, .comms-pivot, .cost-card, .wef-list li');
     els.forEach((b) => {
       b.style.animation = 'none';
       void b.offsetWidth;
