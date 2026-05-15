@@ -797,6 +797,228 @@
   .tb-line-biden { stroke: var(--guardian-blue); }
   .tb-line-trump { stroke: var(--news-red); }
 
+  /* ===== How it works (activity explanation) ===== */
+  .slide--howitworks .slide-title { font-size: 60px; margin-bottom: 24px; max-width: none; }
+  .slide--howitworks .slide-body {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .howitworks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    flex: 1;
+    min-height: 0;
+  }
+  .howitworks-card {
+    background: var(--paper-deep);
+    border-top: 6px solid var(--guardian-blue);
+    padding: 32px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .howitworks-card:nth-child(2) { border-top-color: var(--news-red); }
+  .howitworks-card:nth-child(3) { border-top-color: var(--eco-green); }
+  .howitworks-num {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 84px;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: var(--guardian-blue);
+  }
+  .howitworks-card:nth-child(2) .howitworks-num { color: var(--news-red); }
+  .howitworks-card:nth-child(3) .howitworks-num { color: var(--eco-green); }
+  .howitworks-card h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .howitworks-card p {
+    font-family: var(--body);
+    font-size: 20px;
+    line-height: 1.42;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .howitworks-card p strong { color: var(--ink); font-weight: 700; }
+  .howitworks-meta {
+    background: var(--guardian-blue);
+    color: var(--paper);
+    padding: 18px 28px;
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.25;
+    text-align: center;
+  }
+  .howitworks-meta strong {
+    color: var(--guardian-yellow);
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  /* ===== Workshop sample sheet (printable) ===== */
+  .slide--sheet { padding: 60px 80px 60px; }
+  .slide--sheet .rule-band { display: none; }
+  .slide--sheet .slide-foot { display: none; }
+  .slide--sheet .slide-body {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    flex: 1;
+    min-height: 0;
+  }
+  .sheet-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 14px;
+  }
+  .sheet-head-title {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 36px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .sheet-head-title em {
+    color: var(--news-red);
+    font-style: italic;
+  }
+  .sheet-head-meta {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    text-align: right;
+  }
+  .sheet-head-meta strong { color: var(--ink); }
+  .sheet-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    flex: 1;
+    min-height: 0;
+  }
+  .sheet-risk {
+    background: var(--paper-deep);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--paper-rule);
+  }
+  .sheet-risk-head {
+    padding: 12px 16px 14px;
+    color: var(--paper);
+    background: var(--guardian-blue);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .sheet-risk-head.wef-econ { background: var(--guardian-blue); }
+  .sheet-risk-head.wef-env  { background: var(--eco-green); }
+  .sheet-risk-head.wef-geo  { background: #d97706; }
+  .sheet-risk-head.wef-soc  { background: var(--news-red); }
+  .sheet-risk-head.wef-tech { background: #7c3aed; }
+  .sheet-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.72);
+  }
+  .sheet-risk-head h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 1.15;
+    margin: 0;
+    color: var(--paper);
+  }
+  .sheet-meta {
+    padding: 10px 16px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-bottom: 1px solid var(--paper-rule);
+    background: #efe7d7;
+  }
+  .sheet-row {
+    display: grid;
+    grid-template-columns: 82px repeat(3, 1fr);
+    gap: 6px;
+    align-items: center;
+  }
+  .sheet-row-label {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .sheet-opt {
+    border: 1.4px solid var(--ink-mute);
+    border-radius: 999px;
+    padding: 4px 8px;
+    font-family: var(--ui);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-align: center;
+    background: var(--paper);
+  }
+  .sheet-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 16px 12px;
+    flex: 1;
+    border-bottom: 1px solid var(--paper-rule);
+  }
+  .sheet-field:last-child { border-bottom: none; }
+  .sheet-field-label {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--guardian-blue);
+    margin: 0;
+  }
+  .sheet-field-blank {
+    flex: 1;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 21px,
+      rgba(122,118,110,0.35) 22px
+    );
+    min-height: 70px;
+  }
+  .sheet-footer {
+    font-family: var(--ui);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--ink-mute);
+    font-style: italic;
+    text-align: center;
+    border-top: 1px solid var(--paper-rule);
+    padding-top: 10px;
+  }
+
   /* ===== WEF risks chart (slide 20) ===== */
   .slide--wef .slide-title { font-size: 60px; margin-bottom: 10px; max-width: none; }
   .slide--wef .slide-subtitle { font-size: 26px; margin-bottom: 26px; max-width: 90ch; color: var(--ink-mute); }
@@ -845,15 +1067,18 @@
   .wef-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 36px;
+    gap: 48px;
+    flex: 1;
+    min-height: 0;
   }
+  .wef-column { display: flex; flex-direction: column; }
   .wef-column h3 {
     font-family: var(--display);
     font-weight: 700;
-    font-size: 28px;
+    font-size: 34px;
     letter-spacing: -0.01em;
     color: var(--ink);
-    margin: 0 0 12px;
+    margin: 0 0 18px;
   }
   .wef-list {
     list-style: none;
@@ -861,28 +1086,33 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
+    flex: 1;
   }
   .wef-list li {
     display: grid;
-    grid-template-columns: 40px 1fr;
+    grid-template-columns: 48px 1fr;
     align-items: center;
-    gap: 14px;
+    gap: 16px;
+    flex: 1;
   }
   .wef-rank {
     font-family: var(--mono);
-    font-size: 16px;
+    font-size: 18px;
     color: var(--ink-mute);
     text-align: right;
     letter-spacing: 0.02em;
   }
   .wef-bar {
-    padding: 10px 16px;
+    padding: 14px 20px;
     font-family: var(--ui);
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 700;
     color: var(--paper);
     line-height: 1.2;
+    display: flex;
+    align-items: center;
+    height: 100%;
   }
   .wef-bar.wef-econ  { background: var(--guardian-blue); }
   .wef-bar.wef-env   { background: var(--eco-green); }
@@ -2052,21 +2282,186 @@
         </div>
       </div>
 
-      <aside class="wef-questions">
-        <p class="wef-questions-eyebrow">For your group</p>
-        <ol>
-          <li>What would this threat mean for us?</li>
-          <li>How would it affect our continuity or sustainability as an organisation?</li>
-          <li>How would it affect the way that we need to do our business? How might we change to deal with it?</li>
-        </ol>
-      </aside>
-
       <p class="wef-source">Source: World Economic Forum, Global Risks Report 2025 (Figure C, page 8)</p>
     </div>
 
     <div class="slide-foot">
       <span class="wm">Group activity</span>
       <span class="num">23 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 24 — How the activity works
+       ============================================================ -->
+  <section class="slide slide--howitworks" data-label="How it works">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Group activity</p>
+    <h2 class="slide-title">How it <em>works</em>.</h2>
+
+    <div class="slide-body">
+      <div class="howitworks-grid">
+        <article class="howitworks-card">
+          <span class="howitworks-num">01</span>
+          <h3>Three risks per group</h3>
+          <p>Each table has 2–3 risks pre-allocated from the WEF list — a mix across categories so no two groups are doing the same thing.</p>
+        </article>
+        <article class="howitworks-card">
+          <span class="howitworks-num">02</span>
+          <h3>Categorise and score</h3>
+          <p>For each risk: is it a <strong>News risk</strong> (a story we'll cover), an <strong>Organisational risk</strong> (a challenge to us as a business), or <strong>both</strong>? Then give it a <strong>probability</strong> and an <strong>impact</strong> — low, medium or high.</p>
+        </article>
+        <article class="howitworks-card">
+          <span class="howitworks-num">03</span>
+          <h3>Articulate, then act</h3>
+          <p>Three short lines per risk: the <strong>specific risk to the Guardian</strong>, the <strong>opportunity</strong> hiding in it, and your <strong>first move</strong> if you were the boss.</p>
+        </article>
+      </div>
+
+      <aside class="howitworks-meta">
+        <strong>17 minutes</strong> · 10 groups of 6–7 · one insight back from each at the end
+      </aside>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Group activity</span>
+      <span class="num">24 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 25 — Sample workshop sheet (printable at A3)
+       ============================================================ -->
+  <section class="slide slide--sheet" data-label="Sample sheet">
+    <div class="slide-body">
+      <header class="sheet-head">
+        <p class="sheet-head-title">Group 04 · <em>three risks</em></p>
+        <p class="sheet-head-meta">External shifts workshop<br><strong>17 minutes</strong></p>
+      </header>
+
+      <div class="sheet-grid">
+
+        <article class="sheet-risk">
+          <header class="sheet-risk-head wef-tech">
+            <span class="sheet-num">Risk 01 · Technological</span>
+            <h3>Misinformation and disinformation</h3>
+          </header>
+          <div class="sheet-meta">
+            <div class="sheet-row">
+              <span class="sheet-row-label">Category</span>
+              <span class="sheet-opt">A · News</span>
+              <span class="sheet-opt">B · Org</span>
+              <span class="sheet-opt">C · Both</span>
+            </div>
+            <div class="sheet-row">
+              <span class="sheet-row-label">Probability</span>
+              <span class="sheet-opt">Low</span>
+              <span class="sheet-opt">Medium</span>
+              <span class="sheet-opt">High</span>
+            </div>
+            <div class="sheet-row">
+              <span class="sheet-row-label">Impact</span>
+              <span class="sheet-opt">Low</span>
+              <span class="sheet-opt">Medium</span>
+              <span class="sheet-opt">High</span>
+            </div>
+          </div>
+          <div class="sheet-field">
+            <p class="sheet-field-label">Risk to the Guardian</p>
+            <div class="sheet-field-blank"></div>
+          </div>
+          <div class="sheet-field">
+            <p class="sheet-field-label">Opportunity</p>
+            <div class="sheet-field-blank"></div>
+          </div>
+          <div class="sheet-field">
+            <p class="sheet-field-label">First move</p>
+            <div class="sheet-field-blank"></div>
+          </div>
+        </article>
+
+        <article class="sheet-risk">
+          <header class="sheet-risk-head wef-soc">
+            <span class="sheet-num">Risk 02 · Societal</span>
+            <h3>Societal polarization</h3>
+          </header>
+          <div class="sheet-meta">
+            <div class="sheet-row">
+              <span class="sheet-row-label">Category</span>
+              <span class="sheet-opt">A · News</span>
+              <span class="sheet-opt">B · Org</span>
+              <span class="sheet-opt">C · Both</span>
+            </div>
+            <div class="sheet-row">
+              <span class="sheet-row-label">Probability</span>
+              <span class="sheet-opt">Low</span>
+              <span class="sheet-opt">Medium</span>
+              <span class="sheet-opt">High</span>
+            </div>
+            <div class="sheet-row">
+              <span class="sheet-row-label">Impact</span>
+              <span class="sheet-opt">Low</span>
+              <span class="sheet-opt">Medium</span>
+              <span class="sheet-opt">High</span>
+            </div>
+          </div>
+          <div class="sheet-field">
+            <p class="sheet-field-label">Risk to the Guardian</p>
+            <div class="sheet-field-blank"></div>
+          </div>
+          <div class="sheet-field">
+            <p class="sheet-field-label">Opportunity</p>
+            <div class="sheet-field-blank"></div>
+          </div>
+          <div class="sheet-field">
+            <p class="sheet-field-label">First move</p>
+            <div class="sheet-field-blank"></div>
+          </div>
+        </article>
+
+        <article class="sheet-risk">
+          <header class="sheet-risk-head wef-env">
+            <span class="sheet-num">Risk 03 · Environmental</span>
+            <h3>Critical change to Earth systems</h3>
+          </header>
+          <div class="sheet-meta">
+            <div class="sheet-row">
+              <span class="sheet-row-label">Category</span>
+              <span class="sheet-opt">A · News</span>
+              <span class="sheet-opt">B · Org</span>
+              <span class="sheet-opt">C · Both</span>
+            </div>
+            <div class="sheet-row">
+              <span class="sheet-row-label">Probability</span>
+              <span class="sheet-opt">Low</span>
+              <span class="sheet-opt">Medium</span>
+              <span class="sheet-opt">High</span>
+            </div>
+            <div class="sheet-row">
+              <span class="sheet-row-label">Impact</span>
+              <span class="sheet-opt">Low</span>
+              <span class="sheet-opt">Medium</span>
+              <span class="sheet-opt">High</span>
+            </div>
+          </div>
+          <div class="sheet-field">
+            <p class="sheet-field-label">Risk to the Guardian</p>
+            <div class="sheet-field-blank"></div>
+          </div>
+          <div class="sheet-field">
+            <p class="sheet-field-label">Opportunity</p>
+            <div class="sheet-field-blank"></div>
+          </div>
+          <div class="sheet-field">
+            <p class="sheet-field-label">First move</p>
+            <div class="sheet-field-blank"></div>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="sheet-footer">Circle one option in each row · Source: WEF Global Risks Report 2025</p>
     </div>
   </section>
 
