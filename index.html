@@ -80,6 +80,28 @@
     transition: opacity 240ms ease, visibility 0s linear 0s;
   }
 
+  /* ===== Print: force animated elements to their final state =====
+     In print mode, only one slide has [data-deck-active], so animations
+     triggered by that selector never fire on the other slides — content
+     stays at its initial opacity 0 / transform / dashoffset. This
+     override forces everything visible for the PDF export. */
+  @media print {
+    .chat-bubble,
+    .quad-card, .aim, .failure-card, .hurdle-card,
+    .figure-card, .choice-card, .risk-card,
+    .ai-meta, .principles li, .context-callout, .conclusion-bar,
+    .slide-image, .section-opener h1 em {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+    .tb-line-biden,
+    .tb-line-trump {
+      stroke-dasharray: none !important;
+      stroke-dashoffset: 0 !important;
+    }
+  }
+
   /* ===== Full-bleed slide image ===== */
   .slide-image {
     display: block;
