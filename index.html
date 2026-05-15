@@ -308,7 +308,15 @@
     color: var(--ink);
     line-height: 1.12;
     border-radius: 2px;
+    opacity: 0;
+    transform: translateY(12px);
   }
+  [data-deck-active] .flow-node {
+    animation: cardIn 380ms cubic-bezier(.2,.8,.2,1) both;
+  }
+  [data-deck-active] .flow-row > .flow-node:nth-of-type(1) { animation-delay: 200ms; }
+  [data-deck-active] .flow-row > .flow-node:nth-of-type(2) { animation-delay: 540ms; }
+  [data-deck-active] .flow-row > .flow-node:nth-of-type(3) { animation-delay: 880ms; }
   .flow-node small {
     display: block;
     font-family: var(--mono);
@@ -330,6 +338,16 @@
     height: 2px;
     background: var(--ink);
     align-self: center;
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+  [data-deck-active] .flow-line {
+    animation: lineDraw 260ms ease-out both;
+  }
+  [data-deck-active] .flow-row > .flow-line:nth-of-type(1) { animation-delay: 440ms; }
+  [data-deck-active] .flow-row > .flow-line:nth-of-type(2) { animation-delay: 780ms; }
+  @keyframes lineDraw {
+    to { transform: scaleX(1); }
   }
 
   .threat-list {
@@ -597,7 +615,14 @@
     gap: 14px;
     border-top: 2px solid var(--ink);
     padding-top: 18px;
+    opacity: 0;
+    transform: translateY(14px);
   }
+  [data-deck-active] .comms-card {
+    animation: cardIn 420ms cubic-bezier(.2,.8,.2,1) both;
+  }
+  [data-deck-active] .comms-card:nth-child(1) { animation-delay: 200ms; }
+  [data-deck-active] .comms-card:nth-child(2) { animation-delay: 360ms; }
   .comms-num {
     font-family: var(--mono);
     font-weight: 700;
@@ -632,6 +657,11 @@
     color: var(--ink);
     margin: 0 auto;
     max-width: 60ch;
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  [data-deck-active] .comms-pivot {
+    animation: cardIn 500ms cubic-bezier(.2,.8,.2,1) 580ms both;
   }
   .comms-pivot em {
     color: var(--news-red);
@@ -651,7 +681,14 @@
     gap: 28px;
     align-items: center;
     border-left: 4px solid var(--guardian-blue);
+    opacity: 0;
+    transform: translateY(14px);
   }
+  [data-deck-active] .cost-card {
+    animation: cardIn 420ms cubic-bezier(.2,.8,.2,1) both;
+  }
+  [data-deck-active] .cost-card:nth-child(1) { animation-delay: 880ms; }
+  [data-deck-active] .cost-card:nth-child(2) { animation-delay: 1040ms; }
   .cost-card:nth-child(2) {
     border-left-color: var(--news-red);
   }
@@ -3695,7 +3732,7 @@
   document.querySelector('deck-stage').addEventListener('slidechange', (e) => {
     const slide = e.detail.slide;
     if (!slide) return;
-    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .choice-card, .risk-card, .ai-meta, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em');
+    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .choice-card, .risk-card, .ai-meta, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em, .flow-node, .flow-line, .comms-card, .comms-pivot, .cost-card');
     els.forEach((b) => {
       b.style.animation = 'none';
       void b.offsetWidth;
