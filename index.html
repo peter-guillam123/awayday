@@ -446,23 +446,23 @@
   [data-deck-active] .ax-dot--internet { animation: cardIn 280ms ease both; }
   [data-deck-active] .ax-dot--phone    { animation: cardIn 280ms ease both; }
   [data-deck-active] .ax-dot--ai       { animation: cardIn 320ms ease both; }
-  /* Internet dots fade in along the slow climb (2.6s span) */
+  /* Internet dots fade in along the climb (200ms start, 2800ms span) */
   [data-deck-active] .ax-dot--internet:nth-of-type(1) { animation-delay: 200ms; }
-  [data-deck-active] .ax-dot--internet:nth-of-type(2) { animation-delay: 1000ms; }
-  [data-deck-active] .ax-dot--internet:nth-of-type(3) { animation-delay: 1800ms; }
-  [data-deck-active] .ax-dot--internet:nth-of-type(4) { animation-delay: 2600ms; }
-  /* Smartphone dots — similar pace */
+  [data-deck-active] .ax-dot--internet:nth-of-type(2) { animation-delay: 1133ms; }
+  [data-deck-active] .ax-dot--internet:nth-of-type(3) { animation-delay: 2066ms; }
+  [data-deck-active] .ax-dot--internet:nth-of-type(4) { animation-delay: 3000ms; }
+  /* Smartphone dots (200ms start, 2600ms span) */
   [data-deck-active] .ax-dot--phone:nth-of-type(1) { animation-delay: 200ms; }
-  [data-deck-active] .ax-dot--phone:nth-of-type(2) { animation-delay: 900ms; }
-  [data-deck-active] .ax-dot--phone:nth-of-type(3) { animation-delay: 1600ms; }
-  [data-deck-active] .ax-dot--phone:nth-of-type(4) { animation-delay: 2300ms; }
-  /* AI dots — fast and dramatic (1.3s span) */
-  [data-deck-active] .ax-dot--ai:nth-of-type(1) { animation-delay: 200ms; }
-  [data-deck-active] .ax-dot--ai:nth-of-type(2) { animation-delay: 600ms; }
-  [data-deck-active] .ax-dot--ai:nth-of-type(3) { animation-delay: 1000ms; }
-  [data-deck-active] .ax-dot--ai:nth-of-type(4) { animation-delay: 1500ms; }
+  [data-deck-active] .ax-dot--phone:nth-of-type(2) { animation-delay: 1066ms; }
+  [data-deck-active] .ax-dot--phone:nth-of-type(3) { animation-delay: 1933ms; }
+  [data-deck-active] .ax-dot--phone:nth-of-type(4) { animation-delay: 2800ms; }
+  /* AI dots — start after others finish, draw over 2000ms */
+  [data-deck-active] .ax-dot--ai:nth-of-type(1) { animation-delay: 3400ms; }
+  [data-deck-active] .ax-dot--ai:nth-of-type(2) { animation-delay: 4066ms; }
+  [data-deck-active] .ax-dot--ai:nth-of-type(3) { animation-delay: 4733ms; }
+  [data-deck-active] .ax-dot--ai:nth-of-type(4) { animation-delay: 5400ms; }
   .ax-endpoint--big { font-size: 40px !important; fill: var(--news-red); font-weight: 700; }
-  [data-deck-active] .ax-endpoint--big { animation: cardIn 420ms ease 1700ms both; }
+  [data-deck-active] .ax-endpoint--big { animation: cardIn 420ms ease 5600ms both; }
 
   /* Industry adoption bars (variant of WEF style, single column) */
   .ax-industries {
@@ -505,6 +505,7 @@
     flex-direction: column;
     gap: 12px;
   }
+  .ax-quote--compact { padding: 22px 32px 20px; gap: 8px; }
   .ax-quote-body {
     font-family: var(--display);
     font-style: italic;
@@ -514,6 +515,8 @@
     color: var(--ink);
     margin: 0;
   }
+  .ax-quote--compact .ax-quote-body { font-size: 26px; line-height: 1.25; }
+  .ax-quote-body em { color: var(--news-red); font-style: italic; }
   .ax-quote-attr {
     font-family: var(--body);
     font-size: 18px;
@@ -4099,7 +4102,12 @@
         </div>
       </div>
 
-      <p class="ax-source">Source: Federal Reserve, "Monitoring AI Adoption in the U.S. Economy", April 2026.</p>
+      <aside class="ax-quote ax-quote--compact">
+        <p class="ax-quote-body">"Adoption appears to correlate with size, but adoption among the smallest firms is <em>stronger than would be expected based on size alone</em>."</p>
+        <p class="ax-quote-attr">Federal Reserve, <strong>"Monitoring AI Adoption in the U.S. Economy"</strong>, April 2026</p>
+      </aside>
+
+      <p class="ax-source">Source: Federal Reserve, April 2026.</p>
     </div>
 
     <div class="slide-foot">
@@ -4377,15 +4385,15 @@
       });
     }
 
-    // Appendix adoption-curve chart — all three lines start together,
-    // but AI draws ~half the duration of the other two so it visibly
-    // outpaces them in real time. That's the story: same window, AI
-    // reaches its endpoint dramatically faster.
+    // Appendix adoption-curve chart — internet and smartphone draw
+    // together at a deliberate pace, the audience sees both climb
+    // through their first three years. Then a beat. Then AI draws
+    // in last, on its own. The pause before AI is the editorial moment.
     if (slide.querySelector('.ax-line')) {
       const setup = [
-        { sel: '.ax-line--internet', dur: 2600, delay: 200 },
-        { sel: '.ax-line--phone',    dur: 2300, delay: 200 },
-        { sel: '.ax-line--ai',       dur: 1500, delay: 200 },
+        { sel: '.ax-line--internet', dur: 2800, delay: 200 },
+        { sel: '.ax-line--phone',    dur: 2600, delay: 200 },
+        { sel: '.ax-line--ai',       dur: 2000, delay: 3400 },
       ];
       requestAnimationFrame(() => {
         setup.forEach(({ sel, dur, delay }) => {
