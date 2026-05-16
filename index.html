@@ -232,6 +232,243 @@
     animation: cardIn 520ms cubic-bezier(.2,.8,.2,1) 620ms both;
   }
 
+  /* ===== Appendix slides (AI adoption data) ===== */
+  .slide--appendix .slide-title { font-size: 60px; margin-bottom: 18px; max-width: none; }
+  .slide--appendix .slide-subtitle { font-size: 26px; margin-bottom: 28px; max-width: 70ch; }
+  .slide--appendix .slide-body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* Big stat panel (Guardian blue with paper text + yellow eyebrow) */
+  .ax-hero {
+    background: var(--guardian-blue);
+    color: var(--paper);
+    padding: 40px 48px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .ax-hero-eyebrow {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--guardian-yellow);
+    margin: 0;
+  }
+  .ax-hero-figure {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 180px;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--paper);
+    margin: 4px 0 8px;
+  }
+  .ax-hero-body {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 1.18;
+    color: rgba(244,239,230,0.92);
+    max-width: 22ch;
+    margin: 0;
+  }
+
+  /* Pair of secondary stats (paper-deep cards) */
+  .ax-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .ax-card {
+    background: var(--paper-deep);
+    border-top: 6px solid var(--guardian-blue);
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ax-card:nth-child(2) { border-top-color: var(--news-red); }
+  .ax-card:nth-child(3) { border-top-color: var(--eco-green); }
+  .ax-card-figure {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--guardian-blue);
+    margin: 0;
+  }
+  .ax-card:nth-child(2) .ax-card-figure { color: var(--news-red); }
+  .ax-card:nth-child(3) .ax-card-figure { color: var(--eco-green); }
+  .ax-card-body {
+    font-family: var(--body);
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .ax-card-eyebrow {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin: 0 0 4px;
+  }
+
+  /* Adoption-speed comparison rows */
+  .ax-compare {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    flex: 1;
+  }
+  .ax-compare-row {
+    display: grid;
+    grid-template-columns: 280px 1fr 80px;
+    align-items: center;
+    gap: 24px;
+  }
+  .ax-compare-label {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+  .ax-compare-bar {
+    background: var(--paper-deep);
+    height: 36px;
+    position: relative;
+  }
+  .ax-compare-bar-fill {
+    background: var(--guardian-blue);
+    height: 100%;
+  }
+  .ax-compare-row:nth-child(3) .ax-compare-bar-fill { background: var(--news-red); }
+  .ax-compare-years {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--ink-mute);
+    text-align: right;
+  }
+  .ax-compare-row:nth-child(3) .ax-compare-years { color: var(--news-red); }
+
+  /* Industry adoption bars (variant of WEF style, single column) */
+  .ax-industries {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+  .ax-industry {
+    display: grid;
+    grid-template-columns: 240px 1fr 60px;
+    align-items: center;
+    gap: 16px;
+  }
+  .ax-industry-label {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .ax-industry-bar {
+    height: 26px;
+    background: var(--guardian-blue);
+  }
+  .ax-industry-value {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--ink-mute);
+    text-align: right;
+  }
+
+  /* Quote panel for A5 (italic pull, large) */
+  .ax-quote {
+    background: var(--paper-deep);
+    border-left: 6px solid var(--news-red);
+    padding: 32px 44px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .ax-quote-body {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0;
+  }
+  .ax-quote-attr {
+    font-family: var(--body);
+    font-size: 18px;
+    color: var(--ink-mute);
+    margin: 0;
+  }
+  .ax-quote-attr strong { color: var(--ink); font-weight: 700; }
+
+  /* Frictions list (A3) */
+  .ax-frictions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .ax-frictions li {
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    gap: 18px;
+    padding: 14px 0;
+    border-top: 1px solid var(--paper-rule);
+    align-items: baseline;
+  }
+  .ax-frictions li:first-child { border-top: 2px solid var(--ink); padding-top: 18px; }
+  .ax-frictions li::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: var(--news-red);
+    align-self: start;
+    margin-top: 10px;
+  }
+  .ax-frictions strong {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .ax-frictions span {
+    font-family: var(--body);
+    font-size: 19px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+
+  .ax-source {
+    font-family: var(--ui);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    color: var(--ink-mute);
+    font-style: italic;
+    margin: 8px 0 0;
+  }
+
   /* ===== Threat slides (AI intermediation) ===== */
   .slide--threat .slide-title { font-size: 64px; margin-bottom: 22px; max-width: none; }
   .slide--threat .slide-subtitle { font-size: 28px; margin-bottom: 36px; max-width: 64ch; }
@@ -3725,6 +3962,230 @@
       </div>
 
       <p class="sheet-footer">Circle one option in each row · Source: WEF Global Risks Report 2025</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 35 — Appendix A1: AI adoption has happened
+       ============================================================ -->
+  <section class="slide slide--appendix" data-label="Appendix · AI scale">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Appendix · AI adoption</p>
+    <h2 class="slide-title">AI has already <em>arrived</em>.</h2>
+
+    <div class="slide-body">
+      <div class="ax-hero">
+        <p class="ax-hero-eyebrow">US workforce, November 2025</p>
+        <p class="ax-hero-figure">41%</p>
+        <p class="ax-hero-body">Of the US workforce uses generative AI at work — up from effectively zero three years ago.</p>
+      </div>
+
+      <div class="ax-pair">
+        <article class="ax-card">
+          <p class="ax-card-eyebrow">Employment</p>
+          <p class="ax-card-figure">78%</p>
+          <p class="ax-card-body">Of US employment is at firms that have adopted AI in some form.</p>
+        </article>
+        <article class="ax-card">
+          <p class="ax-card-eyebrow">From a standing start</p>
+          <p class="ax-card-figure">3 yrs</p>
+          <p class="ax-card-body">ChatGPT launched November 2022. The 41% figure is from November 2025.</p>
+        </article>
+      </div>
+
+      <p class="ax-source">Source: Federal Reserve, "Monitoring AI Adoption in the U.S. Economy", April 2026.</p>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Appendix · AI adoption</span>
+      <span class="num">35 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 36 — Appendix A2: Speed vs prior tech
+       ============================================================ -->
+  <section class="slide slide--appendix" data-label="Appendix · AI speed">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Appendix · AI adoption</p>
+    <h2 class="slide-title">Faster than anything we've <em>seen</em>.</h2>
+    <p class="slide-subtitle">Approximate time for each technology to reach ~40% workforce or adult-population penetration.</p>
+
+    <div class="slide-body">
+      <div class="ax-compare">
+        <div class="ax-compare-row">
+          <div class="ax-compare-label">Internet at work</div>
+          <div class="ax-compare-bar"><div class="ax-compare-bar-fill" style="width: 100%"></div></div>
+          <div class="ax-compare-years">~6 yrs</div>
+        </div>
+        <div class="ax-compare-row">
+          <div class="ax-compare-label">Smartphone adoption</div>
+          <div class="ax-compare-bar"><div class="ax-compare-bar-fill" style="width: 83%"></div></div>
+          <div class="ax-compare-years">~5 yrs</div>
+        </div>
+        <div class="ax-compare-row">
+          <div class="ax-compare-label">Generative AI at work</div>
+          <div class="ax-compare-bar"><div class="ax-compare-bar-fill" style="width: 50%"></div></div>
+          <div class="ax-compare-years">~3 yrs</div>
+        </div>
+      </div>
+
+      <p class="ax-source">Different products, different definitions of "adoption" — but the shape is unambiguous. Sources: US Census / BLS (internet, 1995–2001), Pew Research (smartphone, 2007–2012), Federal Reserve (GenAI, 2022–2025).</p>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Appendix · AI adoption</span>
+      <span class="num">36 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 37 — Appendix A3: Easy for some, hard for others
+       ============================================================ -->
+  <section class="slide slide--appendix" data-label="Appendix · Firm vs worker">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Appendix · AI adoption</p>
+    <h2 class="slide-title">Easy for some. <em>Hard</em> for others.</h2>
+
+    <div class="slide-body">
+      <div class="ax-pair">
+        <article class="ax-card">
+          <p class="ax-card-eyebrow">Firms that have formally adopted</p>
+          <p class="ax-card-figure">18%</p>
+          <p class="ax-card-body">Of US businesses report adopting AI in any business function (Fed BTOS, end 2025).</p>
+        </article>
+        <article class="ax-card">
+          <p class="ax-card-eyebrow">Workers using it anyway</p>
+          <p class="ax-card-figure">41%</p>
+          <p class="ax-card-body">Of US workers use generative AI at work — often via personal accounts, ahead of their employer (Fed RPS).</p>
+        </article>
+      </div>
+
+      <ul class="ax-frictions">
+        <li>
+          <div>
+            <strong>Reproducibility and audit trail</strong>
+            <span>A sole trader can let AI draft an invoice. A 1,000-person firm needs an output that survives an audit.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Error consequences at scale</strong>
+            <span>A hallucinated paragraph is a shrug in a personal email; a correction in a 200,000-circulation paper.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Workforce concerns about displacement</strong>
+            <span>Real, live conversations inside most large organisations — including ours.</span>
+          </div>
+        </li>
+      </ul>
+
+      <p class="ax-source">Source: Federal Reserve, April 2026. The Fed also notes adoption among the smallest firms is "stronger than would be expected based on size alone".</p>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Appendix · AI adoption</span>
+      <span class="num">37 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 38 — Appendix A4: Knowledge work at the front
+       ============================================================ -->
+  <section class="slide slide--appendix" data-label="Appendix · By industry">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Appendix · AI adoption</p>
+    <h2 class="slide-title">Knowledge work is at the <em>front</em>.</h2>
+    <p class="slide-subtitle">Share of workers using generative AI at work, by industry (Fed RPS, November 2025).</p>
+
+    <div class="slide-body">
+      <div class="ax-industries">
+        <div class="ax-industry">
+          <div class="ax-industry-label">Information</div>
+          <div class="ax-industry-bar" style="width: 100%"></div>
+          <div class="ax-industry-value">70%</div>
+        </div>
+        <div class="ax-industry">
+          <div class="ax-industry-label">Financial services</div>
+          <div class="ax-industry-bar" style="width: 90%"></div>
+          <div class="ax-industry-value">63%</div>
+        </div>
+        <div class="ax-industry">
+          <div class="ax-industry-label">Professional services</div>
+          <div class="ax-industry-bar" style="width: 89%"></div>
+          <div class="ax-industry-value">62%</div>
+        </div>
+        <div class="ax-industry">
+          <div class="ax-industry-label">Real estate / leasing</div>
+          <div class="ax-industry-bar" style="width: 83%"></div>
+          <div class="ax-industry-value">58%</div>
+        </div>
+        <div class="ax-industry">
+          <div class="ax-industry-label">Wholesale trade</div>
+          <div class="ax-industry-bar" style="width: 69%"></div>
+          <div class="ax-industry-value">48%</div>
+        </div>
+        <div class="ax-industry">
+          <div class="ax-industry-label">Manufacturing</div>
+          <div class="ax-industry-bar" style="width: 19%"></div>
+          <div class="ax-industry-value">13%</div>
+        </div>
+        <div class="ax-industry">
+          <div class="ax-industry-label">Accommodation &amp; food</div>
+          <div class="ax-industry-bar" style="width: 11%"></div>
+          <div class="ax-industry-value">8%</div>
+        </div>
+      </div>
+
+      <p class="ax-source">News media sits inside the Information sector. Manufacturing is the laggard on absolute share — but the fastest growing, at +58% year on year. Source: Federal Reserve, April 2026.</p>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Appendix · AI adoption</span>
+      <span class="num">38 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 39 — Appendix A5: Used widely, trusted less
+       ============================================================ -->
+  <section class="slide slide--appendix" data-label="Appendix · Trust paradox">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Appendix · AI adoption</p>
+    <h2 class="slide-title">Used widely. Trusted <em>less</em>.</h2>
+
+    <div class="slide-body">
+      <div class="ax-pair">
+        <article class="ax-card">
+          <p class="ax-card-eyebrow">Personal interest</p>
+          <p class="ax-card-figure">27%</p>
+          <p class="ax-card-body">Of global news audiences are interested in AI-generated <em>summaries</em> of news articles — the highest of any AI feature tested.</p>
+        </article>
+        <article class="ax-card">
+          <p class="ax-card-eyebrow">But trust falls</p>
+          <p class="ax-card-figure">−18</p>
+          <p class="ax-card-body">Net score: AI-produced news is seen as <strong>less trustworthy</strong> than human-produced news, even with human oversight.</p>
+        </article>
+      </div>
+
+      <aside class="ax-quote">
+        <p class="ax-quote-body">"Audiences remain broadly sceptical of these automated approaches to news production, but are more accepting of journalists using AI in a supportive role."</p>
+        <p class="ax-quote-attr"><strong>Reuters Institute Digital News Report 2025</strong> — the asymmetry of agency, in their words. People accept tools they control; they don't accept tools used <em>on</em> them.</p>
+      </aside>
+
+      <p class="ax-source">Sources: Reuters Institute Digital News Report 2025 (note: 2026 edition not yet published). Net trust figure averaged across 37 markets.</p>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Appendix · AI adoption</span>
+      <span class="num">39 / NN</span>
     </div>
   </section>
 
