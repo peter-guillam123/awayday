@@ -245,7 +245,7 @@
   .ax-hero {
     background: var(--guardian-blue);
     color: var(--paper);
-    padding: 40px 48px 36px;
+    padding: 36px 44px 32px;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -253,7 +253,7 @@
   .ax-hero-eyebrow {
     font-family: var(--ui);
     font-weight: 700;
-    font-size: 22px;
+    font-size: 20px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--guardian-yellow);
@@ -262,7 +262,7 @@
   .ax-hero-figure {
     font-family: var(--display);
     font-weight: 700;
-    font-size: 180px;
+    font-size: 200px;
     line-height: 0.9;
     letter-spacing: -0.04em;
     color: var(--paper);
@@ -271,12 +271,27 @@
   .ax-hero-body {
     font-family: var(--display);
     font-weight: 500;
-    font-size: 32px;
+    font-size: 28px;
     line-height: 1.18;
     color: rgba(244,239,230,0.92);
     max-width: 22ch;
     margin: 0;
   }
+
+  /* Hero row: big stat + two supporting stats */
+  .ax-hero-row {
+    display: grid;
+    grid-template-columns: 1.45fr 1fr;
+    gap: 22px;
+  }
+  .ax-hero-row .ax-hero { padding-bottom: 28px; }
+  .ax-side-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .ax-side-stack .ax-card { flex: 1; justify-content: center; }
+  .ax-side-stack .ax-card-figure { font-size: 56px; }
 
   /* Pair of secondary stats (paper-deep cards) */
   .ax-pair {
@@ -322,44 +337,80 @@
     margin: 0 0 4px;
   }
 
-  /* Adoption-speed comparison rows */
-  .ax-compare {
+  /* Adoption-speed line chart (animated draw-in) */
+  .ax-chart {
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    flex: 1;
+    gap: 10px;
   }
-  .ax-compare-row {
-    display: grid;
-    grid-template-columns: 280px 1fr 80px;
-    align-items: center;
+  .ax-chart-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--paper-rule);
+    padding-bottom: 8px;
+  }
+  .ax-chart-title {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--ink);
+    margin: 0;
+  }
+  .ax-chart-legend {
+    display: flex;
     gap: 24px;
   }
-  .ax-compare-label {
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: 28px;
-    line-height: 1.1;
+  .ax-chart-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 14px;
     color: var(--ink);
   }
-  .ax-compare-bar {
-    background: var(--paper-deep);
-    height: 36px;
-    position: relative;
+  .ax-chart-legend-item::before {
+    content: '';
+    width: 22px;
+    height: 3px;
+    background: var(--ink-mute);
   }
-  .ax-compare-bar-fill {
-    background: var(--guardian-blue);
-    height: 100%;
+  .ax-chart-legend-item.is-internet::before  { background: var(--guardian-blue-soft); }
+  .ax-chart-legend-item.is-phone::before     { background: var(--ink-mute); }
+  .ax-chart-legend-item.is-ai::before        { background: var(--news-red); }
+  .ax-chart svg {
+    display: block;
+    width: 100%;
+    height: auto;
   }
-  .ax-compare-row:nth-child(3) .ax-compare-bar-fill { background: var(--news-red); }
-  .ax-compare-years {
+  .ax-axis {
     font-family: var(--mono);
-    font-weight: 700;
-    font-size: 20px;
-    color: var(--ink-mute);
-    text-align: right;
+    font-size: 13px;
+    fill: var(--ink-mute);
   }
-  .ax-compare-row:nth-child(3) .ax-compare-years { color: var(--news-red); }
+  .ax-axis-y { text-anchor: end; }
+  .ax-grid { stroke: var(--paper-rule); stroke-width: 1; }
+  .ax-axis-base { stroke: var(--ink-mute); stroke-width: 1.5; }
+  .ax-line {
+    fill: none;
+    stroke-width: 3;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .ax-line--internet { stroke: var(--guardian-blue-soft); }
+  .ax-line--phone    { stroke: var(--ink-mute); }
+  .ax-line--ai       { stroke: var(--news-red); stroke-width: 4; }
+  .ax-endpoint {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 13px;
+    fill: var(--ink);
+    opacity: 0;
+  }
+  [data-deck-active] .ax-endpoint {
+    animation: cardIn 360ms ease 2400ms both;
+  }
 
   /* Industry adoption bars (variant of WEF style, single column) */
   .ax-industries {
@@ -3966,7 +4017,7 @@
   </section>
 
   <!-- ============================================================
-       SLIDE 35 — Appendix A1: AI adoption has happened
+       SLIDE 35 — Appendix A1: AI has already arrived (scale + speed)
        ============================================================ -->
   <section class="slide slide--appendix" data-label="Appendix · AI scale">
     <div class="rule-band"></div>
@@ -3975,69 +4026,84 @@
     <h2 class="slide-title">AI has already <em>arrived</em>.</h2>
 
     <div class="slide-body">
-      <div class="ax-hero">
-        <p class="ax-hero-eyebrow">US workforce, November 2025</p>
-        <p class="ax-hero-figure">41%</p>
-        <p class="ax-hero-body">Of the US workforce uses generative AI at work — up from effectively zero three years ago.</p>
+      <div class="ax-hero-row">
+        <div class="ax-hero">
+          <p class="ax-hero-eyebrow">US workforce, November 2025</p>
+          <p class="ax-hero-figure">41%</p>
+          <p class="ax-hero-body">Of the US workforce uses generative AI at work — up from effectively zero three years ago.</p>
+        </div>
+
+        <div class="ax-side-stack">
+          <article class="ax-card">
+            <p class="ax-card-eyebrow">Employment</p>
+            <p class="ax-card-figure">78%</p>
+            <p class="ax-card-body">Of US employment is at firms that have adopted AI in some form.</p>
+          </article>
+          <article class="ax-card">
+            <p class="ax-card-eyebrow">From a standing start</p>
+            <p class="ax-card-figure">3 yrs</p>
+            <p class="ax-card-body">ChatGPT launched November 2022. The 41% figure is from November 2025.</p>
+          </article>
+        </div>
       </div>
 
-      <div class="ax-pair">
-        <article class="ax-card">
-          <p class="ax-card-eyebrow">Employment</p>
-          <p class="ax-card-figure">78%</p>
-          <p class="ax-card-body">Of US employment is at firms that have adopted AI in some form.</p>
-        </article>
-        <article class="ax-card">
-          <p class="ax-card-eyebrow">From a standing start</p>
-          <p class="ax-card-figure">3 yrs</p>
-          <p class="ax-card-body">ChatGPT launched November 2022. The 41% figure is from November 2025.</p>
-        </article>
+      <div class="ax-chart">
+        <header class="ax-chart-head">
+          <p class="ax-chart-title">Faster than anything we've seen.</p>
+          <div class="ax-chart-legend">
+            <span class="ax-chart-legend-item is-internet">Internet at work (from 1995)</span>
+            <span class="ax-chart-legend-item is-phone">Smartphone adoption (from 2007)</span>
+            <span class="ax-chart-legend-item is-ai">Generative AI at work (from 2022)</span>
+          </div>
+        </header>
+
+        <svg viewBox="0 0 1600 360" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Adoption curves for internet at work, smartphone use, and generative AI at work, by years since launch.">
+          <!-- Y grid lines at 0, 20, 40, 60, 80 -->
+          <line class="ax-grid" x1="80" y1="40" x2="1560" y2="40"/>
+          <line class="ax-grid" x1="80" y1="120" x2="1560" y2="120"/>
+          <line class="ax-grid" x1="80" y1="200" x2="1560" y2="200"/>
+          <line class="ax-grid" x1="80" y1="280" x2="1560" y2="280"/>
+          <line class="ax-axis-base" x1="80" y1="320" x2="1560" y2="320"/>
+
+          <!-- Y axis labels (% adoption) -->
+          <text class="ax-axis ax-axis-y" x="68" y="44">80%</text>
+          <text class="ax-axis ax-axis-y" x="68" y="124">60%</text>
+          <text class="ax-axis ax-axis-y" x="68" y="204">40%</text>
+          <text class="ax-axis ax-axis-y" x="68" y="284">20%</text>
+          <text class="ax-axis ax-axis-y" x="68" y="324">0</text>
+
+          <!-- X axis labels (years since launch) -->
+          <text class="ax-axis" x="80" y="345" text-anchor="middle">Year 0</text>
+          <text class="ax-axis" x="291" y="345" text-anchor="middle">1</text>
+          <text class="ax-axis" x="503" y="345" text-anchor="middle">2</text>
+          <text class="ax-axis" x="714" y="345" text-anchor="middle">3</text>
+          <text class="ax-axis" x="925" y="345" text-anchor="middle">4</text>
+          <text class="ax-axis" x="1137" y="345" text-anchor="middle">5</text>
+          <text class="ax-axis" x="1348" y="345" text-anchor="middle">6</text>
+          <text class="ax-axis" x="1560" y="345" text-anchor="middle">7</text>
+
+          <!-- Internet: Year/percent → x = 80 + year*211.4, y = 320 - pct*3.5 -->
+          <polyline class="ax-line ax-line--internet" points="80,320 291,303 503,278 714,250 925,215 1137,173 1348,145 1560,128"/>
+
+          <!-- Smartphone -->
+          <polyline class="ax-line ax-line--phone" points="80,320 291,303 503,268 714,233 925,198 1137,163 1348,117 1560,93"/>
+
+          <!-- Generative AI (only to year 3) -->
+          <polyline class="ax-line ax-line--ai" points="80,320 291,243 503,212 714,177"/>
+
+          <!-- Endpoint labels -->
+          <text class="ax-endpoint" x="1560" y="120" text-anchor="end" dy="-6">55% by year 7</text>
+          <text class="ax-endpoint" x="1560" y="85" text-anchor="end" dy="-6">65% by year 7</text>
+          <text class="ax-endpoint" x="714" y="170" text-anchor="middle" dy="-10" fill="#C70000">41% by year 3</text>
+        </svg>
       </div>
 
-      <p class="ax-source">Source: Federal Reserve, "Monitoring AI Adoption in the U.S. Economy", April 2026.</p>
+      <p class="ax-source">Sources: US Census / Pew (internet at work, 1995–2002), Pew Research (smartphone, 2007–2014), Federal Reserve (GenAI, 2022–2025). Different products and different definitions of "adoption" — but the shape of the curve is unambiguous.</p>
     </div>
 
     <div class="slide-foot">
       <span class="wm">Appendix · AI adoption</span>
       <span class="num">35 / NN</span>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SLIDE 36 — Appendix A2: Speed vs prior tech
-       ============================================================ -->
-  <section class="slide slide--appendix" data-label="Appendix · AI speed">
-    <div class="rule-band"></div>
-
-    <p class="kicker">Appendix · AI adoption</p>
-    <h2 class="slide-title">Faster than anything we've <em>seen</em>.</h2>
-    <p class="slide-subtitle">Approximate time for each technology to reach ~40% workforce or adult-population penetration.</p>
-
-    <div class="slide-body">
-      <div class="ax-compare">
-        <div class="ax-compare-row">
-          <div class="ax-compare-label">Internet at work</div>
-          <div class="ax-compare-bar"><div class="ax-compare-bar-fill" style="width: 100%"></div></div>
-          <div class="ax-compare-years">~6 yrs</div>
-        </div>
-        <div class="ax-compare-row">
-          <div class="ax-compare-label">Smartphone adoption</div>
-          <div class="ax-compare-bar"><div class="ax-compare-bar-fill" style="width: 83%"></div></div>
-          <div class="ax-compare-years">~5 yrs</div>
-        </div>
-        <div class="ax-compare-row">
-          <div class="ax-compare-label">Generative AI at work</div>
-          <div class="ax-compare-bar"><div class="ax-compare-bar-fill" style="width: 50%"></div></div>
-          <div class="ax-compare-years">~3 yrs</div>
-        </div>
-      </div>
-
-      <p class="ax-source">Different products, different definitions of "adoption" — but the shape is unambiguous. Sources: US Census / BLS (internet, 1995–2001), Pew Research (smartphone, 2007–2012), Federal Reserve (GenAI, 2022–2025).</p>
-    </div>
-
-    <div class="slide-foot">
-      <span class="wm">Appendix · AI adoption</span>
-      <span class="num">36 / NN</span>
     </div>
   </section>
 
@@ -4208,7 +4274,7 @@
   document.querySelector('deck-stage').addEventListener('slidechange', (e) => {
     const slide = e.detail.slide;
     if (!slide) return;
-    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .choice-card, .risk-card, .ai-meta, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em, .flow-node, .flow-line, .comms-card, .comms-pivot, .cost-card, .wef-list li');
+    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .choice-card, .risk-card, .ai-meta, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em, .flow-node, .flow-line, .comms-card, .comms-pivot, .cost-card, .wef-list li, .ax-endpoint');
     els.forEach((b) => {
       b.style.animation = 'none';
       void b.offsetWidth;
@@ -4226,6 +4292,28 @@
           line.style.strokeDashoffset = len;
           line.getBoundingClientRect();  // force reflow
           line.style.transition = `stroke-dashoffset 2400ms cubic-bezier(.45,.05,.25,1) ${320 + i * 140}ms`;
+          line.style.strokeDashoffset = '0';
+        });
+      });
+    }
+
+    // Appendix adoption-curve chart — draw three lines sequentially.
+    // Internet first (slow climb), then smartphone (similar shape),
+    // then GenAI (steep) so the audience sees the comparison build.
+    if (slide.querySelector('.ax-line')) {
+      const order = ['.ax-line--internet', '.ax-line--phone', '.ax-line--ai'];
+      const durations = [1400, 1400, 1100];
+      const offsets = [200, 1100, 2000];
+      requestAnimationFrame(() => {
+        order.forEach((sel, i) => {
+          const line = slide.querySelector(sel);
+          if (!line) return;
+          const len = line.getTotalLength();
+          line.style.transition = 'none';
+          line.style.strokeDasharray = len;
+          line.style.strokeDashoffset = len;
+          line.getBoundingClientRect();
+          line.style.transition = `stroke-dashoffset ${durations[i]}ms cubic-bezier(.45,.05,.25,1) ${offsets[i]}ms`;
           line.style.strokeDashoffset = '0';
         });
       });
