@@ -412,6 +412,58 @@
     animation: cardIn 360ms ease 2400ms both;
   }
 
+  /* Big speed chart on slide 36 */
+  .slide--ax-speed .slide-title { font-size: 64px; margin-bottom: 12px; }
+  .slide--ax-speed .slide-subtitle { font-size: 24px; margin-bottom: 18px; max-width: 70ch; color: var(--ink-mute); }
+  .ax-chart-big {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 0;
+  }
+  .ax-chart-big .ax-chart-legend {
+    display: flex;
+    gap: 32px;
+    justify-content: flex-start;
+  }
+  .ax-chart-big .ax-chart-legend-item {
+    font-size: 17px;
+    gap: 10px;
+  }
+  .ax-chart-big .ax-chart-legend-item::before { width: 28px; height: 4px; }
+  .ax-chart-big svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    flex: 1;
+  }
+  .ax-dot { opacity: 0; }
+  .ax-dot--internet { fill: var(--guardian-blue-soft); }
+  .ax-dot--phone    { fill: var(--ink-mute); }
+  .ax-dot--ai       { fill: var(--news-red); }
+  [data-deck-active] .ax-dot--internet { animation: cardIn 280ms ease both; }
+  [data-deck-active] .ax-dot--phone    { animation: cardIn 280ms ease both; }
+  [data-deck-active] .ax-dot--ai       { animation: cardIn 320ms ease both; }
+  /* Internet dots fade in along the slow climb (2.6s span) */
+  [data-deck-active] .ax-dot--internet:nth-of-type(1) { animation-delay: 200ms; }
+  [data-deck-active] .ax-dot--internet:nth-of-type(2) { animation-delay: 1000ms; }
+  [data-deck-active] .ax-dot--internet:nth-of-type(3) { animation-delay: 1800ms; }
+  [data-deck-active] .ax-dot--internet:nth-of-type(4) { animation-delay: 2600ms; }
+  /* Smartphone dots — similar pace */
+  [data-deck-active] .ax-dot--phone:nth-of-type(1) { animation-delay: 200ms; }
+  [data-deck-active] .ax-dot--phone:nth-of-type(2) { animation-delay: 900ms; }
+  [data-deck-active] .ax-dot--phone:nth-of-type(3) { animation-delay: 1600ms; }
+  [data-deck-active] .ax-dot--phone:nth-of-type(4) { animation-delay: 2300ms; }
+  /* AI dots — fast and dramatic (1.3s span) */
+  [data-deck-active] .ax-dot--ai:nth-of-type(1) { animation-delay: 200ms; }
+  [data-deck-active] .ax-dot--ai:nth-of-type(2) { animation-delay: 600ms; }
+  [data-deck-active] .ax-dot--ai:nth-of-type(3) { animation-delay: 1000ms; }
+  [data-deck-active] .ax-dot--ai:nth-of-type(4) { animation-delay: 1500ms; }
+  .ax-endpoint--big { font-size: 40px !important; fill: var(--news-red); font-weight: 700; }
+  [data-deck-active] .ax-endpoint--big { animation: cardIn 420ms ease 1700ms both; }
+
   /* Industry adoption bars (variant of WEF style, single column) */
   .ax-industries {
     display: flex;
@@ -4017,7 +4069,7 @@
   </section>
 
   <!-- ============================================================
-       SLIDE 35 — Appendix A1: AI has already arrived (scale + speed)
+       SLIDE 35 — Appendix A1: Scale
        ============================================================ -->
   <section class="slide slide--appendix" data-label="Appendix · AI scale">
     <div class="rule-band"></div>
@@ -4047,63 +4099,91 @@
         </div>
       </div>
 
-      <div class="ax-chart">
-        <header class="ax-chart-head">
-          <p class="ax-chart-title">Faster than anything we've seen.</p>
-          <div class="ax-chart-legend">
-            <span class="ax-chart-legend-item is-internet">Internet at work (from 1995)</span>
-            <span class="ax-chart-legend-item is-phone">Smartphone adoption (from 2007)</span>
-            <span class="ax-chart-legend-item is-ai">Generative AI at work (from 2022)</span>
-          </div>
-        </header>
-
-        <svg viewBox="0 0 1600 360" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Adoption curves for internet at work, smartphone use, and generative AI at work, by years since launch.">
-          <!-- Y grid lines at 0, 20, 40, 60, 80 -->
-          <line class="ax-grid" x1="80" y1="40" x2="1560" y2="40"/>
-          <line class="ax-grid" x1="80" y1="120" x2="1560" y2="120"/>
-          <line class="ax-grid" x1="80" y1="200" x2="1560" y2="200"/>
-          <line class="ax-grid" x1="80" y1="280" x2="1560" y2="280"/>
-          <line class="ax-axis-base" x1="80" y1="320" x2="1560" y2="320"/>
-
-          <!-- Y axis labels (% adoption) -->
-          <text class="ax-axis ax-axis-y" x="68" y="44">80%</text>
-          <text class="ax-axis ax-axis-y" x="68" y="124">60%</text>
-          <text class="ax-axis ax-axis-y" x="68" y="204">40%</text>
-          <text class="ax-axis ax-axis-y" x="68" y="284">20%</text>
-          <text class="ax-axis ax-axis-y" x="68" y="324">0</text>
-
-          <!-- X axis labels (years since launch) -->
-          <text class="ax-axis" x="80" y="345" text-anchor="middle">Year 0</text>
-          <text class="ax-axis" x="291" y="345" text-anchor="middle">1</text>
-          <text class="ax-axis" x="503" y="345" text-anchor="middle">2</text>
-          <text class="ax-axis" x="714" y="345" text-anchor="middle">3</text>
-          <text class="ax-axis" x="925" y="345" text-anchor="middle">4</text>
-          <text class="ax-axis" x="1137" y="345" text-anchor="middle">5</text>
-          <text class="ax-axis" x="1348" y="345" text-anchor="middle">6</text>
-          <text class="ax-axis" x="1560" y="345" text-anchor="middle">7</text>
-
-          <!-- Internet: Year/percent → x = 80 + year*211.4, y = 320 - pct*3.5 -->
-          <polyline class="ax-line ax-line--internet" points="80,320 291,303 503,278 714,250 925,215 1137,173 1348,145 1560,128"/>
-
-          <!-- Smartphone -->
-          <polyline class="ax-line ax-line--phone" points="80,320 291,303 503,268 714,233 925,198 1137,163 1348,117 1560,93"/>
-
-          <!-- Generative AI (only to year 3) -->
-          <polyline class="ax-line ax-line--ai" points="80,320 291,243 503,212 714,177"/>
-
-          <!-- Endpoint labels -->
-          <text class="ax-endpoint" x="1560" y="120" text-anchor="end" dy="-6">55% by year 7</text>
-          <text class="ax-endpoint" x="1560" y="85" text-anchor="end" dy="-6">65% by year 7</text>
-          <text class="ax-endpoint" x="714" y="170" text-anchor="middle" dy="-10" fill="#C70000">41% by year 3</text>
-        </svg>
-      </div>
-
-      <p class="ax-source">Sources: US Census / Pew (internet at work, 1995–2002), Pew Research (smartphone, 2007–2014), Federal Reserve (GenAI, 2022–2025). Different products and different definitions of "adoption" — but the shape of the curve is unambiguous.</p>
+      <p class="ax-source">Source: Federal Reserve, "Monitoring AI Adoption in the U.S. Economy", April 2026.</p>
     </div>
 
     <div class="slide-foot">
       <span class="wm">Appendix · AI adoption</span>
       <span class="num">35 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 36 — Appendix A2: Speed — focused 0–3 year chart
+       ============================================================ -->
+  <section class="slide slide--appendix slide--ax-speed" data-label="Appendix · AI speed">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Appendix · AI adoption</p>
+    <h2 class="slide-title">Faster than anything we've <em>seen</em>.</h2>
+    <p class="slide-subtitle">Adoption in the first three years after launch — same window for each technology.</p>
+
+    <div class="slide-body">
+      <div class="ax-chart-big">
+        <div class="ax-chart-legend">
+          <span class="ax-chart-legend-item is-internet">Internet at work (1995–98)</span>
+          <span class="ax-chart-legend-item is-phone">Smartphone adoption (2007–10)</span>
+          <span class="ax-chart-legend-item is-ai">Generative AI at work (2022–25)</span>
+        </div>
+
+        <svg viewBox="0 0 1600 600" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Three-year adoption curves comparing internet at work, smartphone adoption, and generative AI at work.">
+          <!-- Horizontal grid lines -->
+          <line class="ax-grid" x1="100" y1="60"  x2="1500" y2="60"/>
+          <line class="ax-grid" x1="100" y1="180" x2="1500" y2="180"/>
+          <line class="ax-grid" x1="100" y1="300" x2="1500" y2="300"/>
+          <line class="ax-grid" x1="100" y1="420" x2="1500" y2="420"/>
+          <line class="ax-axis-base" x1="100" y1="540" x2="1500" y2="540"/>
+
+          <!-- Y axis labels: 0–50% in 10% increments -->
+          <text class="ax-axis ax-axis-y" x="86" y="64">50%</text>
+          <text class="ax-axis ax-axis-y" x="86" y="184">40%</text>
+          <text class="ax-axis ax-axis-y" x="86" y="304">30%</text>
+          <text class="ax-axis ax-axis-y" x="86" y="424">20%</text>
+          <text class="ax-axis ax-axis-y" x="86" y="544">10%</text>
+          <text class="ax-axis ax-axis-y" x="86" y="572">0</text>
+
+          <!-- X axis labels: 0, 1, 2, 3 years -->
+          <text class="ax-axis" x="100"  y="572" text-anchor="middle">Launch</text>
+          <text class="ax-axis" x="566"  y="572" text-anchor="middle">+1 yr</text>
+          <text class="ax-axis" x="1033" y="572" text-anchor="middle">+2 yrs</text>
+          <text class="ax-axis" x="1500" y="572" text-anchor="middle">+3 yrs</text>
+
+          <!-- Scaling: x = 100 + year*466.67, y = 540 - pct*12  (50% range over 480px) -->
+
+          <!-- Internet at work: 0, 5, 12, 20 -->
+          <polyline class="ax-line ax-line--internet" points="100,540 566,480 1033,396 1500,300"/>
+          <circle class="ax-dot ax-dot--internet" cx="100"  cy="540" r="7"/>
+          <circle class="ax-dot ax-dot--internet" cx="566"  cy="480" r="7"/>
+          <circle class="ax-dot ax-dot--internet" cx="1033" cy="396" r="7"/>
+          <circle class="ax-dot ax-dot--internet" cx="1500" cy="300" r="7"/>
+
+          <!-- Smartphone adoption: 0, 5, 15, 25 -->
+          <polyline class="ax-line ax-line--phone" points="100,540 566,480 1033,360 1500,240"/>
+          <circle class="ax-dot ax-dot--phone" cx="100"  cy="540" r="7"/>
+          <circle class="ax-dot ax-dot--phone" cx="566"  cy="480" r="7"/>
+          <circle class="ax-dot ax-dot--phone" cx="1033" cy="360" r="7"/>
+          <circle class="ax-dot ax-dot--phone" cx="1500" cy="240" r="7"/>
+
+          <!-- Generative AI: 0, 22, 31, 41 -->
+          <polyline class="ax-line ax-line--ai" points="100,540 566,276 1033,168 1500,48"/>
+          <circle class="ax-dot ax-dot--ai" cx="100"  cy="540" r="9"/>
+          <circle class="ax-dot ax-dot--ai" cx="566"  cy="276" r="9"/>
+          <circle class="ax-dot ax-dot--ai" cx="1033" cy="168" r="9"/>
+          <circle class="ax-dot ax-dot--ai" cx="1500" cy="48"  r="11"/>
+
+          <!-- Endpoint labels -->
+          <text class="ax-endpoint" x="1490" y="296" text-anchor="end" dy="-8">20%</text>
+          <text class="ax-endpoint" x="1490" y="236" text-anchor="end" dy="-8">25%</text>
+          <text class="ax-endpoint ax-endpoint--big" x="1490" y="44" text-anchor="end" dy="-10">41%</text>
+        </svg>
+      </div>
+
+      <p class="ax-source">Within the same three-year window from launch, generative AI is at <strong>41%</strong> workforce adoption — roughly double internet-at-work and smartphone adoption at the equivalent point. Sources: US Census / Pew (internet, 1995–98), Pew Research (smartphone, 2007–10), Federal Reserve (GenAI, 2022–25). Y-axis is % of relevant population (workforce / adults).</p>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Appendix · AI adoption</span>
+      <span class="num">36 / NN</span>
     </div>
   </section>
 
@@ -4274,7 +4354,7 @@
   document.querySelector('deck-stage').addEventListener('slidechange', (e) => {
     const slide = e.detail.slide;
     if (!slide) return;
-    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .choice-card, .risk-card, .ai-meta, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em, .flow-node, .flow-line, .comms-card, .comms-pivot, .cost-card, .wef-list li, .ax-endpoint');
+    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .choice-card, .risk-card, .ai-meta, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em, .flow-node, .flow-line, .comms-card, .comms-pivot, .cost-card, .wef-list li, .ax-endpoint, .ax-dot');
     els.forEach((b) => {
       b.style.animation = 'none';
       void b.offsetWidth;
@@ -4297,15 +4377,18 @@
       });
     }
 
-    // Appendix adoption-curve chart — draw three lines sequentially.
-    // Internet first (slow climb), then smartphone (similar shape),
-    // then GenAI (steep) so the audience sees the comparison build.
+    // Appendix adoption-curve chart — all three lines start together,
+    // but AI draws ~half the duration of the other two so it visibly
+    // outpaces them in real time. That's the story: same window, AI
+    // reaches its endpoint dramatically faster.
     if (slide.querySelector('.ax-line')) {
-      const order = ['.ax-line--internet', '.ax-line--phone', '.ax-line--ai'];
-      const durations = [1400, 1400, 1100];
-      const offsets = [200, 1100, 2000];
+      const setup = [
+        { sel: '.ax-line--internet', dur: 2600, delay: 200 },
+        { sel: '.ax-line--phone',    dur: 2300, delay: 200 },
+        { sel: '.ax-line--ai',       dur: 1500, delay: 200 },
+      ];
       requestAnimationFrame(() => {
-        order.forEach((sel, i) => {
+        setup.forEach(({ sel, dur, delay }) => {
           const line = slide.querySelector(sel);
           if (!line) return;
           const len = line.getTotalLength();
@@ -4313,7 +4396,7 @@
           line.style.strokeDasharray = len;
           line.style.strokeDashoffset = len;
           line.getBoundingClientRect();
-          line.style.transition = `stroke-dashoffset ${durations[i]}ms cubic-bezier(.45,.05,.25,1) ${offsets[i]}ms`;
+          line.style.transition = `stroke-dashoffset ${dur}ms cubic-bezier(.45,.05,.25,1) ${delay}ms`;
           line.style.strokeDashoffset = '0';
         });
       });
