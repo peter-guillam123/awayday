@@ -517,6 +517,23 @@
   }
   .ax-quote--compact .ax-quote-body { font-size: 26px; line-height: 1.25; }
   .ax-quote-body em { color: var(--news-red); font-style: italic; }
+
+  /* Key finding callout — paper-deep panel with red rule, fills the
+     space at the bottom of slide 35 properly */
+  .ax-keyfinding {
+    padding: 28px 44px 26px;
+    gap: 12px;
+  }
+  .ax-keyfinding-eyebrow {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--news-red);
+    margin: 0;
+  }
+  .ax-keyfinding .ax-quote-body { font-size: 34px; line-height: 1.22; }
   .ax-quote-attr {
     font-family: var(--body);
     font-size: 18px;
@@ -4102,9 +4119,10 @@
         </div>
       </div>
 
-      <aside class="ax-quote ax-quote--compact">
-        <p class="ax-quote-body">"Adoption appears to correlate with size, but adoption among the smallest firms is <em>stronger than would be expected based on size alone</em>."</p>
-        <p class="ax-quote-attr">Federal Reserve, <strong>"Monitoring AI Adoption in the U.S. Economy"</strong>, April 2026</p>
+      <aside class="ax-quote ax-keyfinding">
+        <p class="ax-keyfinding-eyebrow">Key finding</p>
+        <p class="ax-quote-body">This is not adoption in pockets. It now spans the US economy — by <em>firm size</em>, by <em>industry</em>, by <em>occupation</em>. And the pace shows no sign of slowing.</p>
+        <p class="ax-quote-attr">Summarising Federal Reserve, <strong>"Monitoring AI Adoption in the U.S. Economy"</strong>, April 2026</p>
       </aside>
 
       <p class="ax-source">Source: Federal Reserve, April 2026.</p>
