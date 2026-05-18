@@ -447,20 +447,20 @@
   [data-deck-active] .ax-dot--phone    { animation: cardIn 280ms ease both; }
   [data-deck-active] .ax-dot--ai       { animation: cardIn 320ms ease both; }
   /* Internet dots fade in along the climb (200ms start, 2800ms span) */
-  [data-deck-active] .ax-dot--internet:nth-of-type(1) { animation-delay: 200ms; }
-  [data-deck-active] .ax-dot--internet:nth-of-type(2) { animation-delay: 1133ms; }
-  [data-deck-active] .ax-dot--internet:nth-of-type(3) { animation-delay: 2066ms; }
-  [data-deck-active] .ax-dot--internet:nth-of-type(4) { animation-delay: 3000ms; }
+  [data-deck-active] .ax-track--internet .ax-dot:nth-of-type(1) { animation-delay: 200ms; }
+  [data-deck-active] .ax-track--internet .ax-dot:nth-of-type(2) { animation-delay: 1133ms; }
+  [data-deck-active] .ax-track--internet .ax-dot:nth-of-type(3) { animation-delay: 2066ms; }
+  [data-deck-active] .ax-track--internet .ax-dot:nth-of-type(4) { animation-delay: 3000ms; }
   /* Smartphone dots (200ms start, 2600ms span) */
-  [data-deck-active] .ax-dot--phone:nth-of-type(1) { animation-delay: 200ms; }
-  [data-deck-active] .ax-dot--phone:nth-of-type(2) { animation-delay: 1066ms; }
-  [data-deck-active] .ax-dot--phone:nth-of-type(3) { animation-delay: 1933ms; }
-  [data-deck-active] .ax-dot--phone:nth-of-type(4) { animation-delay: 2800ms; }
+  [data-deck-active] .ax-track--phone .ax-dot:nth-of-type(1) { animation-delay: 200ms; }
+  [data-deck-active] .ax-track--phone .ax-dot:nth-of-type(2) { animation-delay: 1066ms; }
+  [data-deck-active] .ax-track--phone .ax-dot:nth-of-type(3) { animation-delay: 1933ms; }
+  [data-deck-active] .ax-track--phone .ax-dot:nth-of-type(4) { animation-delay: 2800ms; }
   /* AI dots — start after others finish, draw over 2000ms */
-  [data-deck-active] .ax-dot--ai:nth-of-type(1) { animation-delay: 3400ms; }
-  [data-deck-active] .ax-dot--ai:nth-of-type(2) { animation-delay: 4066ms; }
-  [data-deck-active] .ax-dot--ai:nth-of-type(3) { animation-delay: 4733ms; }
-  [data-deck-active] .ax-dot--ai:nth-of-type(4) { animation-delay: 5400ms; }
+  [data-deck-active] .ax-track--ai .ax-dot:nth-of-type(1) { animation-delay: 3400ms; }
+  [data-deck-active] .ax-track--ai .ax-dot:nth-of-type(2) { animation-delay: 4066ms; }
+  [data-deck-active] .ax-track--ai .ax-dot:nth-of-type(3) { animation-delay: 4733ms; }
+  [data-deck-active] .ax-track--ai .ax-dot:nth-of-type(4) { animation-delay: 5400ms; }
   .ax-endpoint--big { font-size: 40px !important; fill: var(--news-red); font-weight: 700; }
   [data-deck-active] .ax-endpoint--big { animation: cardIn 420ms ease 5600ms both; }
 
@@ -4240,25 +4240,31 @@
           <!-- Scaling: x = 100 + year*466.67, y = 540 - pct*12  (50% range over 480px) -->
 
           <!-- Internet at work: 0, 5, 12, 20 -->
-          <polyline class="ax-line ax-line--internet" points="100,540 566,480 1033,396 1500,300"/>
-          <circle class="ax-dot ax-dot--internet" cx="100"  cy="540" r="7"/>
-          <circle class="ax-dot ax-dot--internet" cx="566"  cy="480" r="7"/>
-          <circle class="ax-dot ax-dot--internet" cx="1033" cy="396" r="7"/>
-          <circle class="ax-dot ax-dot--internet" cx="1500" cy="300" r="7"/>
+          <g class="ax-track ax-track--internet">
+            <polyline class="ax-line ax-line--internet" points="100,540 566,480 1033,396 1500,300"/>
+            <circle class="ax-dot ax-dot--internet" cx="100"  cy="540" r="7"/>
+            <circle class="ax-dot ax-dot--internet" cx="566"  cy="480" r="7"/>
+            <circle class="ax-dot ax-dot--internet" cx="1033" cy="396" r="7"/>
+            <circle class="ax-dot ax-dot--internet" cx="1500" cy="300" r="7"/>
+          </g>
 
           <!-- Smartphone adoption: 0, 5, 15, 25 -->
-          <polyline class="ax-line ax-line--phone" points="100,540 566,480 1033,360 1500,240"/>
-          <circle class="ax-dot ax-dot--phone" cx="100"  cy="540" r="7"/>
-          <circle class="ax-dot ax-dot--phone" cx="566"  cy="480" r="7"/>
-          <circle class="ax-dot ax-dot--phone" cx="1033" cy="360" r="7"/>
-          <circle class="ax-dot ax-dot--phone" cx="1500" cy="240" r="7"/>
+          <g class="ax-track ax-track--phone">
+            <polyline class="ax-line ax-line--phone" points="100,540 566,480 1033,360 1500,240"/>
+            <circle class="ax-dot ax-dot--phone" cx="100"  cy="540" r="7"/>
+            <circle class="ax-dot ax-dot--phone" cx="566"  cy="480" r="7"/>
+            <circle class="ax-dot ax-dot--phone" cx="1033" cy="360" r="7"/>
+            <circle class="ax-dot ax-dot--phone" cx="1500" cy="240" r="7"/>
+          </g>
 
           <!-- Generative AI: 0, 22, 31, 41 -->
-          <polyline class="ax-line ax-line--ai" points="100,540 566,276 1033,168 1500,48"/>
-          <circle class="ax-dot ax-dot--ai" cx="100"  cy="540" r="9"/>
-          <circle class="ax-dot ax-dot--ai" cx="566"  cy="276" r="9"/>
-          <circle class="ax-dot ax-dot--ai" cx="1033" cy="168" r="9"/>
-          <circle class="ax-dot ax-dot--ai" cx="1500" cy="48"  r="11"/>
+          <g class="ax-track ax-track--ai">
+            <polyline class="ax-line ax-line--ai" points="100,540 566,276 1033,168 1500,48"/>
+            <circle class="ax-dot ax-dot--ai" cx="100"  cy="540" r="9"/>
+            <circle class="ax-dot ax-dot--ai" cx="566"  cy="276" r="9"/>
+            <circle class="ax-dot ax-dot--ai" cx="1033" cy="168" r="9"/>
+            <circle class="ax-dot ax-dot--ai" cx="1500" cy="48"  r="11"/>
+          </g>
 
           <!-- Endpoint labels -->
           <text class="ax-endpoint" x="1490" y="296" text-anchor="end" dy="-8">20%</text>
