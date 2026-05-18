@@ -534,6 +534,69 @@
     margin: 0;
   }
   .ax-keyfinding .ax-quote-body { font-size: 34px; line-height: 1.22; }
+
+  /* Historical parallels table */
+  .ax-parallels {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 4px;
+  }
+  .ax-parallels thead th {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    text-align: left;
+    padding: 8px 18px 14px;
+    border-bottom: 2px solid var(--ink);
+    vertical-align: bottom;
+  }
+  .ax-parallels thead th:first-child { color: var(--news-red); }
+  .ax-parallels tbody td {
+    font-family: var(--body);
+    font-size: 18px;
+    line-height: 1.36;
+    color: var(--ink-soft);
+    padding: 22px 18px;
+    border-bottom: 1px solid var(--paper-rule);
+    vertical-align: top;
+  }
+  .ax-parallels tbody tr:last-child td { border-bottom: none; }
+  .ax-parallels tbody td:nth-child(1) {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.18;
+    color: var(--ink);
+    border-left: 4px solid var(--news-red);
+    padding-left: 20px;
+  }
+  .ax-parallels tbody td:nth-child(2) {
+    font-family: var(--display);
+    font-weight: 700;
+    color: var(--guardian-blue);
+    font-size: 19px;
+  }
+  .ax-parallels tbody td:nth-child(3) {
+    font-family: var(--mono);
+    font-size: 16px;
+    color: var(--ink-mute);
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+  }
+  .ax-parallels tbody td:nth-child(4) {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .ax-parallels col.col-fear { width: 24%; }
+  .ax-parallels col.col-tech { width: 15%; }
+  .ax-parallels col.col-date { width: 10%; }
+  .ax-parallels col.col-crit { width: 18%; }
+  .ax-parallels col.col-said { width: 33%; }
   .ax-quote-attr {
     font-family: var(--body);
     font-size: 18px;
@@ -4214,7 +4277,76 @@
   </section>
 
   <!-- ============================================================
-       SLIDE 37 — Appendix A3: Easy for some, hard for others
+       SLIDE 37 — Appendix: Historical parallels to AI fears
+       ============================================================ -->
+  <section class="slide slide--appendix" data-label="Appendix · Historical parallels">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Appendix · AI adoption</p>
+    <h2 class="slide-title">We've heard this all <em>before</em>.</h2>
+    <p class="slide-subtitle">Every major new medium has triggered fears that look strikingly like today's AI debate.</p>
+
+    <div class="slide-body">
+      <table class="ax-parallels">
+        <colgroup>
+          <col class="col-fear">
+          <col class="col-tech">
+          <col class="col-date">
+          <col class="col-crit">
+          <col class="col-said">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>The AI fear today</th>
+            <th>Earlier invention</th>
+            <th>Date</th>
+            <th>The critic</th>
+            <th>What they said</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hallucinations; lack of true understanding.</td>
+            <td>The written word</td>
+            <td>c.800 BC</td>
+            <td>Plato (Socrates &amp; King Thamus)</td>
+            <td>Loss of internal memory; the mere appearance of wisdom.</td>
+          </tr>
+          <tr>
+            <td>Choice overload; "slop" and content saturation.</td>
+            <td>The printing press</td>
+            <td>c.1450</td>
+            <td>Hieronimo Squarciafico</td>
+            <td>Enfeeblement of the mind through "abundance".</td>
+          </tr>
+          <tr>
+            <td>Depreciation of human creativity and "soul".</td>
+            <td>Photography</td>
+            <td>1839</td>
+            <td>Charles Baudelaire</td>
+            <td>Death of imagination; the cult of fidelity; refuge of the lazy.</td>
+          </tr>
+          <tr>
+            <td>Flattening of thought; distraction.</td>
+            <td>The internet</td>
+            <td>c.1995</td>
+            <td>Nicholas Carr</td>
+            <td>Loss of capacity for "deep reading" and focus.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="ax-source">Sources: Plato, <em>Phaedrus</em>; Squarciafico (Venetian humanist, 15th c.); Baudelaire, <em>Salon of 1859</em>; Nicholas Carr, "Is Google Making Us Stupid?" (2008) and <em>The Shallows</em> (2010).</p>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Appendix · AI adoption</span>
+      <span class="num">37 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 38 — Appendix A3: Easy for some, hard for others
        ============================================================ -->
   <section class="slide slide--appendix" data-label="Appendix · Firm vs worker">
     <div class="rule-band"></div>
