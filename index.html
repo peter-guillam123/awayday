@@ -1524,6 +1524,82 @@
     padding-top: 10px;
   }
 
+  /* ===== Poll results slide (after How it works) ===== */
+  .slide--poll .slide-title { font-size: 60px; margin-bottom: 12px; max-width: none; }
+  .slide--poll .slide-subtitle { font-size: 22px; margin-bottom: 22px; max-width: 90ch; color: var(--ink-mute); }
+  .slide--poll .slide-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .poll-list {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+  }
+  .poll-row {
+    display: grid;
+    grid-template-columns: 36px 360px 1fr 70px;
+    align-items: center;
+    gap: 18px;
+    padding: 8px 0;
+    border-top: 1px solid var(--paper-rule);
+  }
+  .poll-row:first-child { border-top: 2px solid var(--ink); }
+  .poll-rank {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink-mute);
+    text-align: right;
+  }
+  .poll-row--top .poll-rank { color: var(--news-red); }
+  .poll-label {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .poll-bar {
+    display: block;
+    height: 22px;
+    background: var(--paper-deep);
+    overflow: hidden;
+  }
+  .poll-bar-fill {
+    display: block;
+    height: 100%;
+    background: var(--guardian-blue-soft);
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+  .poll-row--top .poll-bar-fill { background: var(--news-red); }
+  .poll-score {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink);
+    text-align: right;
+  }
+  [data-deck-active] .poll-bar-fill {
+    animation: pollFill 800ms cubic-bezier(.2,.8,.2,1) both;
+  }
+  @keyframes pollFill { to { transform: scaleX(1); } }
+  [data-deck-active] .poll-row:nth-child(1)  .poll-bar-fill { animation-delay: 200ms;  }
+  [data-deck-active] .poll-row:nth-child(2)  .poll-bar-fill { animation-delay: 320ms;  }
+  [data-deck-active] .poll-row:nth-child(3)  .poll-bar-fill { animation-delay: 440ms;  }
+  [data-deck-active] .poll-row:nth-child(4)  .poll-bar-fill { animation-delay: 560ms;  }
+  [data-deck-active] .poll-row:nth-child(5)  .poll-bar-fill { animation-delay: 680ms;  }
+  [data-deck-active] .poll-row:nth-child(6)  .poll-bar-fill { animation-delay: 800ms;  }
+  [data-deck-active] .poll-row:nth-child(7)  .poll-bar-fill { animation-delay: 920ms;  }
+  [data-deck-active] .poll-row:nth-child(8)  .poll-bar-fill { animation-delay: 1040ms; }
+  [data-deck-active] .poll-row:nth-child(9)  .poll-bar-fill { animation-delay: 1160ms; }
+  [data-deck-active] .poll-row:nth-child(10) .poll-bar-fill { animation-delay: 1280ms; }
+  [data-deck-active] .poll-row:nth-child(11) .poll-bar-fill { animation-delay: 1400ms; }
+  [data-deck-active] .poll-row:nth-child(12) .poll-bar-fill { animation-delay: 1520ms; }
+
   /* ===== WEF risks chart (slide 20) ===== */
   .slide--wef .slide-title { font-size: 60px; margin-bottom: 10px; max-width: none; }
   .slide--wef .slide-subtitle { font-size: 26px; margin-bottom: 26px; max-width: 90ch; color: var(--ink-mute); }
@@ -2879,6 +2955,386 @@
   </section>
 
   <!-- ============================================================
+       SLIDE 25 — Poll results (revealed before the workshop)
+       ============================================================ -->
+  <section class="slide slide--poll" data-label="Poll results">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Group activity</p>
+    <h2 class="slide-title">What the room <em>said</em>.</h2>
+    <p class="slide-subtitle">From the live poll at the start: each of you picked the five risks you thought most threatened the Guardian over the next five years, ranked in order.</p>
+
+    <div class="slide-body">
+      <div class="poll-list">
+        <div class="poll-row poll-row--top"><span class="poll-rank">1</span><span class="poll-label">Adverse outcomes of AI technologies</span><span class="poll-bar"><span class="poll-bar-fill" style="width: 100.0%"></span></span><span class="poll-score">3.76</span></div>
+        <div class="poll-row poll-row--top"><span class="poll-rank">2</span><span class="poll-label">Misinformation and disinformation</span><span class="poll-bar"><span class="poll-bar-fill" style="width: 76.6%"></span></span><span class="poll-score">2.88</span></div>
+        <div class="poll-row poll-row--top"><span class="poll-rank">3</span><span class="poll-label">Societal polarization</span><span class="poll-bar"><span class="poll-bar-fill" style="width: 51.9%"></span></span><span class="poll-score">1.95</span></div>
+        <div class="poll-row poll-row--top"><span class="poll-rank">4</span><span class="poll-label">Cyber espionage and warfare</span><span class="poll-bar"><span class="poll-bar-fill" style="width: 49.2%"></span></span><span class="poll-score">1.85</span></div>
+        <div class="poll-row poll-row--top"><span class="poll-rank">5</span><span class="poll-label">Erosion of human rights and/or civic freedoms</span><span class="poll-bar"><span class="poll-bar-fill" style="width: 37.0%"></span></span><span class="poll-score">1.39</span></div>
+        <div class="poll-row"><span class="poll-rank">6</span><span class="poll-label">Critical change to Earth systems</span><span class="poll-bar"><span class="poll-bar-fill" style="width: 14.4%"></span></span><span class="poll-score">0.54</span></div>
+        <div class="poll-row"><span class="poll-rank">7</span><span class="poll-label">State-based armed conflict</span><span class="poll-bar"><span class="poll-bar-fill" style="width: 13.6%"></span></span><span class="poll-score">0.51</span></div>
+        <div class="poll-row"><span class="poll-rank">8</span><span class="poll-label">Natural resource shortages</span><span class="poll-bar"><span class="poll-bar-fill" style="width: 11.7%"></span></span><span class="poll-score">0.44</span></div>
+        <div class="poll-row"><span class="poll-rank">9</span><span class="poll-label">Geoeconomic confrontation</span><span class="poll-bar"><span class="poll-bar-fill" style="width: 11.7%"></span></span><span class="poll-score">0.44</span></div>
+        <div class="poll-row"><span class="poll-rank">10</span><span class="poll-label">Extreme weather events</span><span class="poll-bar"><span class="poll-bar-fill" style="width: 10.4%"></span></span><span class="poll-score">0.39</span></div>
+        <div class="poll-row"><span class="poll-rank">11</span><span class="poll-label">Inequality</span><span class="poll-bar"><span class="poll-bar-fill" style="width: 10.4%"></span></span><span class="poll-score">0.39</span></div>
+        <div class="poll-row"><span class="poll-rank">12</span><span class="poll-label">Involuntary migration or displacement</span><span class="poll-bar"><span class="poll-bar-fill" style="width: 6.4%"></span></span><span class="poll-score">0.24</span></div>
+      </div>
+      <p class="ax-source">Source: Slido · 41 respondents · weighted ranking (first pick scored highest). May 2026.</p>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Group activity</span>
+      <span class="num">25 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 26 — Appendix interstitial (section-opener style)
+       ============================================================ -->
+  <section class="slide ink section-opener" data-label="Appendix interstitial">
+    <div class="rule-band"></div>
+
+    <div class="chapter-num">Appendix</div>
+    <p class="section-kicker">Reference</p>
+    <h1>The <em>data</em>.</h1>
+    <p class="section-dek">Numbers on AI adoption &mdash; for anyone in the room who suspects we've overstated the case.</p>
+
+    <div class="slide-foot">
+      <span class="wm">Group 4 · Appendix</span>
+      <span class="num">26 / NN</span>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SLIDE 35 — Appendix A1: Scale
+       ============================================================ -->
+  <section class="slide slide--appendix" data-label="Appendix · AI scale">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Appendix · AI adoption</p>
+    <h2 class="slide-title">AI has already <em>arrived</em>.</h2>
+
+    <div class="slide-body">
+      <div class="ax-hero-row">
+        <div class="ax-hero">
+          <p class="ax-hero-eyebrow">US workforce, November 2025</p>
+          <p class="ax-hero-figure">41%</p>
+          <p class="ax-hero-body">Of the US workforce uses generative AI at work — up from effectively zero three years ago.</p>
+        </div>
+
+        <div class="ax-side-stack">
+          <article class="ax-card">
+            <p class="ax-card-eyebrow">Personal use</p>
+            <p class="ax-card-figure">58%</p>
+            <p class="ax-card-body">Of US adults have used a generative AI tool at home or for personal tasks.</p>
+          </article>
+          <article class="ax-card">
+            <p class="ax-card-eyebrow">From a standing start</p>
+            <p class="ax-card-figure">3 yrs</p>
+            <p class="ax-card-body">ChatGPT launched November 2022. The 41% figure is from November 2025.</p>
+          </article>
+        </div>
+      </div>
+
+      <aside class="ax-quote ax-keyfinding">
+        <p class="ax-keyfinding-eyebrow">Key finding</p>
+        <p class="ax-quote-body">This is not adoption in pockets. It now spans the US economy — by <em>firm size</em>, by <em>industry</em>, by <em>occupation</em>. And the pace shows no sign of slowing.</p>
+        <p class="ax-quote-attr">Summarising Federal Reserve, <strong>"Monitoring AI Adoption in the U.S. Economy"</strong>, April 2026</p>
+      </aside>
+
+      <p class="ax-source">Sources: Federal Reserve, "Monitoring AI Adoption in the U.S. Economy", April 2026 (workforce figure); Pew Research, late 2025 tracking (personal-use figure).</p>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Appendix · AI adoption</span>
+      <span class="num">35 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 36 — Appendix A2: Speed — focused 0–3 year chart
+       ============================================================ -->
+  <section class="slide slide--appendix slide--ax-speed" data-label="Appendix · AI speed">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Appendix · AI adoption</p>
+    <h2 class="slide-title">Faster than anything we've <em>seen</em>.</h2>
+    <p class="slide-subtitle">Adoption in the first three years after launch — same window for each technology.</p>
+
+    <div class="slide-body">
+      <div class="ax-chart-big">
+        <div class="ax-chart-legend">
+          <span class="ax-chart-legend-item is-internet">Internet at work (1995–98)</span>
+          <span class="ax-chart-legend-item is-phone">Smartphone adoption (2007–10)</span>
+          <span class="ax-chart-legend-item is-ai">Generative AI at work (2022–25)</span>
+        </div>
+
+        <svg viewBox="0 0 1600 600" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Three-year adoption curves comparing internet at work, smartphone adoption, and generative AI at work.">
+          <!-- Horizontal grid lines -->
+          <line class="ax-grid" x1="100" y1="60"  x2="1500" y2="60"/>
+          <line class="ax-grid" x1="100" y1="180" x2="1500" y2="180"/>
+          <line class="ax-grid" x1="100" y1="300" x2="1500" y2="300"/>
+          <line class="ax-grid" x1="100" y1="420" x2="1500" y2="420"/>
+          <line class="ax-axis-base" x1="100" y1="540" x2="1500" y2="540"/>
+
+          <!-- Y axis labels: 0–50% in 10% increments -->
+          <text class="ax-axis ax-axis-y" x="86" y="64">50%</text>
+          <text class="ax-axis ax-axis-y" x="86" y="184">40%</text>
+          <text class="ax-axis ax-axis-y" x="86" y="304">30%</text>
+          <text class="ax-axis ax-axis-y" x="86" y="424">20%</text>
+          <text class="ax-axis ax-axis-y" x="86" y="544">10%</text>
+          <text class="ax-axis ax-axis-y" x="86" y="572">0</text>
+
+          <!-- X axis labels: 0, 1, 2, 3 years -->
+          <text class="ax-axis" x="100"  y="572" text-anchor="middle">Launch</text>
+          <text class="ax-axis" x="566"  y="572" text-anchor="middle">+1 yr</text>
+          <text class="ax-axis" x="1033" y="572" text-anchor="middle">+2 yrs</text>
+          <text class="ax-axis" x="1500" y="572" text-anchor="middle">+3 yrs</text>
+
+          <!-- Scaling: x = 100 + year*466.67, y = 540 - pct*12  (50% range over 480px) -->
+
+          <!-- Internet at work: 0, 5, 12, 20 -->
+          <g class="ax-track ax-track--internet">
+            <polyline class="ax-line ax-line--internet" points="100,540 566,480 1033,396 1500,300"/>
+            <circle class="ax-dot ax-dot--internet" cx="100"  cy="540" r="7"/>
+            <circle class="ax-dot ax-dot--internet" cx="566"  cy="480" r="7"/>
+            <circle class="ax-dot ax-dot--internet" cx="1033" cy="396" r="7"/>
+            <circle class="ax-dot ax-dot--internet" cx="1500" cy="300" r="7"/>
+          </g>
+
+          <!-- Smartphone adoption: 0, 5, 15, 25 -->
+          <g class="ax-track ax-track--phone">
+            <polyline class="ax-line ax-line--phone" points="100,540 566,480 1033,360 1500,240"/>
+            <circle class="ax-dot ax-dot--phone" cx="100"  cy="540" r="7"/>
+            <circle class="ax-dot ax-dot--phone" cx="566"  cy="480" r="7"/>
+            <circle class="ax-dot ax-dot--phone" cx="1033" cy="360" r="7"/>
+            <circle class="ax-dot ax-dot--phone" cx="1500" cy="240" r="7"/>
+          </g>
+
+          <!-- Generative AI: 0, 22, 31, 41 -->
+          <g class="ax-track ax-track--ai">
+            <polyline class="ax-line ax-line--ai" points="100,540 566,276 1033,168 1500,48"/>
+            <circle class="ax-dot ax-dot--ai" cx="100"  cy="540" r="9"/>
+            <circle class="ax-dot ax-dot--ai" cx="566"  cy="276" r="9"/>
+            <circle class="ax-dot ax-dot--ai" cx="1033" cy="168" r="9"/>
+            <circle class="ax-dot ax-dot--ai" cx="1500" cy="48"  r="11"/>
+          </g>
+
+          <!-- Endpoint labels -->
+          <text class="ax-endpoint" x="1490" y="296" text-anchor="end" dy="-8">20%</text>
+          <text class="ax-endpoint" x="1490" y="236" text-anchor="end" dy="-8">25%</text>
+          <text class="ax-endpoint ax-endpoint--big" x="1490" y="44" text-anchor="end" dy="-10">41%</text>
+        </svg>
+      </div>
+
+      <p class="ax-source">Within the same three-year window from launch, generative AI is at <strong>41%</strong> workforce adoption — roughly double internet-at-work and smartphone adoption at the equivalent point. Sources: US Census / Pew (internet, 1995–98), Pew Research (smartphone, 2007–10), Federal Reserve (GenAI, 2022–25). Y-axis is % of relevant population (workforce / adults).</p>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Appendix · AI adoption</span>
+      <span class="num">36 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 37 — Appendix: Historical parallels to AI fears
+       ============================================================ -->
+  <section class="slide slide--appendix" data-label="Appendix · Historical parallels">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Appendix · AI adoption</p>
+    <h2 class="slide-title">History never repeats itself, but it does often <em>rhyme</em>.</h2>
+    <p class="slide-subtitle">Every major new medium has triggered fears that look strikingly like today's AI debate.</p>
+
+    <div class="slide-body">
+      <table class="ax-parallels">
+        <colgroup>
+          <col class="col-fear">
+          <col class="col-tech">
+          <col class="col-date">
+          <col class="col-crit">
+          <col class="col-said">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>The AI fear today</th>
+            <th>Earlier invention</th>
+            <th>Date</th>
+            <th>The critic</th>
+            <th>What they said</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hallucinations; lack of true understanding.</td>
+            <td>The written word</td>
+            <td>c.800 BC</td>
+            <td>Plato (Socrates &amp; King Thamus)</td>
+            <td>Loss of internal memory; the mere appearance of wisdom.</td>
+          </tr>
+          <tr>
+            <td>Choice overload; "slop" and content saturation.</td>
+            <td>The printing press</td>
+            <td>c.1450</td>
+            <td>Hieronimo Squarciafico</td>
+            <td>Enfeeblement of the mind through "abundance".</td>
+          </tr>
+          <tr>
+            <td>Depreciation of human creativity and "soul".</td>
+            <td>Photography</td>
+            <td>1839</td>
+            <td>Charles Baudelaire</td>
+            <td>Death of imagination; the cult of fidelity; refuge of the lazy.</td>
+          </tr>
+          <tr>
+            <td>Hallucinations; removal of artistic friction.</td>
+            <td>Typewriters</td>
+            <td>c.1874</td>
+            <td>Mark Twain</td>
+            <td>"The machine was full of caprices, full of defects — devilish ones."</td>
+          </tr>
+          <tr>
+            <td>Flattening of thought; distraction.</td>
+            <td>The internet</td>
+            <td>c.1995</td>
+            <td>Nicholas Carr</td>
+            <td>Loss of capacity for "deep reading" and focus.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="ax-source">Sources: Plato, <em>Phaedrus</em>; Squarciafico (Venetian humanist, 15th c.); Baudelaire, <em>Salon of 1859</em>; Mark Twain on his Remington typewriter (c.1875); Nicholas Carr, "Is Google Making Us Stupid?" (2008) and <em>The Shallows</em> (2010).</p>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Appendix · AI adoption</span>
+      <span class="num">37 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 38 — Appendix A3: Easy for some, hard for others
+       ============================================================ -->
+  <section class="slide slide--appendix" data-label="Appendix · Firm vs worker">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Appendix · AI adoption</p>
+    <h2 class="slide-title">Easy for some. <em>Hard</em> for others.</h2>
+
+    <div class="slide-body">
+      <div class="ax-pair">
+        <article class="ax-card">
+          <p class="ax-card-eyebrow">Firms that have formally adopted</p>
+          <p class="ax-card-figure">18%</p>
+          <p class="ax-card-body">Of US businesses report adopting AI in any business function (Fed BTOS, end 2025).</p>
+        </article>
+        <article class="ax-card">
+          <p class="ax-card-eyebrow">Workers using it anyway</p>
+          <p class="ax-card-figure">41%</p>
+          <p class="ax-card-body">Of US workers use generative AI at work — often via personal accounts, ahead of their employer (Fed RPS).</p>
+        </article>
+      </div>
+
+      <h3 class="ax-frictions-head">Why deploying it is <em>hard</em>.</h3>
+
+      <ul class="ax-frictions">
+        <li>
+          <div>
+            <strong>Identifying use cases</strong>
+            <span>What's flexible for one person becomes hard to define for a thousand. Personal use bends to the user; organisational use has to nail the use case first.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Reproducibility and audit trail</strong>
+            <span>A sole trader can let AI draft an invoice. A 1,000-person firm needs an output that survives an audit.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Error consequences at scale</strong>
+            <span>A hallucinated paragraph is a shrug in a personal email; a correction in a 200,000-circulation paper.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Workforce concerns about displacement</strong>
+            <span>Real, live conversations inside most large organisations — including ours.</span>
+          </div>
+        </li>
+      </ul>
+
+      <p class="ax-source">Source: Federal Reserve, April 2026. The Fed also notes adoption among the smallest firms is "stronger than would be expected based on size alone".</p>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Appendix · AI adoption</span>
+      <span class="num">37 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 39 — Appendix A5: Used widely, trusted less
+       ============================================================ -->
+  <section class="slide slide--appendix" data-label="Appendix · Trust paradox">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Appendix · AI adoption</p>
+    <h2 class="slide-title">Used widely. Trusted <em>less</em>.</h2>
+
+    <div class="slide-body">
+      <div class="ax-pair">
+        <article class="ax-card">
+          <p class="ax-card-eyebrow">Personal interest</p>
+          <p class="ax-card-figure">27%</p>
+          <p class="ax-card-body">Of global news audiences are interested in AI-generated <em>summaries</em> of news articles — the highest of any AI feature tested.</p>
+        </article>
+        <article class="ax-card">
+          <p class="ax-card-eyebrow">But trust falls</p>
+          <p class="ax-card-figure">−18</p>
+          <p class="ax-card-body">Net score: AI-produced news is seen as <strong>less trustworthy</strong> than human-produced news, even with human oversight.</p>
+        </article>
+      </div>
+
+      <aside class="ax-quote">
+        <p class="ax-quote-body">"Audiences remain broadly sceptical of these automated approaches to news production, but are more accepting of journalists using AI in a supportive role."</p>
+        <p class="ax-quote-attr"><strong>Reuters Institute Digital News Report 2025</strong> — the asymmetry of agency, in their words. People accept tools they control; they don't accept tools used <em>on</em> them.</p>
+      </aside>
+
+      <p class="ax-source">Sources: Reuters Institute Digital News Report 2025 (note: 2026 edition not yet published). Net trust figure averaged across 37 markets.</p>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Appendix · AI adoption</span>
+      <span class="num">39 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 40 — Appendix A6: Dan Williams essay quote (closer)
+       ============================================================ -->
+  <section class="slide slide--appendix slide--ax-essay" data-label="Appendix · An intellectual failure">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Appendix · AI adoption</p>
+    <h2 class="slide-title">An intellectual <em>failure</em>.</h2>
+
+    <div class="slide-body">
+      <aside class="ax-quote ax-quote--essay">
+        <p class="ax-quote-body">"It's difficult to overstate the scale of the intellectual failure around AI that has occurred among many left-wing intellectuals which has gone far beyond responsible scepticism into the domain of <em>outright denial</em>. This failure is especially galling because a thoughtful, reality-oriented, left-wing intellectual culture would have much to contribute to many of the issues raised by highly capable and rapidly advancing AI, including oligarchy, concentration of power, economic inequality, and labour automation."</p>
+        <p class="ax-quote-attr"><strong>Dan Williams</strong>, philosopher — from <a href="https://www.conspicuouscognition.com/p/speaking-truth-to-power-is-bad-epistemology" target="_blank" rel="noopener noreferrer"><em>"Speaking Truth to Power" Is Bad Epistemology</em></a>, Conspicuous Cognition.</p>
+      </aside>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Appendix · AI adoption</span>
+      <span class="num">40 / NN</span>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
        SLIDE 25 — Group 01 worksheet
        ============================================================ -->
   <section class="slide slide--sheet" data-label="Group 01 sheet">
@@ -4228,333 +4684,6 @@
     </div>
   </section>
 
-  <!-- ============================================================
-       SLIDE 35 — Appendix A1: Scale
-       ============================================================ -->
-  <section class="slide slide--appendix" data-label="Appendix · AI scale">
-    <div class="rule-band"></div>
-
-    <p class="kicker">Appendix · AI adoption</p>
-    <h2 class="slide-title">AI has already <em>arrived</em>.</h2>
-
-    <div class="slide-body">
-      <div class="ax-hero-row">
-        <div class="ax-hero">
-          <p class="ax-hero-eyebrow">US workforce, November 2025</p>
-          <p class="ax-hero-figure">41%</p>
-          <p class="ax-hero-body">Of the US workforce uses generative AI at work — up from effectively zero three years ago.</p>
-        </div>
-
-        <div class="ax-side-stack">
-          <article class="ax-card">
-            <p class="ax-card-eyebrow">Personal use</p>
-            <p class="ax-card-figure">58%</p>
-            <p class="ax-card-body">Of US adults have used a generative AI tool at home or for personal tasks.</p>
-          </article>
-          <article class="ax-card">
-            <p class="ax-card-eyebrow">From a standing start</p>
-            <p class="ax-card-figure">3 yrs</p>
-            <p class="ax-card-body">ChatGPT launched November 2022. The 41% figure is from November 2025.</p>
-          </article>
-        </div>
-      </div>
-
-      <aside class="ax-quote ax-keyfinding">
-        <p class="ax-keyfinding-eyebrow">Key finding</p>
-        <p class="ax-quote-body">This is not adoption in pockets. It now spans the US economy — by <em>firm size</em>, by <em>industry</em>, by <em>occupation</em>. And the pace shows no sign of slowing.</p>
-        <p class="ax-quote-attr">Summarising Federal Reserve, <strong>"Monitoring AI Adoption in the U.S. Economy"</strong>, April 2026</p>
-      </aside>
-
-      <p class="ax-source">Sources: Federal Reserve, "Monitoring AI Adoption in the U.S. Economy", April 2026 (workforce figure); Pew Research, late 2025 tracking (personal-use figure).</p>
-    </div>
-
-    <div class="slide-foot">
-      <span class="wm">Appendix · AI adoption</span>
-      <span class="num">35 / NN</span>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SLIDE 36 — Appendix A2: Speed — focused 0–3 year chart
-       ============================================================ -->
-  <section class="slide slide--appendix slide--ax-speed" data-label="Appendix · AI speed">
-    <div class="rule-band"></div>
-
-    <p class="kicker">Appendix · AI adoption</p>
-    <h2 class="slide-title">Faster than anything we've <em>seen</em>.</h2>
-    <p class="slide-subtitle">Adoption in the first three years after launch — same window for each technology.</p>
-
-    <div class="slide-body">
-      <div class="ax-chart-big">
-        <div class="ax-chart-legend">
-          <span class="ax-chart-legend-item is-internet">Internet at work (1995–98)</span>
-          <span class="ax-chart-legend-item is-phone">Smartphone adoption (2007–10)</span>
-          <span class="ax-chart-legend-item is-ai">Generative AI at work (2022–25)</span>
-        </div>
-
-        <svg viewBox="0 0 1600 600" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Three-year adoption curves comparing internet at work, smartphone adoption, and generative AI at work.">
-          <!-- Horizontal grid lines -->
-          <line class="ax-grid" x1="100" y1="60"  x2="1500" y2="60"/>
-          <line class="ax-grid" x1="100" y1="180" x2="1500" y2="180"/>
-          <line class="ax-grid" x1="100" y1="300" x2="1500" y2="300"/>
-          <line class="ax-grid" x1="100" y1="420" x2="1500" y2="420"/>
-          <line class="ax-axis-base" x1="100" y1="540" x2="1500" y2="540"/>
-
-          <!-- Y axis labels: 0–50% in 10% increments -->
-          <text class="ax-axis ax-axis-y" x="86" y="64">50%</text>
-          <text class="ax-axis ax-axis-y" x="86" y="184">40%</text>
-          <text class="ax-axis ax-axis-y" x="86" y="304">30%</text>
-          <text class="ax-axis ax-axis-y" x="86" y="424">20%</text>
-          <text class="ax-axis ax-axis-y" x="86" y="544">10%</text>
-          <text class="ax-axis ax-axis-y" x="86" y="572">0</text>
-
-          <!-- X axis labels: 0, 1, 2, 3 years -->
-          <text class="ax-axis" x="100"  y="572" text-anchor="middle">Launch</text>
-          <text class="ax-axis" x="566"  y="572" text-anchor="middle">+1 yr</text>
-          <text class="ax-axis" x="1033" y="572" text-anchor="middle">+2 yrs</text>
-          <text class="ax-axis" x="1500" y="572" text-anchor="middle">+3 yrs</text>
-
-          <!-- Scaling: x = 100 + year*466.67, y = 540 - pct*12  (50% range over 480px) -->
-
-          <!-- Internet at work: 0, 5, 12, 20 -->
-          <g class="ax-track ax-track--internet">
-            <polyline class="ax-line ax-line--internet" points="100,540 566,480 1033,396 1500,300"/>
-            <circle class="ax-dot ax-dot--internet" cx="100"  cy="540" r="7"/>
-            <circle class="ax-dot ax-dot--internet" cx="566"  cy="480" r="7"/>
-            <circle class="ax-dot ax-dot--internet" cx="1033" cy="396" r="7"/>
-            <circle class="ax-dot ax-dot--internet" cx="1500" cy="300" r="7"/>
-          </g>
-
-          <!-- Smartphone adoption: 0, 5, 15, 25 -->
-          <g class="ax-track ax-track--phone">
-            <polyline class="ax-line ax-line--phone" points="100,540 566,480 1033,360 1500,240"/>
-            <circle class="ax-dot ax-dot--phone" cx="100"  cy="540" r="7"/>
-            <circle class="ax-dot ax-dot--phone" cx="566"  cy="480" r="7"/>
-            <circle class="ax-dot ax-dot--phone" cx="1033" cy="360" r="7"/>
-            <circle class="ax-dot ax-dot--phone" cx="1500" cy="240" r="7"/>
-          </g>
-
-          <!-- Generative AI: 0, 22, 31, 41 -->
-          <g class="ax-track ax-track--ai">
-            <polyline class="ax-line ax-line--ai" points="100,540 566,276 1033,168 1500,48"/>
-            <circle class="ax-dot ax-dot--ai" cx="100"  cy="540" r="9"/>
-            <circle class="ax-dot ax-dot--ai" cx="566"  cy="276" r="9"/>
-            <circle class="ax-dot ax-dot--ai" cx="1033" cy="168" r="9"/>
-            <circle class="ax-dot ax-dot--ai" cx="1500" cy="48"  r="11"/>
-          </g>
-
-          <!-- Endpoint labels -->
-          <text class="ax-endpoint" x="1490" y="296" text-anchor="end" dy="-8">20%</text>
-          <text class="ax-endpoint" x="1490" y="236" text-anchor="end" dy="-8">25%</text>
-          <text class="ax-endpoint ax-endpoint--big" x="1490" y="44" text-anchor="end" dy="-10">41%</text>
-        </svg>
-      </div>
-
-      <p class="ax-source">Within the same three-year window from launch, generative AI is at <strong>41%</strong> workforce adoption — roughly double internet-at-work and smartphone adoption at the equivalent point. Sources: US Census / Pew (internet, 1995–98), Pew Research (smartphone, 2007–10), Federal Reserve (GenAI, 2022–25). Y-axis is % of relevant population (workforce / adults).</p>
-    </div>
-
-    <div class="slide-foot">
-      <span class="wm">Appendix · AI adoption</span>
-      <span class="num">36 / NN</span>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SLIDE 37 — Appendix: Historical parallels to AI fears
-       ============================================================ -->
-  <section class="slide slide--appendix" data-label="Appendix · Historical parallels">
-    <div class="rule-band"></div>
-
-    <p class="kicker">Appendix · AI adoption</p>
-    <h2 class="slide-title">History never repeats itself, but it does often <em>rhyme</em>.</h2>
-    <p class="slide-subtitle">Every major new medium has triggered fears that look strikingly like today's AI debate.</p>
-
-    <div class="slide-body">
-      <table class="ax-parallels">
-        <colgroup>
-          <col class="col-fear">
-          <col class="col-tech">
-          <col class="col-date">
-          <col class="col-crit">
-          <col class="col-said">
-        </colgroup>
-        <thead>
-          <tr>
-            <th>The AI fear today</th>
-            <th>Earlier invention</th>
-            <th>Date</th>
-            <th>The critic</th>
-            <th>What they said</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Hallucinations; lack of true understanding.</td>
-            <td>The written word</td>
-            <td>c.800 BC</td>
-            <td>Plato (Socrates &amp; King Thamus)</td>
-            <td>Loss of internal memory; the mere appearance of wisdom.</td>
-          </tr>
-          <tr>
-            <td>Choice overload; "slop" and content saturation.</td>
-            <td>The printing press</td>
-            <td>c.1450</td>
-            <td>Hieronimo Squarciafico</td>
-            <td>Enfeeblement of the mind through "abundance".</td>
-          </tr>
-          <tr>
-            <td>Depreciation of human creativity and "soul".</td>
-            <td>Photography</td>
-            <td>1839</td>
-            <td>Charles Baudelaire</td>
-            <td>Death of imagination; the cult of fidelity; refuge of the lazy.</td>
-          </tr>
-          <tr>
-            <td>Hallucinations; removal of artistic friction.</td>
-            <td>Typewriters</td>
-            <td>c.1874</td>
-            <td>Mark Twain</td>
-            <td>"The machine was full of caprices, full of defects — devilish ones."</td>
-          </tr>
-          <tr>
-            <td>Flattening of thought; distraction.</td>
-            <td>The internet</td>
-            <td>c.1995</td>
-            <td>Nicholas Carr</td>
-            <td>Loss of capacity for "deep reading" and focus.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p class="ax-source">Sources: Plato, <em>Phaedrus</em>; Squarciafico (Venetian humanist, 15th c.); Baudelaire, <em>Salon of 1859</em>; Mark Twain on his Remington typewriter (c.1875); Nicholas Carr, "Is Google Making Us Stupid?" (2008) and <em>The Shallows</em> (2010).</p>
-    </div>
-
-    <div class="slide-foot">
-      <span class="wm">Appendix · AI adoption</span>
-      <span class="num">37 / NN</span>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SLIDE 38 — Appendix A3: Easy for some, hard for others
-       ============================================================ -->
-  <section class="slide slide--appendix" data-label="Appendix · Firm vs worker">
-    <div class="rule-band"></div>
-
-    <p class="kicker">Appendix · AI adoption</p>
-    <h2 class="slide-title">Easy for some. <em>Hard</em> for others.</h2>
-
-    <div class="slide-body">
-      <div class="ax-pair">
-        <article class="ax-card">
-          <p class="ax-card-eyebrow">Firms that have formally adopted</p>
-          <p class="ax-card-figure">18%</p>
-          <p class="ax-card-body">Of US businesses report adopting AI in any business function (Fed BTOS, end 2025).</p>
-        </article>
-        <article class="ax-card">
-          <p class="ax-card-eyebrow">Workers using it anyway</p>
-          <p class="ax-card-figure">41%</p>
-          <p class="ax-card-body">Of US workers use generative AI at work — often via personal accounts, ahead of their employer (Fed RPS).</p>
-        </article>
-      </div>
-
-      <h3 class="ax-frictions-head">Why deploying it is <em>hard</em>.</h3>
-
-      <ul class="ax-frictions">
-        <li>
-          <div>
-            <strong>Identifying use cases</strong>
-            <span>What's flexible for one person becomes hard to define for a thousand. Personal use bends to the user; organisational use has to nail the use case first.</span>
-          </div>
-        </li>
-        <li>
-          <div>
-            <strong>Reproducibility and audit trail</strong>
-            <span>A sole trader can let AI draft an invoice. A 1,000-person firm needs an output that survives an audit.</span>
-          </div>
-        </li>
-        <li>
-          <div>
-            <strong>Error consequences at scale</strong>
-            <span>A hallucinated paragraph is a shrug in a personal email; a correction in a 200,000-circulation paper.</span>
-          </div>
-        </li>
-        <li>
-          <div>
-            <strong>Workforce concerns about displacement</strong>
-            <span>Real, live conversations inside most large organisations — including ours.</span>
-          </div>
-        </li>
-      </ul>
-
-      <p class="ax-source">Source: Federal Reserve, April 2026. The Fed also notes adoption among the smallest firms is "stronger than would be expected based on size alone".</p>
-    </div>
-
-    <div class="slide-foot">
-      <span class="wm">Appendix · AI adoption</span>
-      <span class="num">37 / NN</span>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SLIDE 39 — Appendix A5: Used widely, trusted less
-       ============================================================ -->
-  <section class="slide slide--appendix" data-label="Appendix · Trust paradox">
-    <div class="rule-band"></div>
-
-    <p class="kicker">Appendix · AI adoption</p>
-    <h2 class="slide-title">Used widely. Trusted <em>less</em>.</h2>
-
-    <div class="slide-body">
-      <div class="ax-pair">
-        <article class="ax-card">
-          <p class="ax-card-eyebrow">Personal interest</p>
-          <p class="ax-card-figure">27%</p>
-          <p class="ax-card-body">Of global news audiences are interested in AI-generated <em>summaries</em> of news articles — the highest of any AI feature tested.</p>
-        </article>
-        <article class="ax-card">
-          <p class="ax-card-eyebrow">But trust falls</p>
-          <p class="ax-card-figure">−18</p>
-          <p class="ax-card-body">Net score: AI-produced news is seen as <strong>less trustworthy</strong> than human-produced news, even with human oversight.</p>
-        </article>
-      </div>
-
-      <aside class="ax-quote">
-        <p class="ax-quote-body">"Audiences remain broadly sceptical of these automated approaches to news production, but are more accepting of journalists using AI in a supportive role."</p>
-        <p class="ax-quote-attr"><strong>Reuters Institute Digital News Report 2025</strong> — the asymmetry of agency, in their words. People accept tools they control; they don't accept tools used <em>on</em> them.</p>
-      </aside>
-
-      <p class="ax-source">Sources: Reuters Institute Digital News Report 2025 (note: 2026 edition not yet published). Net trust figure averaged across 37 markets.</p>
-    </div>
-
-    <div class="slide-foot">
-      <span class="wm">Appendix · AI adoption</span>
-      <span class="num">39 / NN</span>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SLIDE 40 — Appendix A6: Dan Williams essay quote (closer)
-       ============================================================ -->
-  <section class="slide slide--appendix slide--ax-essay" data-label="Appendix · An intellectual failure">
-    <div class="rule-band"></div>
-
-    <p class="kicker">Appendix · AI adoption</p>
-    <h2 class="slide-title">An intellectual <em>failure</em>.</h2>
-
-    <div class="slide-body">
-      <aside class="ax-quote ax-quote--essay">
-        <p class="ax-quote-body">"It's difficult to overstate the scale of the intellectual failure around AI that has occurred among many left-wing intellectuals which has gone far beyond responsible scepticism into the domain of <em>outright denial</em>. This failure is especially galling because a thoughtful, reality-oriented, left-wing intellectual culture would have much to contribute to many of the issues raised by highly capable and rapidly advancing AI, including oligarchy, concentration of power, economic inequality, and labour automation."</p>
-        <p class="ax-quote-attr"><strong>Dan Williams</strong>, philosopher — from <a href="https://www.conspicuouscognition.com/p/speaking-truth-to-power-is-bad-epistemology" target="_blank" rel="noopener noreferrer"><em>"Speaking Truth to Power" Is Bad Epistemology</em></a>, Conspicuous Cognition.</p>
-      </aside>
-    </div>
-
-    <div class="slide-foot">
-      <span class="wm">Appendix · AI adoption</span>
-      <span class="num">40 / NN</span>
-    </div>
-  </section>
-
 </deck-stage>
 
 <script src="deck-stage.js"></script>
@@ -4574,7 +4703,7 @@
   document.querySelector('deck-stage').addEventListener('slidechange', (e) => {
     const slide = e.detail.slide;
     if (!slide) return;
-    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .choice-card, .risk-card, .ai-meta, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em, .flow-node, .flow-line, .comms-card, .comms-pivot, .cost-card, .wef-list li, .ax-endpoint, .ax-dot');
+    const els = slide.querySelectorAll('.chat-bubble, .quad-card, .aim, .failure-card, .hurdle-card, .figure-card, .choice-card, .risk-card, .ai-meta, .principles li, .context-callout, .conclusion-bar, .slide-image, .section-opener h1 em, .flow-node, .flow-line, .comms-card, .comms-pivot, .cost-card, .wef-list li, .ax-endpoint, .ax-dot, .poll-bar-fill');
     els.forEach((b) => {
       b.style.animation = 'none';
       void b.offsetWidth;
