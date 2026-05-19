@@ -506,6 +506,37 @@
     gap: 12px;
   }
   .ax-quote--compact { padding: 22px 32px 20px; gap: 8px; }
+
+  /* Essay quote variant — full-slide hero quote (slide 40) */
+  .slide--ax-essay .slide-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .ax-quote--essay {
+    padding: 48px 60px 44px;
+    border-left-width: 8px;
+    gap: 24px;
+  }
+  .ax-quote--essay .ax-quote-body {
+    font-size: 32px;
+    line-height: 1.34;
+    max-width: 72ch;
+  }
+  .ax-quote--essay .ax-quote-attr {
+    font-size: 20px;
+    line-height: 1.4;
+  }
+  .ax-quote--essay .ax-quote-attr a {
+    color: var(--guardian-blue);
+    text-decoration: none;
+    border-bottom: 1px solid var(--guardian-blue);
+    transition: color 180ms ease, border-color 180ms ease;
+  }
+  .ax-quote--essay .ax-quote-attr a:hover {
+    color: var(--news-red);
+    border-bottom-color: var(--news-red);
+  }
   .ax-quote-body {
     font-family: var(--display);
     font-style: italic;
@@ -4499,6 +4530,28 @@
     <div class="slide-foot">
       <span class="wm">Appendix · AI adoption</span>
       <span class="num">39 / NN</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 40 — Appendix A6: Dan Williams essay quote (closer)
+       ============================================================ -->
+  <section class="slide slide--appendix slide--ax-essay" data-label="Appendix · An intellectual failure">
+    <div class="rule-band"></div>
+
+    <p class="kicker">Appendix · AI adoption</p>
+    <h2 class="slide-title">An intellectual <em>failure</em>.</h2>
+
+    <div class="slide-body">
+      <aside class="ax-quote ax-quote--essay">
+        <p class="ax-quote-body">"It's difficult to overstate the scale of the intellectual failure around AI that has occurred among many left-wing intellectuals which has gone far beyond responsible scepticism into the domain of <em>outright denial</em>. This failure is especially galling because a thoughtful, reality-oriented, left-wing intellectual culture would have much to contribute to many of the issues raised by highly capable and rapidly advancing AI, including oligarchy, concentration of power, economic inequality, and labour automation."</p>
+        <p class="ax-quote-attr"><strong>Dan Williams</strong>, philosopher — from <a href="https://www.conspicuouscognition.com/p/speaking-truth-to-power-is-bad-epistemology" target="_blank" rel="noopener noreferrer"><em>"Speaking Truth to Power" Is Bad Epistemology</em></a>, Conspicuous Cognition.</p>
+      </aside>
+    </div>
+
+    <div class="slide-foot">
+      <span class="wm">Appendix · AI adoption</span>
+      <span class="num">40 / NN</span>
     </div>
   </section>
 
