@@ -606,13 +606,26 @@
   .ax-quote-attr strong { color: var(--ink); font-weight: 700; }
 
   /* Frictions list (A3) */
+  .ax-frictions-head {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 6px 0 0;
+  }
+  .ax-frictions-head em {
+    color: var(--news-red);
+    font-style: italic;
+  }
   .ax-frictions {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
   }
   .ax-frictions li {
     display: grid;
@@ -4414,7 +4427,15 @@
         </article>
       </div>
 
+      <h3 class="ax-frictions-head">Why deploying it is <em>hard</em>.</h3>
+
       <ul class="ax-frictions">
+        <li>
+          <div>
+            <strong>Identifying use cases</strong>
+            <span>What's flexible for one person becomes hard to define for a thousand. Personal use bends to the user; organisational use has to nail the use case first.</span>
+          </div>
+        </li>
         <li>
           <div>
             <strong>Reproducibility and audit trail</strong>
