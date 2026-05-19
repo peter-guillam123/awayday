@@ -1893,6 +1893,34 @@
     letter-spacing: 0.16em;
   }
 
+  /* QR code top-right on the cover, balancing the kicker block */
+  .cover-qr {
+    position: absolute;
+    top: 100px;
+    right: 120px;
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .cover-qr img {
+    display: block;
+    width: 160px;
+    height: 160px;
+    background: var(--paper);
+  }
+  .cover-qr-caption {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    text-align: center;
+    margin: 0;
+  }
+
   /* ===== Quadrant grid (2x2 cards) ===== */
   .quad-grid {
     display: grid;
@@ -1947,6 +1975,11 @@
        ============================================================ -->
   <section class="slide cover" data-label="Cover">
     <div class="rule-band"></div>
+
+    <aside class="cover-qr">
+      <img src="images/qr-poll.png" alt="QR code linking to the opening poll">
+      <p class="cover-qr-caption">Scan to vote</p>
+    </aside>
 
     <div>
       <p class="kicker"><span class="group-tag">Group 04</span>Editorial Leadership · Away Days 2026</p>
